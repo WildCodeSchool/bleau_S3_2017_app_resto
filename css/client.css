@@ -1,0 +1,22 @@
+.container_custom_client {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+    .container_custom_client img {
+        height: 130%;
+    }
+
+    .container_custom_client .row_custom {
+        margin: 0;
+    }
+
+.menu {
+    height: 600px;
+}
+
+.dayli {
+    text-align: center;
+}
