@@ -4,19 +4,56 @@
     width: 100%;
     max-width: 100%;
 }
-
     .container_custom_client img {
-        height: 130%;
+        width: 120%;
     }
 
     .container_custom_client .row_custom {
         margin: 0;
     }
 
-.menu {
-    height: 600px;
+#carousel_menu {
+    height: 500px;
+}
+
+.parallax-container{
+    height: 300px;
+}
+
+.parallax-main {
+    height: 500px;
+}
+
+#menu a {
+    font-style: none;
+    color: white;
+}
+
+#menu h3{
+    font-size: 1.7em;
 }
 
 .dayli {
     text-align: center;
+    z-index: 10;
+}
+
+.form_com1 {
+    display: none;
+}
+.btn_custom {
+    background: rgba(255, 255, 255, 0.45);
+}
+.btn_custom:hover{
+    background-color: rgba(255, 255, 255, 0.65);
+    color: black;
+}
+.checkbox {
+    z-index: 10;
+}
+.snack h2 {
+    font-size: 2em;
+}
+#footer_custom {
+    background-color: rgba(51, 51, 51, 0.08);
 }
