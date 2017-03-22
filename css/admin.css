@@ -1,25 +1,69 @@
-tr
-
+tr // changer les selecteur pas utiliser les balise du tableau
+// determiner enfant parent 
 {
 	height:200px;
 }
-
+.element 
+{
+	padding-left:50px;
+}
 
 th
 {
 	font-size:2em;
 	color:rgb(175, 97, 20);
-	height:10px;
-	
+	height:10px;	
 }
 
 td 
 {
-
-	size:3em;
-	color:grey;
+	size:3em;	
 }
+
 .semaine
 {
 	height:10px;
 }
+
+.plat
+{
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+}
+
+.accompagnement
+{
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+}
+
+.entree
+{
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+}
+
+.dessert
+{
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+}
+
+.choise
+{
+
+
+padding-left:50px;
+}
+}
+
+
+
