@@ -13,11 +13,11 @@
     <div class="container container_custom_client">
 
         <div class="parallax-container parallax-main">
-            <div class="parallax"><img src="img/para1.png"></div>
+            <div class="parallax"><img src="http://www.newrest.eu/wp-content/uploads/2015/11/Newrest-Catering-Chef.jpg"></div>
         </div>
 
         <div class="row row_custom">
-            <div class="col s8 offset-s2">
+            <div class="col s10 offset-s1">
                 <div class="row row_custom" id="menu">
                     <div class="col s2 offset-s1 dayli">
                         <a href="#lundi">
@@ -147,7 +147,7 @@
 
         <div class="parallax-container">
             <div class="parallax">
-                <img src="img/1787-une_admissible.jpg" alt="photo des élèves de l'école des mines atablés">
+                <img src="http://www.newrest.eu/wp-content/uploads/2015/12/Newrest-Catering-BI.jpg" alt="photo des élèves de l'école des mines atablés">
             </div>
         </div>
 
