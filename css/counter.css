@@ -1,0 +1,115 @@
+
+/* body in class to not edit the "general" body */
+.body{
+	background-image: url('http://image.noelshack.com/fichiers/2017/12/1490172454-cooking-1013455.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	margin: 0;
+}
+/* Add filter to manage opacity of background's image*/
+.filter{
+	background-color: rgba(255, 255, 255, .75);
+}
+/* h in class to not edit "general" */
+.h2{
+	font-weight: 200 !important;
+}
+.h3{
+	font-weight: 300 ;
+}
+.counter_box{
+	text-align: center;
+	margin: 0 auto;
+	color: #af6114;
+}
+.counter_title{
+	background: rgba(175,94,20,0.8);
+	padding-top: 0.5vh;
+	padding-bottom: 0.5vh;
+	color: white;
+}
+.container_meal_snack{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: centered;
+
+}
+.meal_box , .snack_box{
+	width: 100vw;
+}
+.snack_word , .meal_word{
+	text-shadow: 2px 2px 2px black;
+	letter-spacing: 3px;
+}
+.container_number_snack , .container_number_meal{
+	font-size: 100px;
+	letter-spacing: 3px;
+}
+.number_snack , .number_meal{
+	margin: 0px;
+	width: 260px;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(255,255,255, .6);
+	border-radius: 20px;
+}
+.number_snack{
+	color: #33691e;
+}
+.number_meal{
+	color: #66bb6a;
+}
+/* Same proprieties */
+.commentary_title , .week_reservation{
+	text-align: center;
+	margin: 0 auto;
+	color: white;
+	margin-top: 10vh;
+	background: rgba(175,94,20,0.8);
+	padding-top: 0.5vh;
+	padding-bottom: 0.5vh;
+}
+.table_food{
+	width: 80vw;
+	margin: 0 auto;
+	margin-top: 10vh;
+	background: rgba(255, 255, 255, .5)!important;
+}
+.commentary_box{
+	margin: 0 auto;
+	display: block!important;
+	width: 75vw;
+	margin-top: 10vh;
+}
+.author_and_date{
+	margin: 0 auto;
+	text-align: center;
+	color: #af6114;
+}
+.commentary{
+	width: 75vw;
+	margin: 0 auto;
+	text-align: justify;
+	padding-right: 2vw;
+	padding-left: 2vw;
+	background: rgba(255, 255, 255, .7);
+	border-radius: 10px;
+}
+.container_btn_val_del{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.validate{
+	margin: 10px;
+}
+.val_btn{
+	background: #7cb342!important;
+}
+.delete{
+	margin: 10px;
+}
+.del_btn{
+	background: #d32f2f !important;
+}
