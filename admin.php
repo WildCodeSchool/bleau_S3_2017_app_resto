@@ -146,7 +146,37 @@
       </div>
     </tbody>
   </table>
+<!-- Message for New-letter -->
 
+
+<div class="row message">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix"></i>
+          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+          <label for="icon_prefix2">Message pour "la news-letter" ! </label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<!-- Reception of commantaires -->
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Reception</label>
+        </div>
+      </div>
+    </form>
+  </div>
+<!-- Button delete -->
+<div class="commantaires">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">Effacer</i></a>
+</div>
                 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
                 <!-- Compiled and minified JavaScript -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>	
