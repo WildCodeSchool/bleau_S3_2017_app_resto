@@ -1,6 +1,15 @@
 .head
 {
-	margin-top: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
+	background-color: white;
+	margin-bottom: 0px;
+}
+
+.boutton
+{
+	margin-top: 40px;
+}
+
+.logo
+{
+	margin-top: 35px;
 }
