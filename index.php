@@ -5,15 +5,23 @@
     <title>AppResto</title>
     <link rel="stylesheet" href="css/materialize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_header.css">
     <link rel="stylesheet" href="css/client.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
 <body>
+    <?php include 'includes/header_index.php'; ?>
     <div class="container container_custom_client">
 
         <div class="parallax-container parallax-main">
             <div class="parallax"><img src="http://www.newrest.eu/wp-content/uploads/2015/11/Newrest-Catering-Chef.jpg"></div>
+        </div>
+
+        <div class="row row_custom menu_semaine">
+            <div class="col s12">
+                <h2>Semaine du **/** au  **/**</h2>
+            </div>
         </div>
 
         <div class="row row_custom">
@@ -29,6 +37,16 @@
                                 <li>Desserts</li>
                             </ul>
                         </a>
+                        <form class="form_resa" action="index.php">
+                            <p>
+                                <input name="group1" type="radio" id="normal_lundi" />
+                                <label for="normal_lundi">Menu normal</label>
+                            </p>
+                            <p>
+                                <input name="group1" type="radio" id="snack_lundi" />
+                                <label for="snack_lundi">Menu snack</label>
+                            </p>
+                        </form>
                     </div>
 
                     <div class="col s2 dayli">
@@ -41,6 +59,16 @@
                                 <li>Desserts</li>
                             </ul>
                         </a>
+                        <form class="form_resa" action="index.php">
+                            <p>
+                                <input name="group1" type="radio" id="normal_mardi" />
+                                <label for="normal_mardi">Menu normal</label>
+                            </p>
+                            <p>
+                                <input name="group1" type="radio" id="snack_mardi" />
+                                <label for="snack_mardi">Menu snack</label>
+                            </p>
+                        </form>
                     </div>
 
                     <div class="col s2 dayli">
@@ -53,6 +81,16 @@
                                 <li>Desserts</li>
                             </ul>
                         </a>
+                        <form class="form_resa" action="index.php">
+                            <p>
+                                <input name="group1" type="radio" id="normal_mercredi" />
+                                <label for="normal_mercredi">Menu normal</label>
+                            </p>
+                            <p>
+                                <input name="group1" type="radio" id="snack_mercredi" />
+                                <label for="snack_mercredi">Menu snack</label>
+                            </p>
+                        </form>
                     </div>
 
                     <div class="col s2 dayli">
@@ -65,6 +103,16 @@
                                 <li>Desserts</li>
                             </ul>
                         </a>
+                        <form class="form_resa" action="index.php">
+                            <p>
+                                <input name="group1" type="radio" id="normal_jeudi" />
+                                <label for="normal_jeudi">Menu normal</label>
+                            </p>
+                            <p>
+                                <input name="group1" type="radio" id="snack_jeudi" />
+                                <label for="snack_jeudi">Menu snack</label>
+                            </p>
+                        </form>
                     </div>
 
                     <div class="col s2 dayli">
@@ -77,7 +125,22 @@
                                 <li>Desserts</li>
                             </ul>
                         </a>
+                        <form class="form_resa_vendredi" action="index.php">
+                            <p>
+                                <input name="vendredi" type="radio" id="normal_vendredi" />
+                                <label for="normal_vendredi">Menu normal</label>
+                            </p>
+                            <p>
+                                <input name="vendredi" type="radio" id="snack_vendredi" />
+                                <label for="snack_vendredi">Menu snack</label>
+                            </p>
+                        </form>
                     </div>
+                </div>
+                <div class="row row_custom">
+                    <button class="btn waves-effect waves-orange btn_custom col s2 offset-s5 align-center" type="submit" name="action">Envoyez
+                        <i class="material-icons right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -85,8 +148,13 @@
         <!-- Modal Structure -->
         <div id="lundi" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Au menu le lundi</h4>
+                <ul>
+                    <li>Entrées</li>
+                    <li>Plat 1</li>
+                    <li>Plat 2</li>
+                    <li>Desserts</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -95,8 +163,13 @@
 
         <div id="mardi" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Au menu le mardi</h4>
+                <ul>
+                    <li>Entrées</li>
+                    <li>Plat 1</li>
+                    <li>Plat 2</li>
+                    <li>Desserts</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -105,8 +178,13 @@
 
         <div id="mercredi" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Au menu le mercredi</h4>
+                <ul>
+                    <li>Entrées</li>
+                    <li>Plat 1</li>
+                    <li>Plat 2</li>
+                    <li>Desserts</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -115,8 +193,13 @@
 
         <div id="jeudi" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Au menu le jeudi</h4>
+                <ul>
+                    <li>Entrées</li>
+                    <li>Plat 1</li>
+                    <li>Plat 2</li>
+                    <li>Desserts</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -125,8 +208,13 @@
 
         <div id="vendredi" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Au menu le vendredi</h4>
+                <ul>
+                    <li>Entrées</li>
+                    <li>Plat 1</li>
+                    <li>Plat 2</li>
+                    <li>Desserts</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -208,14 +296,14 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <h5>Footer Content</h5>
+                    <p class="text-lighten-4">You can use rows and columns here to organize your footer content.</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Contacts</h5>
+                    <h5>Contacts</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                        <li><a class="text-lighten-3" href="#!">Facebook</a></li>
+                        <li><a class="text-lighten-3" href="#!">Twitter</a></li>
                     </ul>
                 </div>
             </div>
@@ -223,7 +311,7 @@
         <div class="footer-copyright ">
             <div class="container">
                 © 2017 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">Contactez-nous</a>
+                <a class="text-lighten-4 right" href="#!">Contactez-nous</a>
             </div>
         </div>
     </footer>
