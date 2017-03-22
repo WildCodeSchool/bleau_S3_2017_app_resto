@@ -1,0 +1,25 @@
+tr
+
+{
+	height:200px;
+}
+
+
+th
+{
+	font-size:2em;
+	color:rgb(175, 97, 20);
+	height:10px;
+	
+}
+
+td 
+{
+
+	size:3em;
+	color:grey;
+}
+.semaine
+{
+	height:10px;
+}
