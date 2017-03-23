@@ -177,6 +177,7 @@
 <div class="commantaires">
       <a class="waves-effect waves-light btn"><i class="material-icons left">Effacer</i></a>
 </div>
+
                 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
                 <!-- Compiled and minified JavaScript -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>	
