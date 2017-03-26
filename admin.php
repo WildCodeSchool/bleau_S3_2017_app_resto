@@ -134,7 +134,7 @@
                     <div class="row">
                       <div class="input-field col s6">
                         <input id="dessert" type="text" class="validate">
-                        <label class="active" for="dessert">Ajouter</label>
+                        <label class="active" for="dessert" >Ajouter</label>
                       </div>
                     </div>
                   </form>
@@ -146,47 +146,14 @@
       </div>
     </tbody>
   </table>
+
 <!-- Validate button -->
 
 <div class="row row_admin">
   <div class="col m12 admin">
   <div class="validate">
- 
-      <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
-   
+      <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>  
   </div>
-</div>
-
-<!-- Message for New-letter -->
-
-
-<div class="row message">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix"></i>
-          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-          <label for="icon_prefix2">Message pour "la news-letter" ! </label>
-        </div>
-      </div>
-    </form>
-  </div>
-
-<!-- Reception of commantaires -->
-
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Reception</label>
-        </div>
-      </div>
-    </form>
-  </div>
-<!-- Button delete -->
-<div class="commantaires">
-      <a class="waves-effect waves-light btn"><i class="material-icons left">Effacer</i></a>
 </div>
 
                 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>

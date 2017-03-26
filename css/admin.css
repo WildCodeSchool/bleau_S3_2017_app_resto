@@ -56,8 +56,14 @@ tr .option{
 
 .validate{
 	margin-left:500px;
-	margin-top:80px;
+	margin-top:70px;
+	margin-bottom:50px;
+	color: #AF6114;
+}
+
+label .active{
 	color:rgb(175, 97, 20);
+
 }
 
 
