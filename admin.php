@@ -27,7 +27,7 @@
 
     <tbody>
       <div class="container">
-        <tr>
+        <tr class="option">
           <td class="col m2 plat">Plat</td>
           <?php 
           $i =1;
@@ -57,7 +57,7 @@
                 </form>
               </td>
             </tr>
-            <tr>
+            <tr class="option">
               <td class="accompagnement">Accompagnement</td>
               <?php
               $i = 1;
@@ -85,7 +85,7 @@
                   </form>
                 </td>
               </tr>
-              <tr>
+              <tr class="option">
                 <td class="entree">Entrée</td>
                 <?php
                 $i = 1;
@@ -114,7 +114,7 @@
                   </form>
                 </td>
               </tr>
-              <tr>
+              <tr class="option">
                 <td class="dessert">Dessert</td>
                 <?php $i= 1;
                 while($i <6 )
@@ -146,6 +146,17 @@
       </div>
     </tbody>
   </table>
+<!-- Validate button -->
+
+<div class="row row_admin">
+  <div class="col m12 admin">
+  <div class="validate">
+ 
+      <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
+   
+  </div>
+</div>
+
 <!-- Message for New-letter -->
 
 
