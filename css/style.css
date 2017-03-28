@@ -18,12 +18,14 @@ tr .option {
 
 
 .semaine {
+	font-family: 'Source Sans Pro', sans-serif;
 	height:10px;
 	font-size:2em;
 	color:rgb(175, 97, 20);	
 }
 
 .plat {
+	font-family: 'Source Sans Pro', sans-serif;
 	background-color:rgb(175, 97, 20);
 	opacity:0.8;
 	color:white;
@@ -32,6 +34,7 @@ tr .option {
 }
 
 .accompagnement {
+	font-family: 'Source Sans Pro', sans-serif;
 	background-color:rgb(175, 97, 20);
 	opacity:0.8;
 	color:white;
@@ -40,6 +43,7 @@ tr .option {
 }
 
 .entree {
+	font-family: 'Source Sans Pro', sans-serif;
 	background-color:rgb(175, 97, 20);
 	opacity:0.8;
 	color:white;
@@ -48,6 +52,7 @@ tr .option {
 }
 
 .dessert {
+	font-family: 'Source Sans Pro', sans-serif;
 	background-color:rgb(175, 97, 20);
 	opacity:0.8;
 	color:white;
