@@ -1,49 +1,51 @@
  <!DOCTYPE html>
   <html>
     <head>
-    	<!-- Import CSS -->
-    	<link rel="stylesheet" type="text/css" href="css/counter.css">
-    	<!--Import Google Icon Font-->
-	    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <!--Import materialize.css-->
 	    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	    <!--Let browser know website is optimized for mobile-->
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	    <!-- Import Icons Materialize -->
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	    <!-- Import CSS -->
+    	<link rel="stylesheet" type="text/css" href="css/counter.css">
     </head>
 
     <body class="body">
 		<!-- Add filter to manage opacity of background's image -->
-    	<div class="filter">
-    	<!-- Container of counter's reservation by day -->
-			<div class="counter_box">
-			<!-- block of title's counter -->
-				<div class="counter_title">
-					<h2 class="h2">Compteur de menus</h2>
-				</div>
-					<!-- Container of counter's reservation by day without title -->
-					<div class="container_meal_snack">
-						<!-- container of number's meal this day -->
-						<div class="meal_box">
-							<div class="meal_word">
-								<h3 class="h3"><b>REPAS</b></h3>
-							</div>
-							<div class="container_number_meal">
-								<p class="number_meal z-depth-3">666</p>
-							</div>
+		<div class="filter">
+	    	<div class="container container_custom">
+	    	<!-- Container of counter's reservation by day -->
+	    		<div class="row row_custom">
+					<div class="counter_box">
+				<!-- block of title's counter -->
+						<div class="counter_title">
+							<h2 class="h2">Compteur de menus</h2>
 						</div>
-
-						<div class="snack_box">
-							<!-- container of number's snack this day -->
-							<div class="snack_word">
-								<h3 class="h3"><b>SNACK</b></h3>
+						<!-- Container of counter's reservation by day without title -->
+						<div class="container_meal_snack">
+							<!-- container of number's meal this day -->
+							<div class="meal_box">
+								<div class="meal_word">
+										<h3 class="h3"><b>REPAS</b></h3>
+								</div>
+								<div class="container_number_meal">
+										<p class="number_meal z-depth-3">666</p>
+								</div>
 							</div>
-							<div class="container_number_snack">
-								<p class="number_snack z-depth-3">666</p>
+
+							<div class="snack_box">
+								<!-- container of number's snack this day -->
+								<div class="snack_word">
+									<h3 class="h3"><b>SNACK</b></h3>
+								</div>
+								<div class="container_number_snack">
+											<p class="number_snack z-depth-3">666</p>
+								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 			</div>
 
 		  
@@ -117,6 +119,7 @@
 			      		<a class="waves-effect waves-light btn del_btn"><i class="material-icons right">thumb_down</i>supprimer</a>
 			      	</div>
 			    </div>
+	    	</div>
 	    	</div>
 
 	            

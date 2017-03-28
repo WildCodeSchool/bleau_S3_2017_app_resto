@@ -6,6 +6,9 @@
 	background-attachment: fixed;
 	margin: 0;
 }
+.container_custom{
+	
+}
 /* Add filter to manage opacity of background's image*/
 .filter{
 	background-color: rgba(255, 255, 255, .75);
@@ -35,7 +38,7 @@
 
 }
 .meal_box , .snack_box{
-	width: 100vw;
+	width: 40%;
 }
 .snack_word , .meal_word{
 	text-shadow: 2px 2px 2px black;
@@ -60,7 +63,7 @@
 .number_meal{
 	color: #66bb6a;
 }
-/* Same proprieties */
+/* Same proprieties because same apparence*/
 .commentary_title , .week_reservation{
 	text-align: center;
 	margin: 0 auto;
@@ -70,6 +73,7 @@
 	padding-top: 0.5vh;
 	padding-bottom: 0.5vh;
 }
+/* Table of week's reservation (snack and meal) bye day of week */
 .table_food{
 	width: 80vw;
 	margin: 0 auto;
@@ -96,6 +100,7 @@
 	background: rgba(255, 255, 255, .7);
 	border-radius: 10px;
 }
+/* buttons validate and delete */
 .container_btn_val_del{
 	display: flex;
     flex-wrap: wrap;
