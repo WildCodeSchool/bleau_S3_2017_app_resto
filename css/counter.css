@@ -6,6 +6,13 @@
 	background-attachment: fixed;
 	margin: 0;
 }
+/*test à effacer
+.col{
+	border: 2px red solid;
+}
+.row{
+	border: 2px blue solid;
+}*/
 .container_custom{
 	
 }
@@ -30,15 +37,6 @@
 	padding-top: 0.5vh;
 	padding-bottom: 0.5vh;
 	color: white;
-}
-.container_meal_snack{
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: centered;
-
-}
-.meal_box , .snack_box{
-	width: 40%;
 }
 .snack_word , .meal_word{
 	text-shadow: 2px 2px 2px black;
@@ -66,7 +64,6 @@
 /* Same proprieties because same apparence*/
 .commentary_title , .week_reservation{
 	text-align: center;
-	margin: 0 auto;
 	color: white;
 	margin-top: 10vh;
 	background: rgba(175,94,20,0.8);
@@ -75,25 +72,18 @@
 }
 /* Table of week's reservation (snack and meal) bye day of week */
 .table_food{
-	width: 80vw;
-	margin: 0 auto;
 	margin-top: 10vh;
 	background: rgba(255, 255, 255, .5)!important;
 }
 .commentary_box{
-	margin: 0 auto;
 	display: block!important;
-	width: 75vw;
 	margin-top: 10vh;
 }
 .author_and_date{
-	margin: 0 auto;
 	text-align: center;
 	color: #af6114;
 }
 .commentary{
-	width: 75vw;
-	margin: 0 auto;
 	text-align: justify;
 	padding-right: 2vw;
 	padding-left: 2vw;
@@ -101,13 +91,12 @@
 	border-radius: 10px;
 }
 /* buttons validate and delete */
-.container_btn_val_del{
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.del_btn , .val_btn{
+	display: block;
 }
 .validate{
 	margin: 10px;
+
 }
 .val_btn{
 	background: #7cb342!important;
