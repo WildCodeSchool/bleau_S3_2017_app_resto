@@ -8,6 +8,72 @@
 /*----------------------------------------*\
     3.MENUS-ADMIN
 \*----------------------------------------*/
+tr .option {
+	height:200px;
+}
+
+.element {
+	padding-left:50px;
+}
+
+
+.semaine {
+	height:10px;
+	font-size:2em;
+	color:rgb(175, 97, 20);	
+}
+
+.plat {
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+	size:3em;	
+}
+
+.accompagnement {
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+	size:3em;	
+}
+
+.entree {
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+	size:3em;	
+}
+
+.dessert {
+	background-color:rgb(175, 97, 20);
+	opacity:0.8;
+	color:white;
+	text-align:center;
+	size:3em;	
+}
+
+.choise {
+	padding-left:50px;
+}
+
+.message {
+	top:60px;
+}
+
+.validate {
+	margin-left:500px;
+	margin-top:70px;
+	margin-bottom:50px;
+	color: #AF6114;
+}
+
+label .active {
+	color:rgb(175, 97, 20);
+}
+
 
 /*------- 1.BODY GENERAL STYLES--------*/
 
