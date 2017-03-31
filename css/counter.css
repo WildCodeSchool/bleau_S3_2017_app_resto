@@ -1,7 +1,7 @@
 
 /* body in class to not edit the "general" body */
 .body{
-	background-image: url('http://image.noelshack.com/fichiers/2017/12/1490172454-cooking-1013455.jpg');
+	background-color: rgb(117, 117, 120);
 	background-size: cover;
 	background-attachment: fixed;
 	margin: 0;
@@ -14,13 +14,16 @@
 	border: 2px blue solid;
 }*/
 .container_custom{
-	
+	margin: 0!important;
+    padding: 0!important;
+    width: 99.5%!important;
+    max-width: 99.5%!important;
 }
 /* Add filter to manage opacity of background's image*/
 .filter{
-	background-color: rgba(255, 255, 255, .75);
+	background-color: rgba(255, 255, 255, .7);
 }
-/* h in class to not edit "general" */
+/* h in class to not edit "general" titles */
 .h2{
 	font-weight: 200 !important;
 }
@@ -52,8 +55,7 @@
 	text-align: center;
 	display: block;
 	margin: auto;
-	background-color: rgba(255,255,255, .6);
-	border-radius: 20px;
+	background-color: rgba(255,255,255, 1);
 }
 .number_snack{
 	color: #33691e;
@@ -87,12 +89,13 @@
 	text-align: justify;
 	padding-right: 2vw;
 	padding-left: 2vw;
-	background: rgba(255, 255, 255, .7);
-	border-radius: 10px;
+	background: rgba(255, 255, 255, 1);
 }
 /* buttons validate and delete */
 .del_btn , .val_btn{
 	display: block;
+	border-radius: 0px;
+
 }
 .validate{
 	margin: 10px;

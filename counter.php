@@ -107,25 +107,15 @@
 				      	</div>
 				      	<!-- container of flex-box which contain buttuns of validating and deleting -->
 				      	<div class="container_btn_val_del col s12">
-					      	<div class="validate col offset-l3 l3 s12">
+					      	<div class="validate col offset-l3 l3 offset-m1 m4 s12">
 					      		<a class="waves-effect waves-light btn val_btn"><i class="material-icons right">thumb_up</i>valider</a>
 					      	</div>
-					      	<div class="delete col l3 s12">
+					      	<div class="delete col l3 offset-m2 m4 s12">
 					      		<a class="waves-effect waves-light btn del_btn"><i class="material-icons right">thumb_down</i>supprimer</a>
 					      	</div>
 					    <!-- Same code -->
 					    </div>
-				      	<div class="author_and_date flow-text col offset-l4 l4 s12"><p><b>Anonymous</b> le <i>21/12/12</i></p></div>
-				      	<div class="commentary flow-text col s12">
-				      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nesciunt perspiciatis vero repellat earum, esse amet sapiente ipsam ea incidunt consectetur accusamus fugiat, placeat quam vitae libero repellendus. Aut, laudantium.</p>
-				      	</div>
-				      	<div class="container_btn_val_del col s12">
-					      	<div class="validate col offset-l3 l3 s12">
-					      		<a class="waves-effect waves-light btn val_btn"><i class="material-icons right">thumb_up</i>valider</a>
-					      	</div>
-					      	<div class="delete col l3 s12">
-					      		<a class="waves-effect waves-light btn del_btn"><i class="material-icons right">thumb_down</i>supprimer</a>
-					      	</div>
+				      	
 					    </div>
 			    	</div>
 			    </div>
