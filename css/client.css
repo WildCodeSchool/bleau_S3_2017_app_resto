@@ -24,9 +24,7 @@
     height: 350px;
 }
 
-.parallax-main {
-    height: 350px;
-}
+
 
 #menu a {
     font-style: none;
@@ -48,7 +46,6 @@
     justify-content: space-between;
     text-align: center;
     z-index: 10;
-    height: 350px;
     color: rgb(117, 117, 120);
 }
     .dayli a {
@@ -70,7 +67,7 @@
                 display: block;
 
             }
-    
+
 .form_com1 {
     display: none;
 }
