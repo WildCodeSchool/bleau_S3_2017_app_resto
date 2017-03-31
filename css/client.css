@@ -47,12 +47,18 @@
     text-align: center;
     z-index: 10;
     color: rgb(117, 117, 120);
+    padding-left: 0;
 }
     .dayli a {
         display: flex;
         height: 100%;
         flex-flow: column;
         justify-content: space-around;
+    }
+
+    .dayli_col{
+        padding-left: 2px !important;
+        padding-right: 2px !important;
     }
     .dayli a:hover{
         box-shadow: 0 0 5px 5px rgba(180, 180, 180, 0.4) ;

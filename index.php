@@ -17,7 +17,7 @@
         <div class="parallax-container parallax-main">
             <div class="parallax"><img src="http://www.newrest.eu/wp-content/uploads/2015/11/Newrest-Catering-Chef.jpg"></div>
         </div>
-        <form class="form_resa" action="index.html" method="post">
+        <form class="form_resa" action="index.php" method="post">
 
             <div class="row row_custom menu_semaine">
                 <div class="col s12">
@@ -35,7 +35,7 @@
                             ?>
                             <div class="col s2 <?php if($i == 0){echo 'offset-s1';} ?> dayli">
                                 <div class="row row_custom">
-                                    <div class="col s12">
+                                    <div class="col s12 dayli_col">
                                         <a href="#<?php echo $days[$i]; ?>">
                                             <h3><?php echo $days[$i]; ?></h3>
                                             <ul>
