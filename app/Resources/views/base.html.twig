@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}APP RESTO{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/appresto/css/materialize.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/appresto/css/style.css') }}">{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <header>
+        <div class="row head valign-wrapper">
+            <div class="col s4 valign">
+                <img src="{{ asset('bundles/appresto/img/logo_newrest.png') }}">
+            </div>
+
+            <h1 class="col s4 center-align valign">APP Resto</h1>
+
+            <div class="col s4 right-align valign">
+                {% block header_btn %}{% endblock %}
+            </div>
+        </div>
+    </header>
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bundles/appresto/js/jquery-3.1.1.min.js') }}"></script>
+            <script src="{{ asset('bundles/appresto/js/materialize.min.js') }}"></script>
+            <script src="{{ asset('bundles/appresto/js/appResto.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

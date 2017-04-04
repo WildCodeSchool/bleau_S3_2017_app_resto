@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block header_btn %}
+<a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Voir les profils des employés" href="{{ path('app_resto_admin') }}">A Propos</a>
+{% endblock %}
+
+{% block body %}
+
+    {% for value in days %}
+        <div>{{ value.day }} =>  {{ value.p1 }}</div>
+    {% endfor %}
+
+{% endblock %}
