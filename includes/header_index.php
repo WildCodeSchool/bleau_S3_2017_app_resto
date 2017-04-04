@@ -1,7 +1,3 @@
-<!-- Header de la page index
-pour activer link sur chaque page le fichier css style_header.css
-mettre l'include du fichier header_index.php avat la class container
--->
 
 	<header>
 		<div class="row head valign-wrapper">
