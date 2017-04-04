@@ -6,6 +6,12 @@
 /*----------------------------------------*\
     2.HEADER
 \*----------------------------------------*/
+/*----------------------------------------*\
+    3.MENUS-ADMIN
+\*----------------------------------------*/
+
+
+
 
 
 /*------- 1.BODY GENERAL STYLES--------*/
@@ -30,3 +36,25 @@ h2 {
     font-size: 2.5em;
 }
 /*------- 2.HEADER--------*/
+
+/*------- 3.MENUS-ADMIN--------*/
+#admin {
+	background-color: white;
+}
+tr .option {
+	height:200px;
+}
+
+
+.validate {
+	margin-left:500px;
+	margin-top:70px;
+	margin-bottom:50px;
+	color: #AF6114;
+}
+
+label .active {
+	color:rgb(175, 97, 20);
+}
+
+    
