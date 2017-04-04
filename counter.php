@@ -12,20 +12,21 @@
     </head>
 
     <body class="body">
+    	<?php include 'includes/header_cantine.php'; ?>
 		<!-- Add filter to manage opacity of background's image -->
 		<div class="filter">
 	    	<div class="container container_custom">
 	    	<!-- Container of counter's reservation by day -->
 	    		<div class="row row_custom">
-					<div class="counter_box  col l12">
+					<div class="counter_box">
 				<!-- block of title's counter -->
 						<div class="counter_title">
 							<h2 class="h2">Compteur de menus</h2>
 						</div>
 						<!-- Container of counter's reservation by day without title -->
-						<div class="container_meal_snack">
+						<div class="container_meal_snack col l12">
 							<!-- container of number's meal this day -->
-							<div class="meal_box col l6 s12">
+							<div class="meal_box col l5 offset-l1 m11 offset-m1  s12">
 								<div class="meal_word">
 										<h3 class="h3"><b>REPAS</b></h3>
 								</div>
@@ -34,7 +35,7 @@
 								</div>
 							</div>
 
-							<div class="snack_box col l6 s12">
+							<div class="snack_box col l5 m11 offset-m1 s12">
 								<!-- container of number's snack this day -->
 								<div class="snack_word">
 									<h3 class="h3"><b>SNACK</b></h3>
@@ -46,7 +47,6 @@
 						</div>
 					</div>
 				</div>
-			
 
 		  <div class="row row_custom">
 		  	  <div class="col s12">
