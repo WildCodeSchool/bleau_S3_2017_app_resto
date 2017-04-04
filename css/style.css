@@ -24,6 +24,11 @@ body {
 }
 
 /*------- 2.HEADER--------*/
+.head
+{
+    background-color: white;
+    margin-bottom: 0px;
+}
 
 /*------- 3.MENUS-ADMIN--------*/
 #admin {
