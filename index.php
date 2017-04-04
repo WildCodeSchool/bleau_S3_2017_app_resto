@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php include 'includes/header_index.php'; ?>
-    <div class="container container_custom_client">
+    <div class="container container_custom client">
 
         <div class="parallax-container parallax-main">
             <div class="parallax"><img src="http://www.newrest.eu/wp-content/uploads/2015/11/Newrest-Catering-Chef.jpg"></div>
