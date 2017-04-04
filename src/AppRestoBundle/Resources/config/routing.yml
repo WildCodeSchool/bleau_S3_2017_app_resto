@@ -1,0 +1,11 @@
+app_resto_homepage:
+    path:     /
+    defaults: { _controller: AppRestoBundle:Client:client}
+
+app_resto_admin:
+    path:     /admin
+    defaults: { _controller: AppRestoBundle:Admin:admin}
+
+app_resto_admin_counter:
+    path:     /admin/counter
+    defaults: { _controller: AppRestoBundle:Admin:counter}
