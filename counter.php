@@ -9,6 +9,7 @@
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <!-- Import CSS -->
     	<link rel="stylesheet" type="text/css" href="css/counter.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body class="body">
