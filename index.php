@@ -1,284 +1,191 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>AppResto</title>
-        <link rel="stylesheet" href="css/materialize.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/client.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+    <meta charset="utf-8">
+    <title>AppResto</title>
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_header.css">
+    <link rel="stylesheet" href="css/client.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    </head>
-    <body>
-        <div class="container container_custom_client">
+</head>
+<body>
+    <?php include 'includes/header_index.php'; ?>
+    <div class="container container_custom client">
 
-            <div class="parallax-container">
-                <div class="parallax"><img src="img/para1.png"></div>
+        <div class="parallax-container parallax-main">
+            <div class="parallax"><img src="http://www.newrest.eu/wp-content/uploads/2015/11/Newrest-Catering-Chef.jpg"></div>
+        </div>
+        <form class="form_resa" action="index.php" method="post">
+
+            <div class="row row_custom menu_semaine">
+                <div class="col s12">
+                    <h2>Semaine du **/** au  **/**</h2>
+                </div>
             </div>
 
             <div class="row row_custom">
-                <div class="col s8 offset-s2 menu">
 
-                    <ul id="tabs-swipe " class="tabs">
-                        <li class="tab col s2 tab_custom"><a href="#lundi">LUNDI</a></li>
-                        <li class="tab col s2 tab_custom"><a class="active" href="#mardi">MARDI</a></li>
-                        <li class="tab col s2 tab_custom"><a href="#mercredi">MERCREDI</a></li>
-                        <li class="tab col s2 tab_custom"><a href="#jeudi">JEUDI</a></li>
-                        <li class="tab col s2 tab_custom"><a href="#vendredi">VENDREDI</a></li>
-                        <li class="tab col s2 tab_custom"><a href="#semaine">SEMAINE</a></li>
+                <div class="col s10 offset-s1">
+                    <div class="row row_custom" id="menu">
+                        <?php
+                        $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+                        for ($i=0; $i < count($days); $i++) {
+                            ?>
+                            <div class="col s2 <?php if($i == 0){echo 'offset-s1';} ?> dayli">
+                                <div class="row row_custom">
+                                    <div class="col s12 dayli_col">
+                                        <a href="#<?php echo $days[$i]; ?>">
+                                            <h3><?php echo $days[$i]; ?></h3>
+                                            <ul>
+                                                <li>Entrées</li>
+                                                <li>Plat 1</li>
+                                                <li>Plat 2</li>
+                                                <li>Desserts</li>
+                                            </ul>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row row_custom">
+                                    <p class="col s12">
+                                        <input name="normal_<?php echo $days[$i]; ?>" type="radio" id="normal_<?php echo $days[$i]; ?>" />
+                                        <label for="normal_<?php echo $days[$i]; ?>">Menu normal</label>
+                                    </p>
+                                    <p class="col s12">
+                                        <input name="snack_<?php echo $days[$i]; ?>" type="radio" id="snack_<?php echo $days[$i]; ?>" />
+                                        <label for="snack_<?php echo $days[$i]; ?>">Menu snack</label>
+                                    </p>
+                                </div>
+                            </div>
+                            <?php
+                        } ?>
+                        <div class="row row_custom">
+                            <button class="btn waves-effect waves-orange btn_custom col s2 offset-s5 align-center" type="submit" name="action">Envoyez
+                                <i class="material-icons right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+        <?php
+        for ($i=0; $i < count($days); $i++) {
+            ?>
+            <div id="<?php echo $days[$i]; ?>" class="modal">
+                <div class="modal-content">
+                    <h4>Au menu le <?php echo $days[$i]; ?></h4>
+                    <ul>
+                        <li>Entrées</li>
+                        <li>Plat 1</li>
+                        <li>Plat 2</li>
+                        <li>Desserts</li>
                     </ul>
-
-                    <div id="lundi" class="col s12 dayli">
-                        <h3>LUNDI</h3>
-                        <ul>
-                            <li>ENTRÉES</li>
-                            <li>PLAT 1</li>
-                            <li>PLAT 2</li>
-                            <li>ACCOMPAGNMENTS</li>
-                            <li>DESSERTS</li>
-                        </ul>
-
-                        <form action="resa_action" method="post" id="form1" >
-                            <p>
-                              <input type="checkbox" id="resa_cant_mon" />
-                              <label for="resa_cant_mon">Je mange au self !</label>
-                            </p>
-                            <p>
-                              <input type="checkbox" id="resa_snack_mon" />
-                              <label for="resa_snack_mon">Je mange au snack !</label>
-                            </p>
-                        </form>
-
-                    </div>
-                    <div id="mardi" class="col s12 dayli">
-                        <h3>MARDI</h3>
-                        <ul>
-                            <li>ENTRÉES</li>
-                            <li>PLAT 1</li>
-                            <li>PLAT 2</li>
-                            <li>ACCOMPAGNMENTS</li>
-                            <li>DESSERTS</li>
-                        </ul>
-                        <form action="resa_action" method="post" id="form1" >
-                            <p>
-                              <input type="checkbox" id="resa_cant_mon" />
-                              <label for="resa_cant_mon">Je mange au self !</label>
-                            </p>
-                            <p>
-                              <input type="checkbox" id="resa_snack_mon" />
-                              <label for="resa_snack_mon">Je mange au snack !</label>
-                            </p>
-                        </form>
-                    </div>
-                    <div id="mercredi" class="col s12 dayli">
-                        <h3>MERCREDI</h3>
-                        <ul>
-                            <li>ENTRÉES</li>
-                            <li>PLAT 1</li>
-                            <li>PLAT 2</li>
-                            <li>ACCOMPAGNMENTS</li>
-                            <li>DESSERTS</li>
-                        </ul>
-
-                        <form action="resa_action" method="post" id="form1" >
-                            <p>
-                              <input type="checkbox" id="resa_cant_mon" />
-                              <label for="resa_cant_mon">Je mange au self !</label>
-                            </p>
-                            <p>
-                              <input type="checkbox" id="resa_snack_mon" />
-                              <label for="resa_snack_mon">Je mange au snack !</label>
-                            </p>
-                        </form>
-                    </div>
-                    <div id="jeudi" class="col s12 dayli">
-                        <h3>JEUDI</h3>
-                        <ul>
-                            <li>ENTRÉES</li>
-                            <li>PLAT 1</li>
-                            <li>PLAT 2</li>
-                            <li>ACCOMPAGNMENTS</li>
-                            <li>DESSERTS</li>
-                        </ul>
-
-                        <form action="resa_action" method="post" id="form1" >
-                            <p>
-                              <input type="checkbox" id="resa_cant_mon" />
-                              <label for="resa_cant_mon">Je mange au self !</label>
-                            </p>
-                            <p>
-                              <input type="checkbox" id="resa_snack_mon" />
-                              <label for="resa_snack_mon">Je mange au snack !</label>
-                            </p>
-                        </form>
-                    </div>
-                    <div id="vendredi" class="col s12 dayli">
-                        <h3>VENDREDI</h3>
-                        <ul>
-                            <li>ENTRÉES</li>
-                            <li>PLAT 1</li>
-                            <li>PLAT 2</li>
-                            <li>ACCOMPAGNMENTS</li>
-                            <li>DESSERTS</li>
-                        </ul>
-
-                        <form action="resa_action" method="post" id="form1" >
-                            <p>
-                              <input type="checkbox" id="resa_cant_mon" />
-                              <label for="resa_cant_mon">Je mange au self !</label>
-                            </p>
-                            <p>
-                              <input type="checkbox" id="resa_snack_mon" />
-                              <label for="resa_snack_mon">Je mange au snack !</label>
-                            </p>
-                        </form>
-                    </div>
-                    <div id="semaine" class="col s12 dayli">
-                        <h3>SEMAINE DU **/**/** AU **/**/**</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>LUNDI</th>
-                                    <th>MARDI</th>
-                                    <th>MERCREDI</th>
-                                    <th>JEUDI</th>
-                                    <th>VENDREDI</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>ENTRÉES</th>
-                                    <td>entrées</td>
-                                    <td>entrées</td>
-                                    <td>entrées</td>
-                                    <td>entrées</td>
-                                    <td>entrées</td>
-                                </tr>
-
-                                <tr>
-                                    <th>PLAT 1</th>
-                                    <td>plat 1</td>
-                                    <td>plat 1</td>
-                                    <td>plat 1</td>
-                                    <td>plat 1</td>
-                                    <td>plat 1</td>
-                                </tr>
-
-                                <tr>
-                                    <th>PLAT 2</th>
-                                    <td>plat 2</td>
-                                    <td>plat 2</td>
-                                    <td>plat 2</td>
-                                    <td>plat 2</td>
-                                </tr>
-
-                                <tr>
-                                    <th>ACCOMPAGNEMENTS</th>
-                                    <td>accompagnements</td>
-                                    <td>accompagnements</td>
-                                    <td>accompagnements</td>
-                                    <td>accompagnements</td>
-                                </tr>
-
-                                <tr>
-                                    <th>DESSERTS</th>
-                                    <td>desserts</td>
-                                    <td>desserts</td>
-                                    <td>desserts</td>
-                                    <td>desserts</td>
-                                </tr>
-
-                                <tr>
-                                    <th></th>
-                                    <td>
-                                        <form action="resa_action" method="post" id="form1" >
-                                            <p>
-                                              <input type="checkbox" id="resa_cant_mon" />
-                                              <label for="resa_cant_mon">Je mange au self !</label>
-                                            </p>
-                                            <p>
-                                              <input type="checkbox" id="resa_snack_mon" />
-                                              <label for="resa_snack_mon">Je mange au snack !</label>
-                                            </p>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="resa_action" method="post" id="form1" >
-                                            <p>
-                                              <input type="checkbox" id="resa_cant_mon" />
-                                              <label for="resa_cant_mon">Je mange au self !</label>
-                                            </p>
-                                            <p>
-                                              <input type="checkbox" id="resa_snack_mon" />
-                                              <label for="resa_snack_mon">Je mange au snack !</label>
-                                            </p>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="resa_action" method="post" id="form1" >
-                                            <p>
-                                              <input type="checkbox" id="resa_cant_mon" />
-                                              <label for="resa_cant_mon">Je mange au self !</label>
-                                            </p>
-                                            <p>
-                                              <input type="checkbox" id="resa_snack_mon" />
-                                              <label for="resa_snack_mon">Je mange au snack !</label>
-                                            </p>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="resa_action" method="post" id="form1" >
-                                            <p>
-                                              <input type="checkbox" id="resa_cant_mon" />
-                                              <label for="resa_cant_mon">Je mange au self !</label>
-                                            </p>
-                                            <p>
-                                              <input type="checkbox" id="resa_snack_mon" />
-                                              <label for="resa_snack_mon">Je mange au snack !</label>
-                                            </p>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="resa_action" method="post" id="form1" >
-                                            <p>
-                                              <input type="checkbox" id="resa_cant_mon" />
-                                              <label for="resa_cant_mon">Je mange au self !</label>
-                                            </p>
-                                            <p>
-                                              <input type="checkbox" id="resa_snack_mon" />
-                                              <label for="resa_snack_mon">Je mange au snack !</label>
-                                            </p>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="resa_action" method="post" id="form1" >
-                                            <p>
-                                              <input type="checkbox" id="resa_cant_mon" />
-                                              <label for="resa_cant_mon">Je mange au self !</label>
-                                            </p>
-                                            <p>
-                                              <input type="checkbox" id="resa_snack_mon" />
-                                              <label for="resa_snack_mon">Je mange au snack !</label>
-                                            </p>
-                                        </form>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="form1">Envoyer!</button>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+            <?php } ?>
+            <div class="row row_custom">
+                <div class="col s8 offset-s2 snack">
+                    <h2>Menu snack</h2>
+                    <p>Tout les jours le chef mets à la disposition des plus pressés un menu de restauration rapide au prix de 5.50e.<br>Cette nouvelle formule comprends :</p>
+                    <ul>
+                        <li>pizza, croque-monsieur, quiche, hot-dog, croissant au jambon(au choix)</li>
+                        <li>des frites</li>
+                        <li>une boisson</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="parallax-container">
-                <div class="parallax"><img src="img/1787-une_admissible.jpg"></div>
+                <div class="parallax">
+                    <img src="http://www.newrest.eu/wp-content/uploads/2015/12/Newrest-Catering-BI.jpg" alt="photo des élèves de l'école des mines atablés">
+                </div>
+            </div>
+
+            <div class="row row_custom">
+                <div class="col s4 offset-s4 show-form_com1 center-align">
+                    <a class="waves-effect waves-orange btn btn_custom">Donnez-nous votre avis!</a>
+                </div>
+                <form class="col s6 offset-s3 form_com1" action="index.html" method="post">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input placeholder="Votre pseudo" id="name" type="text" class="validate">
+                            <label for="name">Pseudo (facultatif)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                <label for="textarea1">Donnez nous votre avis!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-orange btn_custom col s2 offset-s5 align-center" type="submit" name="action">Envoyez
+                        <i class="material-icons right"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="row row_custom">
+                <div class="col s8 offset-s2 coms">
+                    <div class="row">
+                        <div class="col s8 offset-s2">
+                            <span class="pseudo">Pseudo</span>
+                            <span class="date">date</span><br>
+                            <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
+                            </p>
+                        </div>
+
+                        <div class="col s8 offset-s2">
+                            <span class="pseudo">Pseudo</span>
+                            <span class="date">date</span><br>
+                            <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
+                            </p>
+                        </div>
+
+                        <div class="col s8 offset-s2">
+                            <span class="pseudo">Pseudo</span>
+                            <span class="date">date</span><br>
+                            <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
+        <footer class="page-footer" id="footer_custom">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5>Footer Content</h5>
+                        <p class="text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5>Contacts</h5>
+                        <ul>
+                            <li><a class="text-lighten-3" href="#!">Facebook</a></li>
+                            <li><a class="text-lighten-3" href="#!">Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright ">
+                <div class="container">
+                    © 2017 Copyright Text
+                    <a class="text-lighten-4 right" href="#!">Contactez-nous</a>
+                </div>
+            </div>
+        </footer>
         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/appResto.js"></script>
+
     </body>
-</html>
+    </html>

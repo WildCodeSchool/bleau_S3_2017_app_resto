@@ -1,15 +1,15 @@
 <!-- Header de la page admin -->
 
 	<header>
-		<div class="row head">
-			<div class="col s4 logo">
+		<div class="row head valign-wrapper">
+			<div class="col s4 valign">
 				<img src="img/logo_newrest.png">
 			</div>
-			<div class="col s4 center-align">
-				<h1 class="h1">APP RESTO</h1>
-			</div>
-			<div class="col s4 right-align">
-				<a class="btn tooltipped boutton" data-position="bottom" data-delay="50" data-tooltip="Aller vers la page Cantine">Page Cantine</a>
+			
+				<h1 class="col s4 center-align valign">APP RESTO</h1>
+			
+			<div class="col s4 right-align valign">
+				<a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Voir les profils des employés">A Propos</a>
 			</div>
 		</div>
 	</header>

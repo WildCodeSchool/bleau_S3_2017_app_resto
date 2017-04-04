@@ -1,197 +1,120 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 
-  <link rel="stylesheet" type="text/css" href="css/admin.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 
-  <title>Page_Admin</title>
+    <link rel="stylesheet" type="text/css" href="css/admin.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Page_Admin</title>
 </head>
-<body>
-  <table class="bordered centered">
 
-    <thead>
-      <tr class="semaine">
-        <th data-field=""></th>
-        <th class="center-align" data-field="name">Lundi</th>
-        <th class="center-align" data-field="name">Mardi</th>
-        <th class="center-align" data-field="name">Mercredi</th>
-        <th class="center-align" data-field="name">Jeudi</th>
-        <th class="center-align" data-field="name">Vendredi</th>
-      </tr>
-    </thead>
+<body id="admin">
+<?php
+include 'includes/header_admin.php'
+?>
+    <div class="container container_custom">
+        <table class="bordered centered">
+            <thead>
+                <tr class="semaine">
 
-    <tbody>
-      <div class="container">
-        <tr class="option">
-          <td class="col m2 plat">Plat</td>
-          <?php 
-          $i =1;
-          while( $i <6)
-            { ?>
-              <td> 
-                <div class="input-field col m2 choise">
-                  <select multiple>
-                    <option value="" disabled selected>Faites votre choix
-                    </option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
+                    <?php
+                    $days = ['','Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+                    $types = ['Plat', 'Garniture', 'Entrée', 'Dessert'];
+                    for ($i=0; $i < count($days); $i++) {
+
+                        if ($i == 0)
+                        {
+                            echo '<th></th>' ;
+                        }
+                        else
+                        {
+                            echo '<th class="center-align" data-field="name">' . $days[$i] .'</th>';
+                        }
+                    }
+                    ?>
+
+                </tr>
+            </thead>
+
+            <form class="form_menu" action="admin.php" method="post">
+                <tbody>
+
+                    <?php
+
+                    for ($i=0; $i < count($types); $i++) { 
+                        ?>
+                        <tr class="option">
+                            <td class="col m2 td_custom">
+                                <?php echo $types[$i]; ?>
+                            </td>
+                            <?php
+
+                            for ($j=1; $j < count($days) + 1; $j++) 
+                            {
+                                if($j < count($days))
+                                {
+                                    ?>
+                                    <td>
+                                        <div class="input-field col m2 choise">
+                                            <select multiple>
+                                                <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="" disabled selected>Faites votre choix</option>
+                                                <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="1">Option 1</option>
+                                                <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="2">Option 2</option>
+                                                <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="3">Option 3</option>
+                                            </select>
+                                        </div>
+                                    </td>
+
+                                    <?php 
+                                }else
+                                { 
+                                    ?>
+                                    <td class="element">
+                                        <form class="col m1">
+                                            <div class="input-field ">
+                                                <input id="<?php echo $types[$j]; ?>" type="text" class="validate">
+                                                <label class="active" for="<?php echo $types[$j]; ?>">Ajouter</label>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                                <?php } ?>
+                                <?php } ?>
+
+                            </tbody>
+                        </form>
+                    </table>
+
+                    <!-- Validate button -->
+
+                    <div class="row row_admin">
+                        <div class="col m12 admin">
+                            <div class="validate">
+                                <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <form action="" method="">
+                            <label for="title">Titre de la new's</label>
+                            <input id="title" type="text" name="title" placeholder="Ecrivez ici votre titre de nouvelle.">
+                            <label for="content">Contenue de la new's</label>
+                            <textarea id="content" name="content" class="materialize-textarea" placeholder="Ecrivez ici le contenue de la nouvelle"></textarea>
+                            <div class="row">
+                                <a class="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Envoyer les nouvelle sur la newsletter">Envoyer</a>
+                            </div>
+                        </form>
+                    </div>
+                    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+                    <!-- Compiled and minified JavaScript -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+                    <script type="text/javascript" src="js/appResto.js"></script>
                 </div>
-              </td>
-              <?php 
-              $i++; } ?>
-              <td class="element">
-                <form class="col m1">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="plat" type="text" class="validate">
-                      <label class="active" for="plat">Ajouter</label>
-                    </div>
-                  </div>
-                </form>
-              </td>
-            </tr>
-            <tr class="option">
-              <td class="accompagnement">Accompagnement</td>
-              <?php
-              $i = 1;
-              while($i <6)
-                { ?>
-                <td> 
-                  <div class="input-field col m2 choise">
-                    <select multiple>
-                      <option value="" disabled selected>Faites votre choix</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                  </div>
-                </td>
-                <?php $i++; } ?>
-                <td class="element">
-                  <form class="col m1">
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <input id="accompagnement" type="text" class="validate">
-                        <label class="active" for="accompagnement">Ajouter</label>
-                      </div>
-                    </div>
-                  </form>
-                </td>
-              </tr>
-              <tr class="option">
-                <td class="entree">Entrée</td>
-                <?php
-                $i = 1;
-                while($i<6)
-                  { ?> 
-                <td> 
-                  <div class="input-field col m2 choise">
-                    <select multiple>
-                      <option value="" disabled selected>Faites votre choix</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                  </div>
-                </td>
-                <?php 
-                $i++; } ?>
-                <td class="element">
-                  <form class="col m1">
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <input id="entree" type="text" class="validate">
-                        <label class="active" for="entree">Ajouter</label>
-                      </div>
-                    </div>
-                  </form>
-                </td>
-              </tr>
-              <tr class="option">
-                <td class="dessert">Dessert</td>
-                <?php $i= 1;
-                while($i <6 )
-                  { ?>
-                <td> 
-                  <div class="input-field col m2 choise">
-                    <select multiple>
-                      <option value="" disabled selected>Faites votre choix
-                      </option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <?php $i++; } ?>
-                <td class="element">
-                  <form class="col m1">
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <input id="dessert" type="text" class="validate">
-                        <label class="active" for="dessert">Ajouter</label>
-                      </div>
-                    </div>
-                  </form>
-                </td>
-              </div>
-            </td>
-          </div>
-        </tr>
-      </div>
-    </tbody>
-  </table>
-<!-- Validate button -->
-
-<div class="row row_admin">
-  <div class="col m12 admin">
-  <div class="validate">
- 
-      <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
-   
-  </div>
-</div>
-
-<!-- Message for New-letter -->
-
-
-<div class="row message">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix"></i>
-          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-          <label for="icon_prefix2">Message pour "la news-letter" ! </label>
-        </div>
-      </div>
-    </form>
-  </div>
-
-<!-- Reception of commantaires -->
-
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Reception</label>
-        </div>
-      </div>
-    </form>
-  </div>
-<!-- Button delete -->
-<div class="commantaires">
-      <a class="waves-effect waves-light btn"><i class="material-icons left">Effacer</i></a>
-</div>
-
-                <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-                <!-- Compiled and minified JavaScript -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>	
-                <script type="text/javascript" src="js/appResto.js"></script>
-              </body>
-              </html>
+            </body>
+            </html>
