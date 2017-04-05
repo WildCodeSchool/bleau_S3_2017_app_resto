@@ -63,16 +63,17 @@
         {% for menu in menus %}
         <div id="{{ menu.day }}" class="modal">
             <div class="modal-content">
-                <h4>Au menu le {{ menu.day }}</h4>
-                <ul>
-                    <li>{{ menu.e1 }}, {{ menu.e2 }}, {{ menu.e3 }}</li>
-                    <li>{{ menu.p1 }}</li>
-                    <li>{{ menu.p2 }}</li>
-                    <li>{{ menu.d1 }}, {{ menu.d2 }}, {{ menu.d3 }}</li>
-                </ul>
+                <div class="row row_custom col s10 offset-s1 menu_modal">
+                    <h4 class="center-align">Au menu le {{ menu.day }}</h4>
+                    <ul class="center-align">
+                        <li><span class="type_meal_modal">Entrées</span><br>{{ menu.e1 }}, {{ menu.e2 }}, {{ menu.e3 }}</li>
+                        <li><span class="type_meal_modal">Plats</span><br>{{ menu.p1 }}<br>{{ menu.p2 }}</li>
+                        <li><span class="type_meal_modal">Desserts</span><br>{{ menu.d1 }}, {{ menu.d2 }}, {{ menu.d3 }}</li>
+                    </ul>
+                </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                <a href="#!" class=" modal-action modal-close btn-flat btn_custom">Fermer</a>
             </div>
         </div>
         {% endfor %}
