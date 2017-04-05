@@ -11,74 +11,65 @@
     <table class="bordered centered">
         <thead>
         <tr class="semaine">
+            {% for day in days %}
+                {% if day == '' %}
 
-            <?php
-                    $days = ['','Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
-                    $types = ['Plat', 'Garniture', 'Entrée', 'Dessert'];
-                    for ($i=0; $i < count($days); $i++) {
+                    <th></th>
 
-                        if ($i == 0)
-                        {
-                            echo '<th></th>' ;
-            }
-            else
-            {
-            echo '<th class="center-align" data-field="name">' . $days[$i] .'</th>';
-            }
-            }
-            ?>
+                {% else %}
+
+                    <th class="center-align" data-field="name">{{ day }}</th>
+
+                {% endif %}
+            {% endfor %}
+
 
         </tr>
         </thead>
+        <tbody>
+        <form class="form_menu" action="#" method="post">
 
-        <form class="form_menu" action="admin.php" method="post">
-            <tbody>
 
-            <?php
+            {% for type in types %}
 
-                    for ($i=0; $i < count($types); $i++) {
-                        ?>
             <tr class="option">
                 <td class="col m2 td_custom">
-                    <?php echo $types[$i]; ?>
+                    {{ type }}
                 </td>
-                <?php
+                {% for key, type in 1..6 %}
 
-                            for ($j=1; $j < count($days) + 1; $j++)
-                            {
-                                if($j < count($days))
-                                {
-                                    ?>
+                    {% if (key == 5)  < days |length %}
+
                 <td>
                     <div class="input-field col m2 choise">
                         <select multiple>
-                            <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="" disabled selected>Faites votre choix</option>
-                            <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="1">Option 1</option>
-                            <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="2">Option 2</option>
-                            <option name="<?php echo $types[$i] . '_' . $days[$j]; ?>" value="3">Option 3</option>
+                            <option name="{{ type }} {{ days[key] }}" value="" disabled selected>Faites votre choix</option>
+                            <option name="{{ type }} {{ days[key] }}" value="1">Option 1</option>
+                            <option name="{{ type }} {{ days[key] }}" value="2">Option 2</option>
+                            <option name="{{ type }} {{ days[key] }}" value="3">Option 3</option>
                         </select>
                     </div>
                 </td>
 
-                <?php
-                                }else
-                                {
-                                    ?>
+                    {% else %}
+
                 <td class="element">
                     <form class="col m1">
                         <div class="input-field ">
-                            <input id="<?php echo $types[$j]; ?>" type="text" class="validate">
-                            <label class="active" for="<?php echo $types[$j]; ?>">Ajouter</label>
+                            <input id="{{ type }} " type="text" class="validate">
+                            <label class="active" for="{{ type }} ">Ajouter</label>
                         </div>
                     </form>
                 </td>
             </tr>
-            <?php } ?>
-            <?php } ?>
-            <?php } ?>
+            {% endif %}
+           {% endfor %}
+            {% endfor %}
 
-            </tbody>
+
+
         </form>
+        </tbody>
     </table>
 
     <!-- Validate button -->
@@ -101,11 +92,6 @@
         </div>
     </form>
 </div>
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-<script type="text/javascript" src="js/appResto.js"></script>
 </div>
-</div>
-</html>
+{% endblock %}
 
