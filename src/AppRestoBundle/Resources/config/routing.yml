@@ -18,6 +18,10 @@ app_resto_follower:
     resource: "@AppRestoBundle/Resources/config/routing/follower.yml"
     prefix:   /follower
 
+app_resto_admin_routing:
+    resource: "@AppRestoBundle/Resources/config/routing/admin/admin_routing.yml"
+    prefix:   /admin
+
 app_resto_homepage:
     path:     /
     defaults: { _controller: AppRestoBundle:Client:client}
