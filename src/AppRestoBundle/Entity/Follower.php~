@@ -3,19 +3,14 @@
 namespace AppRestoBundle\Entity;
 
 /**
- * User
+ * Follower
  */
-class User
+class Follower
 {
     /**
      * @var int
      */
     private $id;
-
-    /**
-     * @var string
-     */
-    private $password;
 
     /**
      * @var string
@@ -34,35 +29,11 @@ class User
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
      * Set mail
      *
      * @param string $mail
      *
-     * @return User
+     * @return Follower
      */
     public function setMail($mail)
     {
@@ -81,3 +52,4 @@ class User
         return $this->mail;
     }
 }
+

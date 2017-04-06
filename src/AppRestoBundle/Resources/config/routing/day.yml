@@ -1,0 +1,24 @@
+day_index:
+    path:     /
+    defaults: { _controller: "AppRestoBundle:Day:index" }
+    methods:  GET
+
+day_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppRestoBundle:Day:show" }
+    methods:  GET
+
+day_new:
+    path:     /new
+    defaults: { _controller: "AppRestoBundle:Day:new" }
+    methods:  [GET, POST]
+
+day_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppRestoBundle:Day:edit" }
+    methods:  [GET, POST]
+
+day_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppRestoBundle:Day:delete" }
+    methods:  DELETE

@@ -12,4 +12,7 @@ AppRestoBundle\Entity\Meal:
         name:
             type: string
             length: 255
-    lifecycleCallbacks: {  }
+
+    manyToOne:
+        type:
+            targetEntity: AppRestoBundle\Entity\Type

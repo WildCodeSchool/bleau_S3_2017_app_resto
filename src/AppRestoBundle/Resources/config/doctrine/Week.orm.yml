@@ -15,4 +15,8 @@ AppRestoBundle\Entity\Week:
         message:
             type: text
             nullable: true
-    lifecycleCallbacks: {  }
+
+    oneToMany:
+        day:
+            targetEntity: AppRestoBundle\Entity\Day
+            mappedBy: week

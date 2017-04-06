@@ -3,9 +3,9 @@
 namespace AppRestoBundle\Entity;
 
 /**
- * Follower
+ * Type
  */
-class Follower
+class Type
 {
     /**
      * @var int
@@ -15,7 +15,7 @@ class Follower
     /**
      * @var string
      */
-    private $mail;
+    private $type;
 
 
     /**
@@ -29,26 +29,27 @@ class Follower
     }
 
     /**
-     * Set mail
+     * Set type
      *
-     * @param string $mail
+     * @param string $type
      *
-     * @return Follower
+     * @return Type
      */
-    public function setMail($mail)
+    public function setType($type)
     {
-        $this->mail = $mail;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get mail
+     * Get type
      *
      * @return string
      */
-    public function getMail()
+    public function getType()
     {
-        return $this->mail;
+        return $this->type;
     }
 }
+

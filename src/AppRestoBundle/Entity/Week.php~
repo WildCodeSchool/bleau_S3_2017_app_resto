@@ -80,50 +80,5 @@ class Week
     {
         return $this->message;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $day;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->day = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add day
-     *
-     * @param \AppRestoBundle\Entity\Day $day
-     *
-     * @return Week
-     */
-    public function addDay(\AppRestoBundle\Entity\Day $day)
-    {
-        $this->day[] = $day;
-
-        return $this;
-    }
-
-    /**
-     * Remove day
-     *
-     * @param \AppRestoBundle\Entity\Day $day
-     */
-    public function removeDay(\AppRestoBundle\Entity\Day $day)
-    {
-        $this->day->removeElement($day);
-    }
-
-    /**
-     * Get day
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDay()
-    {
-        return $this->day;
-    }
 }
+

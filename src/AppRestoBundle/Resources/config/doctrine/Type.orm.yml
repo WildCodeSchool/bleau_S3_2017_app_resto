@@ -13,4 +13,3 @@ AppRestoBundle\Entity\Type:
             type: string
             length: 255
             unique: true
-    lifecycleCallbacks: {  }

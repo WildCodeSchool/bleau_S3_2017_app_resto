@@ -3,9 +3,9 @@
 namespace AppRestoBundle\Entity;
 
 /**
- * Follower
+ * Day
  */
-class Follower
+class Day
 {
     /**
      * @var int
@@ -13,9 +13,9 @@ class Follower
     private $id;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    private $mail;
+    private $date;
 
 
     /**
@@ -29,26 +29,27 @@ class Follower
     }
 
     /**
-     * Set mail
+     * Set date
      *
-     * @param string $mail
+     * @param \DateTime $date
      *
-     * @return Follower
+     * @return Day
      */
-    public function setMail($mail)
+    public function setDate($date)
     {
-        $this->mail = $mail;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get mail
+     * Get date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getMail()
+    public function getDate()
     {
-        return $this->mail;
+        return $this->date;
     }
 }
+

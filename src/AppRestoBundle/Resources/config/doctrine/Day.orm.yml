@@ -11,4 +11,15 @@ AppRestoBundle\Entity\Day:
     fields:
         date:
             type: datetime
-    lifecycleCallbacks: {  }
+
+    manyToMany:
+        meal:
+            targetEntity: AppRestoBundle\Entity\Meal
+
+        type:
+            targetEntity: AppRestoBundle\Entity\Type
+
+    manyToOne:
+        week:
+            targetEntity: AppRestoBundle\Entity\Week
+            inversedBy: day
