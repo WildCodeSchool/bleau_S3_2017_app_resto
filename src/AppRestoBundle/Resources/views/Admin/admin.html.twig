@@ -1,1 +1,97 @@
-hello admin
+{% extends 'base.html.twig'%}
+
+{% block header_btn %}
+    <a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Aller vers la page cantine">Page cantine</a>
+{% endblock %}
+
+{% block body %}
+
+<div id="admin">
+<div class="container container_custom">
+    <table class="bordered centered">
+        <thead>
+        <tr class="semaine">
+            {% for day in days %}
+                {% if day == '' %}
+
+                    <th></th>
+
+                {% else %}
+
+                    <th class="center-align" data-field="name">{{ day }}</th>
+
+                {% endif %}
+            {% endfor %}
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <form class="form_menu" action="#" method="post">
+
+
+            {% for type in types %}
+
+            <tr class="option">
+                <td class="col m2 td_custom">
+                    {{ type }}
+                </td>
+                {% for key, type in 1..6 %}
+
+                    {% if (key == 5)  < days |length %}
+
+                <td>
+                    <div class="input-field col m2 choise">
+                        <select multiple>
+                            <option name="{{ type }} {{ days[key] }}" value="" disabled selected>Faites votre choix</option>
+                            <option name="{{ type }} {{ days[key] }}" value="1">Option 1</option>
+                            <option name="{{ type }} {{ days[key] }}" value="2">Option 2</option>
+                            <option name="{{ type }} {{ days[key] }}" value="3">Option 3</option>
+                        </select>
+                    </div>
+                </td>
+
+                    {% else %}
+
+                <td class="element">
+                    <form class="col m1">
+                        <div class="input-field ">
+                            <input id="{{ type }} " type="text" class="validate">
+                            <label class="active" for="{{ type }} ">Ajouter</label>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% endif %}
+           {% endfor %}
+            {% endfor %}
+
+
+
+        </form>
+        </tbody>
+    </table>
+
+    <!-- Validate button -->
+
+    <div class="row row_admin">
+        <div class="col m12 admin">
+            <div class="validate">
+                <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form action="" method="">
+        <label for="title">Titre de la new's</label>
+        <input id="title" type="text" name="title" placeholder="Ecrivez ici votre titre de nouvelle.">
+        <label for="content">Contenue de la new's</label>
+        <textarea id="content" name="content" class="materialize-textarea" placeholder="Ecrivez ici le contenue de la nouvelle"></textarea>
+        <div class="row">
+            <a class="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Envoyer les nouvelle sur la newsletter">Envoyer</a>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}
+
