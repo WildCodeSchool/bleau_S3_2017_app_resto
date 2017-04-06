@@ -157,6 +157,23 @@ label .active {
 .checkbox {
     z-index: 10;
 }
+
+.menu_modal h4 {
+    margin-bottom: 60px;
+    color: rgb(175, 97, 20);
+    font-size: 3em;
+}
+
+.menu_modal ul li {
+    padding: 5px 0;
+    margin-bottom: 30px;
+    font-size: 1.3em;
+}
+    .type_meal_modal {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
 .snack h2 {
     font-size: 2em;
 }
