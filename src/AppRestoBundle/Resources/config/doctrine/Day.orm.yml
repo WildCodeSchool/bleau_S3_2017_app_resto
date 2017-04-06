@@ -1,0 +1,14 @@
+AppRestoBundle\Entity\Day:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\DayRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }

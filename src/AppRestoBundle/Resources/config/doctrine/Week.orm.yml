@@ -1,0 +1,18 @@
+AppRestoBundle\Entity\Week:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\WeekRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nbWeek:
+            type: integer
+            column: nb_week
+        message:
+            type: text
+            nullable: true
+    lifecycleCallbacks: {  }

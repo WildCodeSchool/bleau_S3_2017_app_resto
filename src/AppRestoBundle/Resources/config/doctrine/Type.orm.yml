@@ -1,0 +1,16 @@
+AppRestoBundle\Entity\Type:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\TypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: 255
+            unique: true
+    lifecycleCallbacks: {  }

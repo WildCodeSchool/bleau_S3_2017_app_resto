@@ -1,0 +1,15 @@
+AppRestoBundle\Entity\Meal:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\MealRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

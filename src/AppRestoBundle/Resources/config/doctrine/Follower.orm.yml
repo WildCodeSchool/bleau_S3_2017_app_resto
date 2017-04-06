@@ -1,0 +1,16 @@
+AppRestoBundle\Entity\Follower:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\FollowerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        mail:
+            type: string
+            length: 255
+            unique: true
+    lifecycleCallbacks: {  }
