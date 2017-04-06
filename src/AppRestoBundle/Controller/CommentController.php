@@ -20,7 +20,11 @@ class CommentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $comments = $em->getRepository('AppRestoBundle:Comment')->findAll();
+        $comments = $em->getRepository('AppRestoBundle:Comment')->findBy(
+            array('valid' => '1'),
+            array('date' => 'desc'),
+            3
+        );
 
         return $this->render('comment/index.html.twig', array(
             'comments' => $comments,
