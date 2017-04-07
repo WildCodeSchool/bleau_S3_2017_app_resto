@@ -65,7 +65,15 @@ h2 {
 .head
 {
     background-color: white;
-    margin-bottom: 0px;
+    margin-bottom: 0;
+}
+
+.nav_custom{
+    font-size: 30px;
+}
+
+.background{
+    background-color: rgb(175, 97, 20);
 }
 
 /*------- 3.MENUS-ADMIN--------*/
