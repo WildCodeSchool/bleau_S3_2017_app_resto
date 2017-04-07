@@ -1,6 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block header_btn %}
+
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn" href="#modal1">News - letter</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Soumettre</a>
+        </div>
+    </div>
+
 <a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Voir les profils des employés" href="{{ path('app_resto_admin') }}">A Propos</a>
 {% endblock %}
 
