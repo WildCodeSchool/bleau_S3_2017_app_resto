@@ -10,7 +10,7 @@ AppRestoBundle\Entity\Week:
                 strategy: AUTO
     fields:
         nbWeek:
-            type: integer
+            type: datetime
             column: nb_week
         message:
             type: text
