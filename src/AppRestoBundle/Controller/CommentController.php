@@ -33,9 +33,9 @@ class CommentController extends Controller
     public function indexClientAction()
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Comment');
-        $comments = $repository->findByValid(
+        $comments = $repository->findBy(
             array('valid' => '1'),
-            array('date' => 'desc'),
+            array('id' => 'desc'),
             3
         );
 
@@ -53,13 +53,14 @@ class CommentController extends Controller
         $form = $this->createForm('AppRestoBundle\Form\CommentType', $comment);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isValid()) {
             $this->date = new \DateTime();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush($comment);
 
-            return $this->redirectToRoute('comment_show', array('id' => $comment->getId()));
+            return $this->redirectToRoute('comment_new');
         }
 
         return $this->render('comment/new.html.twig', array(
