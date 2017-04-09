@@ -123,26 +123,9 @@
         <div class="row row_custom">
             <div class="col m8 s12 offset-m2 coms">
                 <div class="row">
-                    <div class="col m8 s12 offset-m2">
-                        <span class="pseudo">Pseudo</span>
-                        <span class="date">date</span><br>
-                        <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
-                        </p>
-                    </div>
-
-                    <div class="col m8 s12 offset-m2">
-                        <span class="pseudo">Pseudo</span>
-                        <span class="date">date</span><br>
-                        <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
-                        </p>
-                    </div>
-
-                    <div class="col m8 s12 offset-m2">
-                        <span class="pseudo">Pseudo</span>
-                        <span class="date">date</span><br>
-                        <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
-                        </p>
-                    </div>
+                    {% block coms %}
+                        {{ render( controller("AppRestoBundle:Comment:indexClient")) }}
+                    {% endblock %}
                 </div>
             </div>
         </div>

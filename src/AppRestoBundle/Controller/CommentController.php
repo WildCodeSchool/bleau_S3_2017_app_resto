@@ -20,15 +20,27 @@ class CommentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $comments = $em->getRepository('AppRestoBundle:Comment')->findBy(
+        $comments = $em->getRepository('AppRestoBundle:Comment')->findAll();
+
+        return $this->render('comment/index.html.twig', array(
+            'comments' => $comments,
+        ));
+    }
+
+    /**
+     * List comment who are validate
+     */
+    public function indexClientAction()
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Comment');
+        $comments = $repository->findByValid(
             array('valid' => '1'),
             array('date' => 'desc'),
             3
         );
 
-        return $this->render('comment/index.html.twig', array(
-            'comments' => $comments,
-        ));
+        return $this->render('AppRestoBundle:Client:comment.html.twig',
+            array('comments' => $comments));
     }
 
     /**
@@ -42,6 +54,7 @@ class CommentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->date = new \DateTime();
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush($comment);
