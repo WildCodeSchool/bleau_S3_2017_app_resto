@@ -3,6 +3,7 @@
 {% block header_btn %}
 
     <!-- Modal Trigger -->
+
     <a class="waves-effect waves-light btn" href="#modal1">News - letter</a>
 
     <!-- Modal Structure -->
@@ -10,8 +11,13 @@
         <div class="modal-content">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
+                    {% block addEmail %}
+                        {{ form_strat(formEmail) }}
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                        {{ form_widget(formEmail) }}
+                        {{ form_end(formEmail) }}
+                    {% endblock %}
                 </div>
             </div>
         </div>
