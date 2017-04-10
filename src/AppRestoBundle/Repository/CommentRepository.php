@@ -10,4 +10,8 @@ namespace AppRestoBundle\Repository;
  */
 class CommentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAll()
+    {
+        return $this->findBy(array(), array('id' => 'desc'));
+    }
 }

@@ -18,4 +18,5 @@ AppRestoBundle\Entity\Comment:
             type: datetime
         valid:
             type: boolean
+            nullable: true
     lifecycleCallbacks: {  }

@@ -118,50 +118,22 @@
             <div class="col m4 s6 offset-m4 offset-s3 show-form_com1 center-align">
                 <a class="waves-effect waves-orange btn btn_custom">Donnez-nous votre avis!</a>
             </div>
-            <form class="col m6 s10 offset-m3 offset-s1 form_com1" action="index.html" method="post">
-                <div class="row">
-                    <div class="input-field col m4 s7">
-                        <input placeholder="Votre pseudo" id="name" type="text" class="validate">
-                        <label for="name">Pseudo (facultatif)</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Donnez nous votre avis!</label>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn waves-effect waves-orange btn_custom col m2 s4 offset-m5 offset-s4 align-center" type="submit" name="action">Envoyez
-                    <i class="material-icons right"></i>
-                </button>
-            </form>
+            <div class="col m6 s10 offset-m3 offset-s1 form_com1">
+                {% block addCom %}
+                    {{ form_start(formCom) }}
+                    {{ form_widget(formCom) }}
+                    <input type="submit" value="Create" class="btn waves-effect waves-orange btn_custom col m2 s4 offset-m5 offset-s4 align-center"/>
+                    {{ form_end(formCom) }}
+                {% endblock %}
+            </div>
         </div>
 
         <div class="row row_custom">
             <div class="col m8 s12 offset-m2 coms">
                 <div class="row">
-                    <div class="col m8 s12 offset-m2">
-                        <span class="pseudo">Pseudo</span>
-                        <span class="date">date</span><br>
-                        <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
-                        </p>
-                    </div>
-
-                    <div class="col m8 s12 offset-m2">
-                        <span class="pseudo">Pseudo</span>
-                        <span class="date">date</span><br>
-                        <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
-                        </p>
-                    </div>
-
-                    <div class="col m8 s12 offset-m2">
-                        <span class="pseudo">Pseudo</span>
-                        <span class="date">date</span><br>
-                        <p>Rogatus ad ultimum admissusque in consistorium ambage nulla praegressa inconsiderate et leviter proficiscere inquit ut praeceptum est, Caesar sciens quod si cessaveris, et tuas et palatii tui auferri iubebo prope diem annonas. hocque solo contumaciter dicto subiratus abscessit nec in conspectum eius postea venit saepius arcessitus.
-                        </p>
-                    </div>
+                    {% block coms %}
+                        {{ render( controller("AppRestoBundle:Comment:indexClient")) }}
+                    {% endblock %}
                 </div>
             </div>
         </div>
