@@ -3,41 +3,7 @@
 namespace AppRestoBundle\Entity;
 
 
-/**
- * @ORM\Entity
- */
-class Advert
-{
-    /**
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
-    /**
-     * @ORM\Column(name="date", type="date")
-     */
-    protected $date;
-
-    /**
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    protected $title;
-
-    /**
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    protected $author;
-
-    /**
-     * @ORM\Column(name="content", type="text")
-     */
-    protected $content;
-
-    // Les getters
-    // Les setters
-Cuse
 /**
  * Follower
  */
