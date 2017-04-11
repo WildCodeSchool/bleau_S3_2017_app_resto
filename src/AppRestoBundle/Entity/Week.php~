@@ -13,15 +13,9 @@ class Week
     private $id;
 
     /**
-     * @var int
-     */
-    private $nbWeek;
-
-    /**
      * @var string
      */
     private $message;
-
 
     /**
      * Get id
@@ -31,30 +25,6 @@ class Week
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nbWeek
-     *
-     * @param integer $nbWeek
-     *
-     * @return Week
-     */
-    public function setNbWeek($nbWeek)
-    {
-        $this->nbWeek = $nbWeek;
-
-        return $this;
-    }
-
-    /**
-     * Get nbWeek
-     *
-     * @return int
-     */
-    public function getNbWeek()
-    {
-        return $this->nbWeek;
     }
 
     /**
@@ -80,5 +50,51 @@ class Week
     {
         return $this->message;
     }
-}
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $day;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->day = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     *
+     * @return Week
+     */
+    public function addDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->day[] = $day;
+
+        return $this;
+    }
+
+    /**
+     * Remove day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     */
+    public function removeDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->day->removeElement($day);
+    }
+
+    /**
+     * Get day
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+}

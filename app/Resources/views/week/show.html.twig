@@ -10,8 +10,12 @@
                 <td>{{ week.id }}</td>
             </tr>
             <tr>
-                <th>Nbweek</th>
-                <td>{{ week.nbWeek }}</td>
+                <th>Start_week</th>
+                <td>{% if week.startweek %}{{ week.startweek|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>End_week</th>
+                <td>{% if week.endweek %}{{ week.endweek|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Message</th>

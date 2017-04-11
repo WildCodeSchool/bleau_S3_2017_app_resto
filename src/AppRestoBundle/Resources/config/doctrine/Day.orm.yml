@@ -18,8 +18,3 @@ AppRestoBundle\Entity\Day:
 
         type:
             targetEntity: AppRestoBundle\Entity\Type
-
-    manyToOne:
-        week:
-            targetEntity: AppRestoBundle\Entity\Week
-            inversedBy: day
