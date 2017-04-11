@@ -8,6 +8,19 @@ namespace AppRestoBundle\Entity;
 class Comment
 {
     /**
+     * Get valid
+     *
+     * @return bool
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
+
+    // Generate code
+
+    /**
      * @var int
      */
     private $id;
@@ -91,19 +104,7 @@ class Comment
         return $this->author;
     }
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Comment
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
 
-        return $this;
-    }
 
     /**
      * Get date

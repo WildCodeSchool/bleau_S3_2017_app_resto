@@ -1,0 +1,19 @@
+meal_index:
+    path:     /
+    defaults: { _controller: "AppRestoBundle:Meal:index" }
+    methods:  GET
+
+meal_new:
+    path:     /new
+    defaults: { _controller: "AppRestoBundle:Meal:new" }
+    methods:  [GET, POST]
+
+meal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppRestoBundle:Meal:edit" }
+    methods:  [GET, POST]
+
+meal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppRestoBundle:Meal:delete" }
+    methods:  DELETE
