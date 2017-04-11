@@ -212,7 +212,7 @@ label .active {
     color: #af6114;
 }
 .counter_title{
-    background: rgba(175,94,20,0.8);
+    background: rgba(175,94,20,1);
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
     color: white;
@@ -244,7 +244,7 @@ label .active {
     text-align: center;
     color: white;
     margin-top: 10vh;
-    background: rgba(175,94,20,0.8);
+    background: rgba(175,94,20,1);
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
 }
