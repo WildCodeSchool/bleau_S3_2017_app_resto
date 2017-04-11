@@ -5,6 +5,8 @@ namespace AppRestoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 class FollowerType extends AbstractType
 {
@@ -14,9 +16,13 @@ class FollowerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mail', TextType::class, array('class' => 'input-field col s12'));
+            ->add('mail', EmailType ::class, array(
+                'attr' => 'input-field col s12'
+            ));
     }
-    
+
+
+
     /**
      * {@inheritdoc}
      */

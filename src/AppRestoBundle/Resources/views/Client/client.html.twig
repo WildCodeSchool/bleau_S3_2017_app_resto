@@ -11,18 +11,14 @@
         <div class="modal-content">
             <div class="row">
                 <div class="input-field col s12">
-                    {% block addEmail %}
                         {{ form_start(formEmail) }}
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
                         {{ form_widget(formEmail) }}
                         {{ form_end(formEmail) }}
-                    {% endblock %}
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Soumettre</a>
+            <a type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" value="Soumettre"></a>
         </div>
     </div>
 
