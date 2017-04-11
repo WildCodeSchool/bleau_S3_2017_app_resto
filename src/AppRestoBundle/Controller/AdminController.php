@@ -2,7 +2,9 @@
 
 namespace AppRestoBundle\Controller;
 
+use AppRestoBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Request;
 
 class AdminController extends Controller
 {
@@ -20,9 +22,42 @@ class AdminController extends Controller
 
     public function counterAction()
     {
-        return $this->render('AppRestoBundle:Admin:counter.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $comments = $em->getRepository('AppRestoBundle:Comment')
+            ->findBy(
+                array('valid' => null),
+                array('id' => 'desc')
+            );
+
+        //Valid button action
+
+        return $this->render('AppRestoBundle:Admin:counter.html.twig', array(
+            'comments' => $comments,
+        ));
     }
 
+    public function validAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $comments = $em->getRepository('AppRestoBundle:Comment')
+            ->findOneById($id);
+        $comments->setValid('1');
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('app_resto_admin_counter');
+    }
+
+    public function archivAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $comments = $em->getRepository('AppRestoBundle:Comment')
+            ->findOneById($id);
+        $comments->setValid('0');
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('app_resto_admin_counter');
+    }
 }
 
 

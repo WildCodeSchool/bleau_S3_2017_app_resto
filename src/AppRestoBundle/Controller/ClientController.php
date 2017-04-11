@@ -3,10 +3,13 @@
 namespace AppRestoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppRestoBundle\Entity\Comment;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class ClientController extends Controller
 {
-    public function clientAction()
+    public function clientAction(Request $request)
     {
         $menus = array(
             (object) array(
@@ -65,8 +68,26 @@ class ClientController extends Controller
                 'd3' => 'Pêche Meleba'
             ),
         );
+        $comment = new Comment();
+        $formCom = $this->createForm('AppRestoBundle\Form\CommentType', $comment);
+        $formCom->handleRequest($request);
+
+        if ($formCom->isValid()) {
+
+            $this->date = new \DateTime();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush($comment);
+
+            return $this->redirectToRoute('app_resto_homepage');
+        }
+
         return $this->render('AppRestoBundle:Client:client.html.twig', array(
             'menus' => $menus,
+            'formCom' => $formCom->createView(),
+
         ));
     }
 }
+
