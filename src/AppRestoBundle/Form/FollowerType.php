@@ -13,7 +13,8 @@ class FollowerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('mail')        ;
+        $builder
+            ->add('mail', TextType::class, array('class' => 'input-field col s12'));
     }
     
     /**
