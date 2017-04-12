@@ -58,6 +58,45 @@ class AdminController extends Controller
 
         return $this->redirectToRoute('app_resto_admin_counter');
     }
+
+    public function sendAction()
+    {
+
+        $tab;
+        foreach($this->mailAction() as $follower){
+            foreach($follower as $z){
+                $tab[] = $z->getMail();
+            }
+        }
+        
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('solomon.grundy.51@gmail.com')
+            ->setTo($tab)
+
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    'Emails/registration.html.twig'
+                ),
+                'text/html'
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+        return $this->redirectToRoute('app_resto_admin');
+    }
+
+    public function mailAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $followers = $em->getRepository('AppRestoBundle:Follower')->findAll();
+
+        return array(
+            'followers' => $followers,
+        );
+    }
 }
 
 
