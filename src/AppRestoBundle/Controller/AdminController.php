@@ -3,6 +3,7 @@
 namespace AppRestoBundle\Controller;
 
 use AppRestoBundle\Entity\Comment;
+use AppRestoBundle\Repository\FollowerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Request;
 
@@ -62,13 +63,16 @@ class AdminController extends Controller
     public function sendAction()
     {
 
+        $em = $this->getDoctrine()->getManager();
+        $menu = $em->getRepository("AppRestoBundle:Week")->findAll();
+
         $tab;
         foreach($this->mailAction() as $follower){
             foreach($follower as $z){
                 $tab[] = $z->getMail();
             }
         }
-        
+
         $message = \Swift_Message::newInstance()
             ->setSubject('Hello Email')
             ->setFrom('solomon.grundy.51@gmail.com')
@@ -77,7 +81,9 @@ class AdminController extends Controller
             ->setBody(
                 $this->renderView(
                 // app/Resources/views/Emails/registration.html.twig
-                    'Emails/registration.html.twig'
+                    'Emails/registration.html.twig', array(
+                        'menu' => $menu
+                        )
                 ),
                 'text/html'
             )
