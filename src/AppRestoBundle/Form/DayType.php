@@ -16,18 +16,8 @@ class DayType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('entrees', CollectionType::class, array(
-            'entry_type'=> MealType::class,
-        ))
-        ->add('plats', CollectionType::class, array(
-            'entry_type'=> MealType::class,
-        ))
-        ->add('garniture', CollectionType::class, array(
-            'entry_type'=> MealType::class,
-        ))
-        ->add('entrees', CollectionType::class, array(
-            'entry_type'=> MealType::class,
-        ));
+        $builder->add('meals')
+        ;
     }
     
     /**
