@@ -13,7 +13,7 @@ AppRestoBundle\Entity\Day:
             type: datetime
 
     manyToMany:
-        meal:
+        meals:
             targetEntity: AppRestoBundle\Entity\Meal
 
         type:

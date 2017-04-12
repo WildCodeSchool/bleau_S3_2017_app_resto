@@ -10,4 +10,7 @@ namespace AppRestoBundle\Repository;
  */
 class WeekRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getByDate(\Datetime $now)
+    {
+    }
 }

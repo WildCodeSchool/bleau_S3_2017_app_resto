@@ -54,48 +54,40 @@ class Week
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $day;
+    private $days;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->day = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->days = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Add day
      *
-     * @param \AppRestoBundle\Entity\Day $day
+     * @param \AppRestoBundle\Entity\Day $days
      *
      * @return Week
      */
-    public function addDay(\AppRestoBundle\Entity\Day $day)
+    public function addDays(\AppRestoBundle\Entity\Day $days)
     {
-        $this->day[] = $day;
+        $this->days[] = $days;
 
         return $this;
     }
 
-    /**
-     * Remove day
-     *
-     * @param \AppRestoBundle\Entity\Day $day
-     */
-    public function removeDay(\AppRestoBundle\Entity\Day $day)
-    {
-        $this->day->removeElement($day);
-    }
+
 
     /**
      * Get day
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDay()
+    public function getDays()
     {
-        return $this->day;
+        return $this->days;
     }
     /**
      * @var \DateTime

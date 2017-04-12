@@ -2,9 +2,11 @@
 
 namespace AppRestoBundle\Controller;
 
+use AppRestoBundle\Entity\Day;
 use AppRestoBundle\Entity\Week;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppRestoBundle\Repository\WeekRepository;
 
 /**
  * Week controller.
@@ -33,7 +35,31 @@ class WeekController extends Controller
      */
     public function newAction(Request $request)
     {
-        $week = new Week();
+        $repository = $this->getDoctrine()->getRepository('AppRestoBundle:Week');
+        $weekStart = new \DateTime("last Monday");
+        $week = $repository->findOneBy(array(
+            'start_week' => $weekStart
+        ));
+        $lundi = new Day();
+        //$lundi->setDate('');
+        $week->getDays()->add($lundi);
+
+        $mardi = new Day();
+        //$mardi->setDate('');
+        $week->getDays()->add($mardi);
+
+        $mercredi = new Day();
+        //$mercredi->setDate('');
+        $week->getDays()->add($mercredi);
+
+        $jeudi = new Day();
+        //$jeudi->setDate('');
+        $week->getDays()->add($jeudi);
+
+        $vendredi = new Day();
+        //$vendredi->setDate('');
+        $week->getDays()->add($vendredi);
+
         $form = $this->createForm('AppRestoBundle\Form\WeekType', $week);
         $form->handleRequest($request);
 

@@ -7,6 +7,12 @@ namespace AppRestoBundle\Entity;
  */
 class Meal
 {
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @var int
      */

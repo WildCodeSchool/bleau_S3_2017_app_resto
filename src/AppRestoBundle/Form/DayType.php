@@ -2,7 +2,10 @@
 
 namespace AppRestoBundle\Form;
 
+use AppRestoBundle\Entity\Day;
+use AppRestoBundle\Entity\Meal;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +16,18 @@ class DayType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('meal')->add('type')        ;
+        $builder->add('entrees', CollectionType::class, array(
+            'entry_type'=> MealType::class,
+        ))
+        ->add('plats', CollectionType::class, array(
+            'entry_type'=> MealType::class,
+        ))
+        ->add('garniture', CollectionType::class, array(
+            'entry_type'=> MealType::class,
+        ))
+        ->add('entrees', CollectionType::class, array(
+            'entry_type'=> MealType::class,
+        ));
     }
     
     /**
@@ -22,7 +36,7 @@ class DayType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppRestoBundle\Entity\Day'
+            'data_class' => Day::class,
         ));
     }
 

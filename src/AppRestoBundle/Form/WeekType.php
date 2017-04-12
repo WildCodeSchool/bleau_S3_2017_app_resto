@@ -2,7 +2,9 @@
 
 namespace AppRestoBundle\Form;
 
+use AppRestoBundle\Entity\Week;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,10 @@ class WeekType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('start_week')->add('end_week')->add('message')->add('day')        ;
+        $builder->add('message');
+        $builder->add('days', CollectionType::class, array(
+            'entry_type' => DayType::class
+        ));
     }
     
     /**
@@ -22,7 +27,7 @@ class WeekType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppRestoBundle\Entity\Week'
+            'data_class' => Week::class,
         ));
     }
 

@@ -20,7 +20,7 @@ AppRestoBundle\Entity\Week:
             nullable: true
 
     manyToMany:
-        day:
+        days:
             targetEntity: AppRestoBundle\Entity\Day
             joinTable:
                 name: Week_Day
