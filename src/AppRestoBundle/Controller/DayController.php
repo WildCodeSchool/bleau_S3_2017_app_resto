@@ -3,7 +3,6 @@
 namespace AppRestoBundle\Controller;
 
 use AppRestoBundle\Entity\Day;
-use AppRestoBundle\Entity\Meal;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -35,20 +34,6 @@ class DayController extends Controller
     public function newAction(Request $request)
     {
         $day = new Day();
-        $repository = $this->getDoctrine()->getRepository('AppRestoBundle:Meal');
-
-        $entree = $repository->findBy(array('type' => 1));
-        $day->getMeals()->add($entree);
-
-        $plat = $repository->findBy(array('type' => 2));
-        $day->getMeals()->add($plat);
-
-        $dessert = $repository->findBy(array('type' => 3));
-        $day->getMeals()->add($dessert);
-
-        $garniture = $repository->findBy(array('type' => 4));
-        $day->getMeals()->add($garniture);
-
         $form = $this->createForm('AppRestoBundle\Form\DayType', $day);
         $form->handleRequest($request);
 

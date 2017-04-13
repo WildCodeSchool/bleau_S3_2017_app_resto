@@ -147,4 +147,28 @@ class Week
     {
         return $this->end_week;
     }
+
+    /**
+     * Add day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     *
+     * @return Week
+     */
+    public function addDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->days[] = $day;
+
+        return $this;
+    }
+
+    /**
+     * Remove day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     */
+    public function removeDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->days->removeElement($day);
+    }
 }

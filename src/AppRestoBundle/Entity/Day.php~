@@ -56,7 +56,7 @@ class Day
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $meal;
+    private $meals;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -68,7 +68,7 @@ class Day
      */
     public function __construct()
     {
-        $this->meal = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->meals = new \Doctrine\Common\Collections\ArrayCollection();
         $this->type = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -76,13 +76,13 @@ class Day
     /**
      * Add meal
      *
-     * @param \AppRestoBundle\Entity\Meal $meal
+     * @param \AppRestoBundle\Entity\Meal $meals
      *
      * @return Day
      */
-    public function addMeal(\AppRestoBundle\Entity\Meal $meal)
+    public function addMeals(\AppRestoBundle\Entity\Meal $meals)
     {
-        $this->meal[] = $meal;
+        $this->meals[] = $meals;
 
         return $this;
     }
@@ -90,21 +90,21 @@ class Day
     /**
      * Remove meal
      *
-     * @param \AppRestoBundle\Entity\Meal $meal
+     * @param \AppRestoBundle\Entity\Meal $meals
      */
-    public function removeMeal(\AppRestoBundle\Entity\Meal $meal)
+    public function removeMeals(\AppRestoBundle\Entity\Meal $meals)
     {
-        $this->meal->removeElement($meal);
+        $this->meals->removeElement($meals);
     }
 
     /**
-     * Get meal
+     * Get meals
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMeal()
+    public function getMeals()
     {
-        return $this->meal;
+        return $this->meals;
     }
 
     /**

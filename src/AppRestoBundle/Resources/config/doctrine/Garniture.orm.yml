@@ -1,0 +1,14 @@
+AppRestoBundle\Entity\Garniture:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\GarnitureRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: text
+    lifecycleCallbacks: {  }

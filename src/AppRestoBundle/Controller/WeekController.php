@@ -35,29 +35,29 @@ class WeekController extends Controller
      */
     public function newAction(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository('AppRestoBundle:Week');
+        $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Week');
         $weekStart = new \DateTime("last Monday");
         $week = $repository->findOneBy(array(
             'start_week' => $weekStart
         ));
         $lundi = new Day();
-        //$lundi->setDate('');
+        $lundi->setDate($weekStart);
         $week->getDays()->add($lundi);
 
         $mardi = new Day();
-        //$mardi->setDate('');
+        $mardi->setDate($weekStart)->getDate()->modify('+1 day');
         $week->getDays()->add($mardi);
 
         $mercredi = new Day();
-        //$mercredi->setDate('');
+        $mardi->setDate($weekStart)->getDate()->modify('+2 day');
         $week->getDays()->add($mercredi);
 
         $jeudi = new Day();
-        //$jeudi->setDate('');
+        $mardi->setDate($weekStart)->getDate()->modify('+3 day');
         $week->getDays()->add($jeudi);
 
         $vendredi = new Day();
-        //$vendredi->setDate('');
+        $mardi->setDate($weekStart)->getDate()->modify('+4 day');
         $week->getDays()->add($vendredi);
 
         $form = $this->createForm('AppRestoBundle\Form\WeekType', $week);
@@ -65,7 +65,6 @@ class WeekController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($week);
             $em->flush($week);
 
             return $this->redirectToRoute('week_show', array('id' => $week->getId()));
