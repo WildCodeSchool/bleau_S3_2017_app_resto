@@ -13,7 +13,7 @@ class DayType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('week')->add('meal')->add('type')        ;
+        $builder->add('date')->add('meal')->add('type')        ;
     }
     
     /**

@@ -54,7 +54,6 @@ class CommentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $this->date = new \DateTime();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);

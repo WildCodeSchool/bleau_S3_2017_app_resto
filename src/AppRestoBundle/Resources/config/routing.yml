@@ -2,14 +2,6 @@ app_resto_meal:
     resource: "@AppRestoBundle/Resources/config/routing/meal.yml"
     prefix:   /meal
 
-app_resto_week:
-    resource: "@AppRestoBundle/Resources/config/routing/week.yml"
-    prefix:   /week
-
-app_resto_day:
-    resource: "@AppRestoBundle/Resources/config/routing/day.yml"
-    prefix:   /day
-
 app_resto_comment:
     resource: "@AppRestoBundle/Resources/config/routing/comment.yml"
     prefix:   /comment
@@ -51,3 +43,12 @@ app_resto_send:
 app_resto_mail:
     path:     /mail
     defaults: { _controller: AppRestoBundle:Admin:mail}
+
+app_resto_week:
+        resource: "@AppRestoBundle/Resources/config/routing/week.yml"
+        prefix:   /week
+
+app_resto_day:
+        resource: "@AppRestoBundle/Resources/config/routing/day.yml"
+        prefix:   /day
+
