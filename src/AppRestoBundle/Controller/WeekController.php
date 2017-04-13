@@ -49,15 +49,15 @@ class WeekController extends Controller
         $week->getDays()->add($mardi);
 
         $mercredi = new Day();
-        $mardi->setDate($weekStart)->getDate()->modify('+2 day');
+        $mercredi->setDate($weekStart)->getDate()->modify('+2 day');
         $week->getDays()->add($mercredi);
 
         $jeudi = new Day();
-        $mardi->setDate($weekStart)->getDate()->modify('+3 day');
+        $jeudi->setDate($weekStart)->getDate()->modify('+3 day');
         $week->getDays()->add($jeudi);
 
         $vendredi = new Day();
-        $mardi->setDate($weekStart)->getDate()->modify('+4 day');
+        $vendredi->setDate($weekStart)->getDate()->modify('+4 day');
         $week->getDays()->add($vendredi);
 
         $form = $this->createForm('AppRestoBundle\Form\WeekType', $week);
@@ -65,7 +65,8 @@ class WeekController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->flush($week);
+            $em->persist($week);
+            $em->flush();
 
             return $this->redirectToRoute('week_show', array('id' => $week->getId()));
         }

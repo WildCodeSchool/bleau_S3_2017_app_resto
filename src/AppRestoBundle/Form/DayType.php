@@ -13,7 +13,7 @@ class DayType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('entrees')->add('plats')->add('desserts')->add('garnitures')->add('date')        ;
+        $builder->add('entrees')->add('plats')->add('desserts')->add('garnitures')        ;
     }
     
     /**

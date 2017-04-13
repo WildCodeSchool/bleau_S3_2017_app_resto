@@ -3,14 +3,33 @@
 {% block body %}
     <h1>Week creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="continer container_custom">
+        <table class="bordered centered">
+            <thead>
+            <th></th>
+            <th class="center-align">Lundi</th>
+            <th class="center-align">Mardi</th>
+            <th class="center-align">Mercredi</th>
+            <th class="center-align">Jeudi</th>
+            <th class="center-align">Vendredi</th>
+            </thead>
 
-    <ul>
-        <li>
-            <a href="{{ path('week_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <tbody>
+            {{ form_start(form) }}
+            {% for day in form.days %}
+                <tr>
+                    <td>{{ form_row(day.entrees) }}</td>
+                    <td>{{ form_row(day.plats) }}</td>
+                    <td>{{ form_row(day.desserts) }}</td>
+                    <td>{{ form_row(day.garnitures) }}</td>
+                </tr>
+            {% endfor %}
+            {{ form_widget(form) }}
+            <input type="submit" value="Create" />
+            {{ form_end(form) }}
+            </tbody>
+        </table>
+    </div>
+
+
 {% endblock %}

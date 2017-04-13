@@ -24,3 +24,4 @@ AppRestoBundle\Entity\Week:
             targetEntity: AppRestoBundle\Entity\Day
             joinTable:
                 name: Week_Day
+            cascade: ["persist"]
