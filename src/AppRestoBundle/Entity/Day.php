@@ -51,10 +51,7 @@ class Day
     {
         return $this->date;
     }
-    /**
-     * @var \AppRestoBundle\Entity\Week
-     */
-    private $week;
+
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -75,29 +72,6 @@ class Day
         $this->type = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Set week
-     *
-     * @param \AppRestoBundle\Entity\Week $week
-     *
-     * @return Day
-     */
-    public function setWeek(\AppRestoBundle\Entity\Week $week = null)
-    {
-        $this->week = $week;
-
-        return $this;
-    }
-
-    /**
-     * Get week
-     *
-     * @return \AppRestoBundle\Entity\Week
-     */
-    public function getWeek()
-    {
-        return $this->week;
-    }
 
     /**
      * Add meal

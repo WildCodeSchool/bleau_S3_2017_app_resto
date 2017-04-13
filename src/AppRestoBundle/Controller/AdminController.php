@@ -40,10 +40,12 @@ class AdminController extends Controller
     public function validAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $comments = $em->getRepository('AppRestoBundle:Comment')
+
+        $comment = $em->getRepository('AppRestoBundle:Comment')
             ->findOneById($id);
-        $comments->setValid('1');
-        $this->getDoctrine()->getManager()->flush();
+
+        $comment->setValid('1');
+        $em->flush();
 
         return $this->redirectToRoute('app_resto_admin_counter');
     }
@@ -54,7 +56,7 @@ class AdminController extends Controller
         $comments = $em->getRepository('AppRestoBundle:Comment')
             ->findOneById($id);
         $comments->setValid('0');
-        $this->getDoctrine()->getManager()->flush();
+        $em->flush();
 
         return $this->redirectToRoute('app_resto_admin_counter');
     }

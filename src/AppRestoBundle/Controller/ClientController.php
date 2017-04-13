@@ -5,6 +5,7 @@ namespace AppRestoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppRestoBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
+use AppRestoBundle\Entity\Follower;
 
 
 class ClientController extends Controller
@@ -83,54 +84,27 @@ class ClientController extends Controller
             return $this->redirectToRoute('app_resto_homepage');
         }
 
-        return $this->render('AppRestoBundle:Client:client.html.twig', array(
-            'menus' => $menus,
-            'formCom' => $formCom->createView(),
-
-        ));
-    }
-}
-
-class FollowerController extends Controller
-{
-    /**
-     * Lists all follower entities.
-     *
-     */
-
-    public function indexAction()
-
-    {
-
-
-        $em = $this->getDoctrine()->getManager();
-        $followers = $em->getRepository('AppRestoBundle:Follower')->findAll();
-
-        return $this->render('follower/index.html.twig', array(
-            'followers' => $followers,
-        ));
-    }
-
-    /**
-     * Creates a new follower entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
         $follower = new Follower();
-        $formEmail = $this->createForm('AppRestoBundle\Form\FollowerType', $follower);
-        $formEmail->handleRequest($request);
+        $form = $this->createForm('AppRestoBundle\Form\FollowerType' , $follower);
+        $form->handleRequest($request);
 
-        if ($formEmail->isSubmitted() && $formEmail->isValid()) {
+        if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($follower);
             $em->flush($follower);
 
-            return $this->redirectToRoute('follower_show', array('id' => $follower->getId()));
+            return $this->redirectToRoute('app_resto_homepage');
         }
 
-        return $this->render('follower/new.html.twig', array(
-            'formEmail' => $formEmail->createView(),
+        return $this->render('AppRestoBundle:Client:client.html.twig', array(
+            'menus' => $menus,
+            'formCom' => $formCom->createView(),
+            'form' => $form->createView()
+
         ));
+
     }
+
 }
+

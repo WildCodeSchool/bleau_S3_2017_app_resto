@@ -61,11 +61,32 @@ h2 {
     color: black;
 }
 
+.col-custom-comment .date, .col-custom-comment .pseudo{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.col-custom-comment .content {
+    font-size: 1.1em;
+    border-left: 1px solid black;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 /*------- 2.HEADER--------*/
 .head
 {
     background-color: white;
-    margin-bottom: 0px;
+    margin-bottom: 0;
+}
+
+.nav_custom{
+    font-size: 30px;
+}
+
+.background{
+    background-color: rgb(175, 97, 20);
 }
 
 /*------- 3.MENUS-ADMIN--------*/

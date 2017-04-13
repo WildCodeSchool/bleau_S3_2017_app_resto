@@ -3,22 +3,25 @@
 {% block header_btn %}
 
     <!-- Modal Trigger -->
-
     <a class="waves-effect waves-light btn" href="#modal1">News - letter</a>
 
-    <!-- Modal Structure -->
+
+
+  <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="row">
                 <div class="input-field col s12">
-                        {{ form_start(formEmail) }}
-                        {{ form_widget(formEmail) }}
-                        {{ form_end(formEmail) }}
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" value="Soumettre"></input>
+                        {{ form_end(form) }}
+
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <a type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" value="Soumettre"></a>
+
         </div>
     </div>
 

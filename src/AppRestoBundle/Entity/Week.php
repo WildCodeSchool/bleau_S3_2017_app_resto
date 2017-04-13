@@ -13,15 +13,9 @@ class Week
     private $id;
 
     /**
-     * @var int
-     */
-    private $nbWeek;
-
-    /**
      * @var string
      */
     private $message;
-
 
     /**
      * Get id
@@ -31,30 +25,6 @@ class Week
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nbWeek
-     *
-     * @param integer $nbWeek
-     *
-     * @return Week
-     */
-    public function setNbWeek($nbWeek)
-    {
-        $this->nbWeek = $nbWeek;
-
-        return $this;
-    }
-
-    /**
-     * Get nbWeek
-     *
-     * @return int
-     */
-    public function getNbWeek()
-    {
-        return $this->nbWeek;
     }
 
     /**
@@ -80,6 +50,7 @@ class Week
     {
         return $this->message;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -125,5 +96,63 @@ class Week
     public function getDay()
     {
         return $this->day;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $start_week;
+
+    /**
+     * @var \DateTime
+     */
+    private $end_week;
+
+
+    /**
+     * Set startWeek
+     *
+     * @param \DateTime $startWeek
+     *
+     * @return Week
+     */
+    public function setStartWeek($startWeek)
+    {
+        $this->start_week = $startWeek;
+
+        return $this;
+    }
+
+    /**
+     * Get startWeek
+     *
+     * @return \DateTime
+     */
+    public function getStartWeek()
+    {
+        return $this->start_week;
+    }
+
+    /**
+     * Set endWeek
+     *
+     * @param \DateTime $endWeek
+     *
+     * @return Week
+     */
+    public function setEndWeek($endWeek)
+    {
+        $this->end_week = $endWeek;
+
+        return $this;
+    }
+
+    /**
+     * Get endWeek
+     *
+     * @return \DateTime
+     */
+    public function getEndWeek()
+    {
+        return $this->end_week;
     }
 }

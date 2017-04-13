@@ -17,7 +17,7 @@ class FollowerType extends AbstractType
     {
         $builder
             ->add('mail', EmailType ::class, array(
-                'attr' => 'input-field col s12'
+                'attr' => array('class' => 'input-field col s12')
             ));
     }
 

@@ -5,7 +5,7 @@ namespace AppRestoBundle\Controller;
 use AppRestoBundle\Entity\Follower;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\From\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 
 /**
@@ -16,35 +16,10 @@ class FollowerController extends Controller
 {
     public function addAction(Request $request)
     {
-        $follower = new follower();
-
-        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $follower);
-
-        $formBuilder
-            ->add('mail', EmailType::class)
-            ->add('save', SummitType::class);
-
-        $form = $formBuilder->getForm();
-
-        if ($request->isMethod('POST'))
-        {
-            $form->handleRequest($request);
-
-            if ($form->isValid())
-            {
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($follower);
-                $em->flush();
-
-                $request->getSession()_ > getFlashBag();
-
-                return $this->redirectToRoute(????, array('id' => $follower->get()));
-            }
-        }
-
-        return $this->render('AppRestoBundle:Client:client.html.twig', array(
-            'form' => $form->createView(),
+        $em = $this->getDoctrine()->getManager();
+        $meal = $em->getRepository('AppRestoBundle:Meal')->findAll();
+        return $this->render('@AppResto/Client/follower.html.twig', array(
+            'nbmenus' => 9
         ));
     }
 

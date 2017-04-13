@@ -1,11 +1,27 @@
-{% block follower%}
-
-    {% for mail in follower %}
-
-        <div class=" col m3">
-            {{ follower.mail }}
-        </div>
-
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for meal in meals %}
+        <tr>
+            <td><a href="{{ path('meal_show', { 'id': meal.id }) }}">{{ meal.id }}</a></td>
+            <td>{{ meal.name }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('meal_show', { 'id': meal.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('meal_edit', { 'id': meal.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
     {% endfor %}
-
-{% endblock %}
+    </tbody>
+</table>

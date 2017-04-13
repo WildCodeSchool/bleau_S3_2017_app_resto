@@ -13,7 +13,7 @@ class WeekType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nbWeek')->add('message')        ;
+        $builder->add('start_week')->add('end_week')->add('message')->add('day')        ;
     }
     
     /**
