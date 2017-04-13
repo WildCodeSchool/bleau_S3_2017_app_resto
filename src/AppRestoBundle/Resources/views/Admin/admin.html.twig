@@ -7,6 +7,21 @@
 {% block body %}
 
 <div id="admin">
+
+
+    <div class="container container_custom">
+        <div row_week>
+            <div class="input-field col m12">
+                <select multiple>
+                    <option value="0" disabled selected>Choisir votre semaine du ... au ... :</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+            </div>
+        </div>
+
+
 <div class="container container_custom">
         <nav>
             <div class="nav-wrapper background">
@@ -15,6 +30,7 @@
                 </ul>
             </div>
         </nav>
+
     <table class="bordered centered">
         <thead>
         <tr class="semaine">
@@ -85,20 +101,22 @@
         <div class="col m12 admin">
             <div class="validate">
                 <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
+            </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <form action="" method="">
-        <label for="title">Titre de la new's</label>
-        <input id="title" type="text" name="title" placeholder="Ecrivez ici votre titre de nouvelle.">
-        <label for="content">Contenue de la new's</label>
-        <textarea id="content" name="content" class="materialize-textarea" placeholder="Ecrivez ici le contenue de la nouvelle"></textarea>
-        <div class="row">
-            <a class="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Envoyer les nouvelle sur la newsletter">Envoyer</a>
-        </div>
-    </form>
-</div>
+    <div class="container">
+        <form action="" method="">
+            <label for="title">Titre de la new's</label>
+            <input id="title" type="text" name="title" placeholder="Ecrivez ici votre titre de nouvelle.">
+            <label for="content">Contenue de la new's</label>
+            <textarea id="content" name="content" class="materialize-textarea" placeholder="Ecrivez ici le contenue de la nouvelle"></textarea>
+            <div class="row">
+                <a class="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Envoyer les nouvelle sur la newsletter">Envoyer</a>
+            </div>
+
+        </form>
+    </div>
+
 </div>
 {% endblock %}
 

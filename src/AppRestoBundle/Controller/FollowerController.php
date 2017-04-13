@@ -5,6 +5,8 @@ namespace AppRestoBundle\Controller;
 use AppRestoBundle\Entity\Follower;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 /**
  * Follower controller.
@@ -12,6 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FollowerController extends Controller
 {
+    public function addAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $meal = $em->getRepository('AppRestoBundle:Meal')->findAll();
+        return $this->render('@AppResto/Client/follower.html.twig', array(
+            'nbmenus' => 9
+        ));
+    }
+
+
     /**
      * Lists all follower entities.
      *
