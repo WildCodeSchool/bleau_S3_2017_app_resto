@@ -2,39 +2,42 @@
 
 namespace AppRestoBundle\Controller;
 
-use AppRestoBundle\Entity\Comment;
+use AppRestoBundle\Entity\Day;
+use AppRestoBundle\Entity\Week;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
     public function adminAction(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository('AppRestoBundle:Week');
+        $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Week');
         $weekStart = new \DateTime("last Monday");
         $week = $repository->findOneBy(array(
             'start_week' => $weekStart
         ));
 
-        $lundi = new Day();
-        $lundi->setDate($weekStart);
-        $week->getDays()->add($lundi);
+        if($week->getDays()->isEmpty()) {
+            $lundi = new Day();
+            $lundi->setDate($weekStart);
+            $week->getDays()->add($lundi);
 
-        $mardi = new Day();
-        //$mardi->setDate('');
-        $week->getDays()->add($mardi);
+            $mardi = new Day();
+            $mardi->setDate($weekStart)->getDate()->modify('+1 day');
+            $week->getDays()->add($mardi);
 
-        $mercredi = new Day();
-        //$mercredi->setDate('');
-        $week->getDays()->add($mercredi);
+            $mercredi = new Day();
+            $mercredi->setDate($weekStart)->getDate()->modify('+2 day');
+            $week->getDays()->add($mercredi);
 
-        $jeudi = new Day();
-        //$jeudi->setDate('');
-        $week->getDays()->add($jeudi);
+            $jeudi = new Day();
+            $jeudi->setDate($weekStart)->getDate()->modify('+3 day');
+            $week->getDays()->add($jeudi);
 
-        $vendredi = new Day();
-        //$vendredi->setDate('');
-        $week->getDays()->add($vendredi);
+            $vendredi = new Day();
+            $vendredi->setDate($weekStart)->getDate()->modify('+4 day');
+            $week->getDays()->add($vendredi);
+        }
 
         $form = $this->createForm('AppRestoBundle\Form\WeekType', $week);
         $form->handleRequest($request);
@@ -42,28 +45,15 @@ class AdminController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($week);
-            $em->flush($week);
+            $em->flush();
 
-            return $this->redirectToRoute('week_show', array('id' => $week->getId()));
+            return $this->redirectToRoute('app_resto_admin');
         }
 
-        return $this->render('week/new.html.twig', array(
+        return $this->render('@AppResto/Admin/admin.html.twig', array(
             'week' => $week,
             'form' => $form->createView(),
         ));
-
-
-
-    // BEFORE THE MESS
-
-
-        $days = ['','Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
-        $types = ['Plat', 'Garniture', 'Entrée', 'Dessert'];
-
-        return $this->render('AppRestoBundle:Admin:admin.html.twig',
-            array ('days' => $days, 'types' => $types )
-            );
-
     }
 
     public function counterAction()

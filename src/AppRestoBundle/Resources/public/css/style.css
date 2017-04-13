@@ -90,26 +90,34 @@ h2 {
 }
 
 /*------- 3.MENUS-ADMIN--------*/
-#admin {
-	background-color: white;
+.menu_admin{
+    font-size: 1.2em;
 }
-tr .option {
-	height:200px;
-}
+    .menu_admin .days {
+        font-size:1.7em;
+    }
 
-
-.validate {
-	margin-left:500px;
-	margin-top:70px;
-	margin-bottom:50px;
-	color: #AF6114;
+.menu_admin_title {
+    background-color: #AF6114;
+    color: white;
 }
 
-label .active {
-	color:rgb(175, 97, 20);
+.col_menu_admin:nth-child(1) {
+    border-left: 1px solid rgb(117, 117, 120);
 }
 
+.col_menu_admin {
+    border-right: 1px solid rgb(117, 117, 120);
+}
 
+.label_message_week {
+    font-size: 1.5em;
+    color: #AF6114;
+}
+
+.menu_choix_semaine {
+    font-size: 3em!important;
+}
 /*-------4.CLIENT-------*/
 
 .container_custom client img {
@@ -136,7 +144,7 @@ label .active {
     font-size: 1.7em;
 }
 
-.dayli a, .snack {
+.dayli a, .snack, .menu_admin {
     background-color: rgb(255, 255, 255);
 
 }

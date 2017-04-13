@@ -40,25 +40,28 @@ class WeekController extends Controller
         $week = $repository->findOneBy(array(
             'start_week' => $weekStart
         ));
-        $lundi = new Day();
-        $lundi->setDate($weekStart);
-        $week->getDays()->add($lundi);
 
-        $mardi = new Day();
-        $mardi->setDate($weekStart)->getDate()->modify('+1 day');
-        $week->getDays()->add($mardi);
+        if($week->getDays()->isEmpty()) {
+            $lundi = new Day();
+            $lundi->setDate($weekStart);
+            $week->getDays()->add($lundi);
 
-        $mercredi = new Day();
-        $mercredi->setDate($weekStart)->getDate()->modify('+2 day');
-        $week->getDays()->add($mercredi);
+            $mardi = new Day();
+            $mardi->setDate($weekStart)->getDate()->modify('+1 day');
+            $week->getDays()->add($mardi);
 
-        $jeudi = new Day();
-        $jeudi->setDate($weekStart)->getDate()->modify('+3 day');
-        $week->getDays()->add($jeudi);
+            $mercredi = new Day();
+            $mercredi->setDate($weekStart)->getDate()->modify('+2 day');
+            $week->getDays()->add($mercredi);
 
-        $vendredi = new Day();
-        $vendredi->setDate($weekStart)->getDate()->modify('+4 day');
-        $week->getDays()->add($vendredi);
+            $jeudi = new Day();
+            $jeudi->setDate($weekStart)->getDate()->modify('+3 day');
+            $week->getDays()->add($jeudi);
+
+            $vendredi = new Day();
+            $vendredi->setDate($weekStart)->getDate()->modify('+4 day');
+            $week->getDays()->add($vendredi);
+        }
 
         $form = $this->createForm('AppRestoBundle\Form\WeekType', $week);
         $form->handleRequest($request);
@@ -68,7 +71,7 @@ class WeekController extends Controller
             $em->persist($week);
             $em->flush();
 
-            return $this->redirectToRoute('week_show', array('id' => $week->getId()));
+            return $this->redirectToRoute('week_show');
         }
 
         return $this->render('week/new.html.twig', array(
