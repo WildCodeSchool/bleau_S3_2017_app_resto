@@ -65,8 +65,14 @@ class AdminController extends Controller
     public function sendAction()
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $menu = $em->getRepository("AppRestoBundle:Week")->findAll();
+        $repository = $this->getDoctrine()->getManager();
+        $weekStart = new \DateTime("next Monday");
+        $week = $repository->getRepository('AppRestoBundle:Week')->findOneBy(array(
+            'start_week' => $weekStart
+        ));
+
+        //$em = $this->getDoctrine()->getManager();
+        //$menu = $em->getRepository("AppRestoBundle:Week")->findAll();
 
         $tab;
         foreach($this->mailAction() as $follower){
@@ -84,7 +90,7 @@ class AdminController extends Controller
                 $this->renderView(
                 // app/Resources/views/Emails/registration.html.twig
                     'Emails/registration.html.twig', array(
-                        'menu' => $menu
+                        'week' => $week
                         )
                 ),
                 'text/html'
