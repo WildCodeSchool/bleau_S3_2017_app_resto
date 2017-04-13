@@ -33,6 +33,14 @@ app_resto_com_archiv:
     defaults: { _controller: AppRestoBundle:Admin:archiv}
     methods: GET
 
+app_resto_send:
+    path:     /send
+    defaults: { _controller: AppRestoBundle:Admin:send}
+
+app_resto_mail:
+    path:     /mail
+    defaults: { _controller: AppRestoBundle:Admin:mail}
+
 app_resto_week:
       resource: "@AppRestoBundle/Resources/config/routing/week.yml"
       prefix:   /week

@@ -7,10 +7,21 @@ namespace AppRestoBundle\Entity;
  */
 class Week
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
+
+    /**
+     * @var \DateTime
+     */
+    private $start_week;
+
+    /**
+     * @var \DateTime
+     */
+    private $end_week;
 
     /**
      * @var string
@@ -18,13 +29,79 @@ class Week
     private $message;
 
     /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $day;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->day = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set startWeek
+     *
+     * @param \DateTime $startWeek
+     *
+     * @return Week
+     */
+    public function setStartWeek($startWeek)
+    {
+        $this->start_week = $startWeek;
+
+        return $this;
+    }
+
+    /**
+     * Get startWeek
+     *
+     * @return \DateTime
+     */
+    public function getStartWeek()
+    {
+        return $this->start_week;
+    }
+
+    /**
+     * Set endWeek
+     *
+     * @param \DateTime $endWeek
+     *
+     * @return Week
+     */
+    public function setEndWeek($endWeek)
+    {
+        $this->end_week = $endWeek;
+
+        return $this;
+    }
+
+    /**
+     * Get endWeek
+     *
+     * @return \DateTime
+     */
+    public function getEndWeek()
+    {
+        return $this->end_week;
     }
 
     /**
@@ -52,16 +129,27 @@ class Week
     }
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Week
      */
-    private $day;
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
 
     /**
-     * Constructor
+     * Get title
+     *
+     * @return string
      */
-    public function __construct()
+    public function getTitle()
     {
-        $this->day = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->title;
     }
 
     /**
