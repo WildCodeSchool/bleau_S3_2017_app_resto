@@ -22,61 +22,25 @@
 
                 <div class="col s10 offset-s1">
                     <div class="row row_custom" id="menu">
-                        {% for menu in menus %}
-                        <div class="col m2 s12 {% if menu.day == 'Lundi' %}offset-m1{% endif %} dayli">
+                        {% for key, day in days %}
+                        <div class="col m2 s12 {% if key == 0 %}offset-m1{% endif %} dayli">
                             <div class="row row_custom">
                                 <div class="col s12 dayli_col">
-                                    <a href="#{{ menu.day }}">
-                                        <h3>{{ menu.day }}</h3>
+                                    <a href="#{{ key }}">
+                                        <h3>lundi</h3>
                                         <ul>
                                             <li>Entrées</li>
-                                            <li>{{ menu.p1 }}</li>
-                                            <li>{{ menu.p2 }}</li>
+
                                             <li>Desserts</li>
                                         </ul>
                                     </a>
                                 </div>
                             </div>
-                            <div class="row row_custom">
-                                <p class="col m12 s6 center-align">
-                                    <input name="resa_{{ menu.day }}" type="radio" id="normal_{{ menu.day }}" />
-                                    <label for="normal_{{ menu.day }}">Menu normal</label>
-                                </p>
-                                <p class="col m12 s6 center-align">
-                                    <input name="resa_{{ menu.day }}" type="radio" id="snack_{{ menu.day }}" />
-                                    <label for="snack_{{ menu.day }}">Menu snack</label>
-                                </p>
-                            </div>
                         </div>
-                       {% endfor %}
-                        <div class="row row_custom">
-                            <button class="btn waves-effect waves-orange btn_custom col m2 s4 offset-m5 offset-s4 align-center" type="submit" name="action">Envoyez
-                                <i class="material-icons right"></i>
-                            </button>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-
             </div>
-
-        </form>
-        {% for menu in menus %}
-        <div id="{{ menu.day }}" class="modal">
-            <div class="modal-content">
-                <div class="row row_custom col s10 offset-s1 menu_modal">
-                    <h4 class="center-align">Au menu le {{ menu.day }}</h4>
-                    <ul class="center-align">
-                        <li><span class="type_meal_modal">Entrées</span><br>{{ menu.e1 }}, {{ menu.e2 }}, {{ menu.e3 }}</li>
-                        <li><span class="type_meal_modal">Plats</span><br>{{ menu.p1 }}<br>{{ menu.p2 }}</li>
-                        <li><span class="type_meal_modal">Desserts</span><br>{{ menu.d1 }}, {{ menu.d2 }}, {{ menu.d3 }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close btn-flat btn_custom">Fermer</a>
-            </div>
-        </div>
-        {% endfor %}
         <div class="row row_custom">
             <div class="col s8 offset-s2 snack">
                 <h2>Menu snack</h2>

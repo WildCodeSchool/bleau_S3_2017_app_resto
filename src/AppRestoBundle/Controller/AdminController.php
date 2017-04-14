@@ -3,7 +3,6 @@
 namespace AppRestoBundle\Controller;
 
 use AppRestoBundle\Entity\Day;
-use AppRestoBundle\Entity\Week;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

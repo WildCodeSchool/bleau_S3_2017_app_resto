@@ -11,63 +11,18 @@ class ClientController extends Controller
 {
     public function clientAction(Request $request)
     {
-        $menus = array(
-            (object) array(
-                'day' => 'Lundi',
-                'e1' => 'Carottes rapées',
-                'e2' => 'Salade niçoise',
-                'e3' => 'Tomate farcie',
-                'p1' => 'Ragout',
-                'p2' => 'Ravioli',
-                'd1' => 'Île flottante',
-                'd2' => 'Crême brullée',
-                'd3' => 'Pêche Meleba'
-            ),
-            (object) array(
-                'day' => 'Mardi',
-                'e1' => 'Carottes rapées',
-                'e2' => 'Salade niçoise',
-                'e3' => 'Tomate farcie',
-                'p1' => 'Ragout',
-                'p2' => 'Ravioli',
-                'd1' => 'Île flottante',
-                'd2' => 'Crême brullée',
-                'd3' => 'Pêche Meleba'
-            ),
-            (object) array(
-                'day' => 'Mercredi',
-                'e1' => 'Carottes rapées',
-                'e2' => 'Salade niçoise',
-                'e3' => 'Tomate farcie',
-                'p1' => 'Ragout',
-                'p2' => 'Ravioli',
-                'd1' => 'Île flottante',
-                'd2' => 'Crême brullée',
-                'd3' => 'Pêche Meleba'
-            ),
-            (object) array(
-                'day' => 'Jeudi',
-                'e1' => 'Carottes rapées',
-                'e2' => 'Salade niçoise',
-                'e3' => 'Tomate farcie',
-                'p1' => 'Ragout',
-                'p2' => 'Ravioli',
-                'd1' => 'Île flottante',
-                'd2' => 'Crême brullée',
-                'd3' => 'Pêche Meleba'
-            ),
-            (object) array(
-                'day' => 'Vendredi',
-                'e1' => 'Carottes rapées',
-                'e2' => 'Salade niçoise',
-                'e3' => 'Tomate farcie',
-                'p1' => 'Ragout',
-                'p2' => 'Ravioli',
-                'd1' => 'Île flottante',
-                'd2' => 'Crême brullée',
-                'd3' => 'Pêche Meleba'
-            ),
-        );
+        //Get Days of the week
+        $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Week');
+        $weekStart = new \DateTime("last Monday");
+        $weeks = $repository->findOneBy(array(
+            'start_week' => $weekStart
+        ));
+        $days = $weeks->getDays();
+        dump($days); die();
+
+        //Set a Tab for increment week's days
+
+        //Get comments
         $comment = new Comment();
         $formCom = $this->createForm('AppRestoBundle\Form\CommentType', $comment);
         $formCom->handleRequest($request);
@@ -84,7 +39,7 @@ class ClientController extends Controller
         }
 
         return $this->render('AppRestoBundle:Client:client.html.twig', array(
-            'menus' => $menus,
+            'days' => $days,
             'formCom' => $formCom->createView(),
 
         ));
