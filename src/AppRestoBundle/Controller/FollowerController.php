@@ -104,16 +104,15 @@ class FollowerController extends Controller
      * Deletes a follower entity.
      *
      */
-    public function deleteAction(Request $request, Follower $follower)
+    public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($follower);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $forms = $em->getRepository('AppRestoBundle:Comment')
+            ->findOneById($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($follower);
-            $em->flush($follower);
-        }
+            $em->remove($forms);
+            $em->flush($forms);
+
 
         return $this->redirectToRoute('follower_index');
     }

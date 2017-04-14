@@ -16,7 +16,9 @@ class WeekType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('message', TextareaType::class, array(
+        $builder
+            ->add('title')
+            ->add('message', TextareaType::class, array(
             'label' => 'News de la semaine',
             'label_attr' => array(
                 'class' => 'label_message_week'

@@ -7,6 +7,12 @@ namespace AppRestoBundle\Entity;
  */
 class Dessert
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    //GENERATED
     /**
      * @var int
      */
@@ -52,4 +58,3 @@ class Dessert
         return $this->name;
     }
 }
-
