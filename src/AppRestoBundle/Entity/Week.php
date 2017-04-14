@@ -73,49 +73,7 @@ class Week
     /**
      * Get startWeek
      *
-     * @return \DateTime
-     */
-    public function getStartWeek()
-    {
-        return $this->start_week;
-    }
 
-    /**
-     * Set endWeek
-     *
-     * @param \DateTime $endWeek
-     *
-     * @return Week
-     */
-    public function setEndWeek($endWeek)
-    {
-        $this->end_week = $endWeek;
-
-        return $this;
-    }
-
-    /**
-     * Get endWeek
-     *
-     * @return \DateTime
-     */
-    public function getEndWeek()
-    {
-        return $this->end_week;
-    }
-
-    /**
-     * Set message
-     *
-     * @param string $message
-     *
-     * @return Week
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
     }
 
     /**
@@ -184,5 +142,29 @@ class Week
     public function getDay()
     {
         return $this->day;
+    }
+
+    /**
+     * Add day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     *
+     * @return Week
+     */
+    public function addDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->days[] = $day;
+
+        return $this;
+    }
+
+    /**
+     * Remove day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     */
+    public function removeDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->days->removeElement($day);
     }
 }
