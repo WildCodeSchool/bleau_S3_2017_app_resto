@@ -2,6 +2,8 @@
 
 namespace AppRestoBundle\Entity;
 
+
+
 /**
  * Follower
  */
@@ -52,4 +54,3 @@ class Follower
         return $this->mail;
     }
 }
-

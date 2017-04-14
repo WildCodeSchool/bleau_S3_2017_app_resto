@@ -15,6 +15,7 @@ class Comment
     public function __construct()
     {
         $this->date = new \DateTime();
+        return $this->date;
     }
 
 
@@ -138,5 +139,19 @@ class Comment
     public function getValid()
     {
         return $this->valid;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Comment
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
     }
 }

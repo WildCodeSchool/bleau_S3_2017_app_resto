@@ -13,13 +13,17 @@ AppRestoBundle\Entity\Day:
             type: datetime
 
     manyToMany:
-        meal:
-            targetEntity: AppRestoBundle\Entity\Meal
+        entrees:
+            targetEntity: AppRestoBundle\Entity\Entree
+
+        plats:
+            targetEntity: AppRestoBundle\Entity\Plat
+
+        desserts:
+            targetEntity: AppRestoBundle\Entity\Dessert
+
+        garnitures:
+            targetEntity: AppRestoBundle\Entity\Garniture
 
         type:
             targetEntity: AppRestoBundle\Entity\Type
-
-    manyToOne:
-        week:
-            targetEntity: AppRestoBundle\Entity\Week
-            inversedBy: day

@@ -1,0 +1,14 @@
+AppRestoBundle\Entity\Plat:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\PlatRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: text
+    lifecycleCallbacks: {  }

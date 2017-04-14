@@ -8,25 +8,47 @@ namespace AppRestoBundle\Entity;
 class Week
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var \DateTime
      */
-    private $nbWeek;
+    private $start_week;
+
+    /**
+     * @var \DateTime
+     */
+    private $end_week;
 
     /**
      * @var string
      */
     private $message;
 
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $days;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->days = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -34,27 +56,51 @@ class Week
     }
 
     /**
-     * Set nbWeek
+     * Set startWeek
      *
-     * @param integer $nbWeek
+     * @param \DateTime $startWeek
      *
      * @return Week
      */
-    public function setNbWeek($nbWeek)
+    public function setStartWeek($startWeek)
     {
-        $this->nbWeek = $nbWeek;
+        $this->start_week = $startWeek;
 
         return $this;
     }
 
     /**
-     * Get nbWeek
+     * Get startWeek
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getNbWeek()
+    public function getStartWeek()
     {
-        return $this->nbWeek;
+        return $this->start_week;
+    }
+
+    /**
+     * Set endWeek
+     *
+     * @param \DateTime $endWeek
+     *
+     * @return Week
+     */
+    public function setEndWeek($endWeek)
+    {
+        $this->end_week = $endWeek;
+
+        return $this;
+    }
+
+    /**
+     * Get endWeek
+     *
+     * @return \DateTime
+     */
+    public function getEndWeek()
+    {
+        return $this->end_week;
     }
 
     /**
@@ -80,17 +126,29 @@ class Week
     {
         return $this->message;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $day;
 
     /**
-     * Constructor
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Week
      */
-    public function __construct()
+    public function setTitle($title)
     {
-        $this->day = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -102,7 +160,7 @@ class Week
      */
     public function addDay(\AppRestoBundle\Entity\Day $day)
     {
-        $this->day[] = $day;
+        $this->days[] = $day;
 
         return $this;
     }
@@ -114,16 +172,17 @@ class Week
      */
     public function removeDay(\AppRestoBundle\Entity\Day $day)
     {
-        $this->day->removeElement($day);
+        $this->days->removeElement($day);
     }
 
     /**
-     * Get day
+     * Get days
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDay()
+    public function getDays()
     {
-        return $this->day;
+        return $this->days;
     }
 }
+

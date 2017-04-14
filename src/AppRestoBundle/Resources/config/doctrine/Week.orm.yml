@@ -9,14 +9,22 @@ AppRestoBundle\Entity\Week:
             generator:
                 strategy: AUTO
     fields:
-        nbWeek:
+        start_week:
             type: datetime
-            column: nb_week
+
+        end_week:
+            type: datetime
+
         message:
             type: text
             nullable: true
+        title:
+            type: text
+            nullable: true
 
-    oneToMany:
-        day:
+    manyToMany:
+        days:
             targetEntity: AppRestoBundle\Entity\Day
-            mappedBy: week
+            joinTable:
+                name: Week_Day
+            cascade: ["persist"]

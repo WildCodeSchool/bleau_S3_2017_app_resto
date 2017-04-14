@@ -4,101 +4,67 @@
     <a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Aller vers la page cantine">Page cantine</a>
 {% endblock %}
 
-{% block body %}
-
-<div id="admin">
-<div class="container container_custom">
+    {% block body %}
+        <div class="container container_custom admin">
         <nav>
             <div class="nav-wrapper background">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="nav_custom" href="{{ path('meal_index') }}">LISTE DES PLATS</a></li>
+                    <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEW'S LETTER</a></li>
                 </ul>
             </div>
         </nav>
-    <table class="bordered centered">
-        <thead>
-        <tr class="semaine">
-            {% for day in days %}
-                {% if day == '' %}
+            <div class="row row_custom menu_admin_title">
+                <h1 class="col s12 center-align">Menu de la semaine</h1>
+            </div>
+            <div class="row row_custom">
+                <div class="input-field col s4 offset-s4 ">
+                    <select>
+                        <option class="menu_choix_semaine" value="1" selected>Semaine du **/** au **/**</option>
+                        <option class="menu_choix_semaine" value="2">Semaine du **/** au **/**</option>
+                        <option class="menu_choix_semaine" value="3">Semaine du **/** au **/**</option>
+                        <option class="menu_choix_semaine" value="4">Semaine du **/** au **/**</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_custom">
+                <div class="col s12 menu_admin">
+                    <div class="row row_custom days">
+                        <div class="col s2 offset-s1 center-align">Lundi</div>
+                        <div class="col s2 center-align">Mardi</div>
+                        <div class="col s2 center-align">Mercredi</div>
+                        <div class="col s2 center-align">Jeudi</div>
+                        <div class="col s2 center-align">Vendredi</div>
 
-                    <th></th>
-
-                {% else %}
-
-                    <th class="center-align" data-field="name">{{ day }}</th>
-
-                {% endif %}
-            {% endfor %}
-
-
-        </tr>
-        </thead>
-        <tbody>
-        <form class="form_menu" action="#" method="post">
-
-
-            {% for type in types %}
-
-            <tr class="option">
-                <td class="col m2 td_custom">
-                    {{ type }}
-                </td>
-                {% for key, type in 1..6 %}
-
-                    {% if (key == 5)  < days |length %}
-
-                <td>
-                    <div class="input-field col m2 choise">
-                        <select multiple>
-                            <option name="{{ type }} {{ days[key] }}" value="" disabled selected>Faites votre choix</option>
-                            <option name="{{ type }} {{ days[key] }}" value="1">Option 1</option>
-                            <option name="{{ type }} {{ days[key] }}" value="2">Option 2</option>
-                            <option name="{{ type }} {{ days[key] }}" value="3">Option 3</option>
-                        </select>
                     </div>
-                </td>
-
-                    {% else %}
-
-                <td class="element">
-                    <form class="col m1">
-                        <div class="input-field ">
-                            <input id="{{ type }} " type="text" class="validate">
-                            <label class="active" for="{{ type }} ">Ajouter</label>
+                    <div class="row row_custom">
+                        <div class="col s1"></div>
+                        {{ form_start(form) }}
+                        {% for day in form.days %}
+                            <div class="col s2 col_menu_admin">
+                                <ul>
+                                    <li>{{ form_row(day.entrees) }}</li>
+                                    <li>{{ form_row(day.plats) }}</li>
+                                    <li>{{ form_row(day.desserts) }}</li>
+                                    <li>{{ form_row(day.garnitures) }}</li>
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row row_custom center-align">
+                        <div class="btn waves-effect waves-orange btn_custom">
+                            <input type="submit" value="Create" />
                         </div>
-                    </form>
-                </td>
-            </tr>
-            {% endif %}
-           {% endfor %}
-            {% endfor %}
 
-
-
-        </form>
-        </tbody>
-    </table>
-
-    <!-- Validate button -->
-
-    <div class="row row_admin">
-        <div class="col m12 admin">
-            <div class="validate">
-                <a class="waves-effect waves-light btn #ff8a80 red accent-1"><i class="material-icons left">Valider les menus</i></a></div>
+                    </div>
+                    <div class="row row_custom">
+                        <div class="col s10 offset-s1">
+                            {{ form_row(form.title) }}
+                            {{ form_row(form.message) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="container">
-    <form action="" method="">
-        <label for="title">Titre de la new's</label>
-        <input id="title" type="text" name="title" placeholder="Ecrivez ici votre titre de nouvelle.">
-        <label for="content">Contenue de la new's</label>
-        <textarea id="content" name="content" class="materialize-textarea" placeholder="Ecrivez ici le contenue de la nouvelle"></textarea>
-        <div class="row">
-            <a class="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Envoyer les nouvelle sur la newsletter">Envoyer</a>
-        </div>
-    </form>
-</div>
-</div>
 {% endblock %}
 

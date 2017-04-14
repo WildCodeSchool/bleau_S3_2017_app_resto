@@ -1,3 +1,0 @@
-app_resto_meal:
-    resource: "@AppRestoBundle/Resources/config/routing/meal.yml"
-    prefix:   /meal
