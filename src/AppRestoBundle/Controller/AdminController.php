@@ -109,29 +109,23 @@ class AdminController extends Controller
         //$em = $this->getDoctrine()->getManager();
         //$menu = $em->getRepository("AppRestoBundle:Week")->findAll();
 
-        $tab;
-        foreach($this->mailAction() as $follower){
-            foreach($follower as $z){
-                $tab[] = $z->getMail();
-            }
-        }
-
         $message = \Swift_Message::newInstance()
             ->setSubject('Hello Email')
-            ->setFrom('solomon.grundy.51@gmail.com')
-            ->setTo($tab)
+            ->setFrom('solomon.grundy.51@gmail.com');
 
-            ->setBody(
-                $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                    'Emails/registration.html.twig', array(
-                        'week' => $week
-                        )
-                ),
-                'text/html'
-            )
-        ;
-        $this->get('mailer')->send($message);
+        $followers = $this->mailAction();
+        foreach($followers as $follower){
+            $message->setBody(
+                $this->renderView('Emails/registration.html.twig', array(
+                    'week' => $week,
+                    'user' => $follower->getId()
+                )
+            ),
+            'text/html'
+            );
+            $message->setTo($follower->getMail());
+            $this->get('mailer')->send($message);
+        }
 
         return $this->redirectToRoute('app_resto_admin');
     }
@@ -142,9 +136,7 @@ class AdminController extends Controller
 
         $followers = $em->getRepository('AppRestoBundle:Follower')->findAll();
 
-        return array(
-            'followers' => $followers,
-        );
+        return $followers;
     }
 }
 
