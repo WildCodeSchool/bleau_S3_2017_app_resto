@@ -6,9 +6,6 @@ app_resto_follower:
     resource: "@AppRestoBundle/Resources/config/routing/follower.yml"
     prefix:   /follower
 
-app_resto_admin_routing:
-    resource: "@AppRestoBundle/Resources/config/routing/admin/admin_routing.yml"
-    prefix:   /admin
 
 app_resto_homepage:
     path:     /
@@ -32,6 +29,14 @@ app_resto_com_archiv:
     defaults: { _controller: AppRestoBundle:Admin:archiv}
     methods: GET
 
+app_resto_send:
+    path:     /send
+    defaults: { _controller: AppRestoBundle:Admin:send}
+
+app_resto_mail:
+    path:     /mail
+    defaults: { _controller: AppRestoBundle:Admin:mail}
+
 app_resto_week:
     resource: "@AppRestoBundle/Resources/config/routing/week.yml"
     prefix:   /week
@@ -39,5 +44,10 @@ app_resto_week:
 app_resto_day:
     resource: "@AppRestoBundle/Resources/config/routing/day.yml"
     prefix:   /day
+
+
+app_resto_add_mail:
+        path:     /add_mail
+        defaults: { _controller: AppRestoBundle:Follower:add}
 
 

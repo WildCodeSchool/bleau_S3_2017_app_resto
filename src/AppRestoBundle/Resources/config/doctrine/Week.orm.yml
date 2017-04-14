@@ -18,6 +18,9 @@ AppRestoBundle\Entity\Week:
         message:
             type: text
             nullable: true
+        title:
+            type: text
+            nullable: true
 
     manyToMany:
         days:

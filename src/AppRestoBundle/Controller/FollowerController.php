@@ -5,6 +5,8 @@ namespace AppRestoBundle\Controller;
 use AppRestoBundle\Entity\Follower;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 /**
  * Follower controller.
@@ -12,6 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FollowerController extends Controller
 {
+    public function addAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $meal = $em->getRepository('AppRestoBundle:Meal')->findAll();
+        return $this->render('@AppResto/Client/follower.html.twig', array(
+            'nbmenus' => 9
+        ));
+    }
+
+
     /**
      * Lists all follower entities.
      *
@@ -92,16 +104,15 @@ class FollowerController extends Controller
      * Deletes a follower entity.
      *
      */
-    public function deleteAction(Request $request, Follower $follower)
+    public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($follower);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $forms = $em->getRepository('AppRestoBundle:Comment')
+            ->findOneById($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($follower);
-            $em->flush($follower);
-        }
+            $em->remove($forms);
+            $em->flush($forms);
+
 
         return $this->redirectToRoute('follower_index');
     }

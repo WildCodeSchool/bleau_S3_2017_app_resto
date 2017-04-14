@@ -5,6 +5,7 @@ namespace AppRestoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppRestoBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
+use AppRestoBundle\Entity\Follower;
 
 
 class ClientController extends Controller
@@ -38,11 +39,27 @@ class ClientController extends Controller
             return $this->redirectToRoute('app_resto_homepage');
         }
 
+        $follower = new Follower();
+        $form = $this->createForm('AppRestoBundle\Form\FollowerType' , $follower);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($follower);
+            $em->flush($follower);
+
+            return $this->redirectToRoute('app_resto_homepage');
+        }
+
         return $this->render('AppRestoBundle:Client:client.html.twig', array(
             'days' => $days,
             'formCom' => $formCom->createView(),
+            'form' => $form->createView()
 
         ));
+
     }
+
 }
 

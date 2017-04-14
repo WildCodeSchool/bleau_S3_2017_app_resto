@@ -7,6 +7,12 @@ namespace AppRestoBundle\Entity;
  */
 class Plat
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    //GENERATED
     /**
      * @var int
      */
@@ -52,4 +58,3 @@ class Plat
         return $this->name;
     }
 }
-

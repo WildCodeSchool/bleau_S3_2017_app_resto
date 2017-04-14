@@ -8,9 +8,19 @@ namespace AppRestoBundle\Entity;
 class Week
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
+
+    /**
+     * @var \DateTime
+     */
+    private $start_week;
+
+    /**
+     * @var \DateTime
+     */
+    private $end_week;
 
     /**
      * @var string
@@ -18,38 +28,9 @@ class Week
     private $message;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @var string
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set message
-     *
-     * @param string $message
-     *
-     * @return Week
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
+    private $title;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -65,40 +46,14 @@ class Week
     }
 
     /**
-     * Add day
+     * Get id
      *
-     * @param \AppRestoBundle\Entity\Day $days
-     *
-     * @return Week
+     * @return integer
      */
-    public function addDays(\AppRestoBundle\Entity\Day $days)
+    public function getId()
     {
-        $this->days[] = $days;
-
-        return $this;
+        return $this->id;
     }
-
-
-
-    /**
-     * Get day
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDays()
-    {
-        return $this->days;
-    }
-    /**
-     * @var \DateTime
-     */
-    private $start_week;
-
-    /**
-     * @var \DateTime
-     */
-    private $end_week;
-
 
     /**
      * Set startWeek
@@ -149,6 +104,54 @@ class Week
     }
 
     /**
+     * Set message
+     *
+     * @param string $message
+     *
+     * @return Week
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Week
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Add day
      *
      * @param \AppRestoBundle\Entity\Day $day
@@ -171,4 +174,15 @@ class Week
     {
         $this->days->removeElement($day);
     }
+
+    /**
+     * Get days
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDays()
+    {
+        return $this->days;
+    }
 }
+

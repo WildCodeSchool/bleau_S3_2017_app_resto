@@ -100,10 +100,12 @@
                                     <span class="pseudo">{{ comment.author }}</span>
                                     <span class="date">{{ comment.date.date|date('d/m/Y') }}</span><br>
                                     <span class="content">{{ comment.content }}</span><br>
-                                    <p>
-                                        <a class="btn waves-effect waves-orange btn_custom" href="{{ path('app_resto_com_valid', { 'id': comment.id }) }}">Valider</a>
-                                        <a class="btn waves-effect waves-orange btn_custom" href="{{ path('app_resto_com_archiv', { 'id': comment.id }) }}">Archiver</a>
-                                    </p>
+                                    <div class="btn waves-effect waves-orange btn_custom">
+                                        <a href="{{ path('app_resto_com_valid', { 'id': comment.id }) }}">Valider</a>
+                                    </div>
+                                    <div class="btn waves-effect waves-orange btn_custom">
+                                        <a href="{{ path('app_resto_com_archiv', { 'id': comment.id }) }}">Archiver</a>
+                                    </div>
                                 </div>
                             {% endfor %}
                         {% endblock %}

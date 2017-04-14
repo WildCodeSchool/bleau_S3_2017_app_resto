@@ -6,6 +6,13 @@
 
     {% block body %}
         <div class="container container_custom admin">
+        <nav>
+            <div class="nav-wrapper background">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEW'S LETTER</a></li>
+                </ul>
+            </div>
+        </nav>
             <div class="row row_custom menu_admin_title">
                 <h1 class="col s12 center-align">Menu de la semaine</h1>
             </div>
@@ -27,6 +34,7 @@
                         <div class="col s2 center-align">Mercredi</div>
                         <div class="col s2 center-align">Jeudi</div>
                         <div class="col s2 center-align">Vendredi</div>
+
                     </div>
                     <div class="row row_custom">
                         <div class="col s1"></div>
@@ -43,18 +51,20 @@
                         {% endfor %}
                     </div>
                     <div class="row row_custom center-align">
-                        <input class="btn waves-effect waves-orange btn_custom " type="submit" value="Create" />
+                        <div class="btn waves-effect waves-orange btn_custom">
+                            <input type="submit" value="Create" />
+                        </div>
+
                     </div>
                     <div class="row row_custom">
                         <div class="col s10 offset-s1">
+                            {{ form_row(form.title) }}
                             {{ form_row(form.message) }}
                         </div>
                     </div>
                     {{ form_end(form) }}
                 </div>
             </div>
-
         </div>
-
 {% endblock %}
 
