@@ -51,15 +51,6 @@ class Day
     {
         return $this->date;
     }
-    /**
-     * @var \AppRestoBundle\Entity\Week
-     */
-    private $week;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $meal;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -71,66 +62,11 @@ class Day
      */
     public function __construct()
     {
-        $this->meal = new \Doctrine\Common\Collections\ArrayCollection();
         $this->type = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set week
-     *
-     * @param \AppRestoBundle\Entity\Week $week
-     *
-     * @return Day
-     */
-    public function setWeek(\AppRestoBundle\Entity\Week $week = null)
-    {
-        $this->week = $week;
-
-        return $this;
-    }
-
-    /**
-     * Get week
-     *
-     * @return \AppRestoBundle\Entity\Week
-     */
-    public function getWeek()
-    {
-        return $this->week;
-    }
-
-    /**
-     * Add meal
-     *
-     * @param \AppRestoBundle\Entity\Meal $meal
-     *
-     * @return Day
-     */
-    public function addMeal(\AppRestoBundle\Entity\Meal $meal)
-    {
-        $this->meal[] = $meal;
-
-        return $this;
-    }
-
-    /**
-     * Remove meal
-     *
-     * @param \AppRestoBundle\Entity\Meal $meal
-     */
-    public function removeMeal(\AppRestoBundle\Entity\Meal $meal)
-    {
-        $this->meal->removeElement($meal);
-    }
-
-    /**
-     * Get meal
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMeal()
-    {
-        return $this->meal;
+        $this->entrees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plats = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->desserts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->garnitures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -165,5 +101,161 @@ class Day
     public function getType()
     {
         return $this->type;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $entrees;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $plats;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $desserts;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $garnitures;
+
+
+    /**
+     * Add entree
+     *
+     * @param \AppRestoBundle\Entity\Entree $entree
+     *
+     * @return Day
+     */
+    public function addEntree(\AppRestoBundle\Entity\Entree $entree)
+    {
+        $this->entrees[] = $entree;
+
+        return $this;
+    }
+
+    /**
+     * Remove entree
+     *
+     * @param \AppRestoBundle\Entity\Entree $entree
+     */
+    public function removeEntree(\AppRestoBundle\Entity\Entree $entree)
+    {
+        $this->entrees->removeElement($entree);
+    }
+
+    /**
+     * Get entrees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEntrees()
+    {
+        return $this->entrees;
+    }
+
+    /**
+     * Add plat
+     *
+     * @param \AppRestoBundle\Entity\Plat $plat
+     *
+     * @return Day
+     */
+    public function addPlat(\AppRestoBundle\Entity\Plat $plat)
+    {
+        $this->plats[] = $plat;
+
+        return $this;
+    }
+
+    /**
+     * Remove plat
+     *
+     * @param \AppRestoBundle\Entity\Plat $plat
+     */
+    public function removePlat(\AppRestoBundle\Entity\Plat $plat)
+    {
+        $this->plats->removeElement($plat);
+    }
+
+    /**
+     * Get plats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlats()
+    {
+        return $this->plats;
+    }
+
+    /**
+     * Add dessert
+     *
+     * @param \AppRestoBundle\Entity\Dessert $dessert
+     *
+     * @return Day
+     */
+    public function addDessert(\AppRestoBundle\Entity\Dessert $dessert)
+    {
+        $this->desserts[] = $dessert;
+
+        return $this;
+    }
+
+    /**
+     * Remove dessert
+     *
+     * @param \AppRestoBundle\Entity\Dessert $dessert
+     */
+    public function removeDessert(\AppRestoBundle\Entity\Dessert $dessert)
+    {
+        $this->desserts->removeElement($dessert);
+    }
+
+    /**
+     * Get desserts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesserts()
+    {
+        return $this->desserts;
+    }
+
+    /**
+     * Add garniture
+     *
+     * @param \AppRestoBundle\Entity\Garniture $garniture
+     *
+     * @return Day
+     */
+    public function addGarniture(\AppRestoBundle\Entity\Garniture $garniture)
+    {
+        $this->garnitures[] = $garniture;
+
+        return $this;
+    }
+
+    /**
+     * Remove garniture
+     *
+     * @param \AppRestoBundle\Entity\Garniture $garniture
+     */
+    public function removeGarniture(\AppRestoBundle\Entity\Garniture $garniture)
+    {
+        $this->garnitures->removeElement($garniture);
+    }
+
+    /**
+     * Get garnitures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGarnitures()
+    {
+        return $this->garnitures;
     }
 }

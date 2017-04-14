@@ -3,10 +3,16 @@
 namespace AppRestoBundle\Entity;
 
 /**
- * Meal
+ * Plat
  */
-class Meal
+class Plat
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    //GENERATED
     /**
      * @var int
      */
@@ -33,7 +39,7 @@ class Meal
      *
      * @param string $name
      *
-     * @return Meal
+     * @return Plat
      */
     public function setName($name)
     {
@@ -50,34 +56,5 @@ class Meal
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * @var \AppRestoBundle\Entity\Type
-     */
-    private $type;
-
-
-    /**
-     * Set type
-     *
-     * @param \AppRestoBundle\Entity\Type $type
-     *
-     * @return Meal
-     */
-    public function setType(\AppRestoBundle\Entity\Type $type = null)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return \AppRestoBundle\Entity\Type
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 }

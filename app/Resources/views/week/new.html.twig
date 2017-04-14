@@ -3,14 +3,38 @@
 {% block body %}
     <h1>Week creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="container container_custom">
+        <div class="row row_custom">
+            <div class="col s12 menu_admin">
+                <div class="row row_custom days">
+                    <div class="col s2 offset-s1 center-align">Lundi</div>
+                    <div class="col s2 center-align">Mardi</div>
+                    <div class="col s2 center-align">Mercredi</div>
+                    <div class="col s2 center-align">Jeudi</div>
+                    <div class="col s2 center-align">Vendredi</div>
+                </div>
+                <div class="row row_custom">
+                    <div class="col s1"></div>
+                    {{ form_start(form) }}
+                    {% for day in form.days %}
+                    <div class="col s2 col_menu_admin">
+                        <ul>
+                            <li>{{ form_row(day.entrees) }}</li>
+                            <li>{{ form_row(day.plats) }}</li>
+                            <li>{{ form_row(day.desserts) }}</li>
+                            <li>{{ form_row(day.garnitures) }}</li>
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row row_custom center-align">
+                    <input class="btn waves-effect waves-orange btn_custom " type="submit" value="Create" />
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('week_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    </div>
+
+
 {% endblock %}

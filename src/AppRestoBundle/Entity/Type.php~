@@ -7,6 +7,13 @@ namespace AppRestoBundle\Entity;
  */
 class Type
 {
+
+    public function __toString()
+    {
+        return $this->type;
+    }
+
+    //Genrated by crud
     /**
      * @var int
      */
@@ -52,4 +59,3 @@ class Type
         return $this->type;
     }
 }
-

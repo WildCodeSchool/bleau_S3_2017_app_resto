@@ -3,17 +3,17 @@
 namespace AppRestoBundle\Entity;
 
 /**
- * Type
+ * Garniture
  */
-class Type
+class Garniture
 {
 
     public function __toString()
     {
-        return $this->type;
+        return $this->name;
     }
 
-    //Genrated by crud
+    //GENERATED
     /**
      * @var int
      */
@@ -22,7 +22,7 @@ class Type
     /**
      * @var string
      */
-    private $type;
+    private $name;
 
 
     /**
@@ -36,26 +36,26 @@ class Type
     }
 
     /**
-     * Set type
+     * Set name
      *
-     * @param string $type
+     * @param string $name
      *
-     * @return Type
+     * @return Garniture
      */
-    public function setType($type)
+    public function setName($name)
     {
-        $this->type = $type;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get name
      *
      * @return string
      */
-    public function getType()
+    public function getName()
     {
-        return $this->type;
+        return $this->name;
     }
 }

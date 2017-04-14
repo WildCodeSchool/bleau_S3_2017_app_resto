@@ -1,7 +1,7 @@
-AppRestoBundle\Entity\Meal:
+AppRestoBundle\Entity\Dessert:
     type: entity
     table: null
-    repositoryClass: AppRestoBundle\Repository\MealRepository
+    repositoryClass: AppRestoBundle\Repository\DessertRepository
     id:
         id:
             type: integer
@@ -12,7 +12,4 @@ AppRestoBundle\Entity\Meal:
         name:
             type: string
             length: 255
-
-    manyToOne:
-        type:
-            targetEntity: AppRestoBundle\Entity\Type
+    lifecycleCallbacks: {  }
