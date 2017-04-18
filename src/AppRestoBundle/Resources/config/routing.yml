@@ -11,6 +11,10 @@ app_resto_admin:
     path:     /admin
     defaults: { _controller: AppRestoBundle:Admin:admin}
 
+app_resto_load_week_ajax:
+    path:     /selectedweek
+    defaults: { _controller: AppRestoBundle:Admin:loadWeekAjax}
+
 app_resto_admin_counter:
     path:     /admin/counter
     defaults: { _controller: AppRestoBundle:Admin:counter}

@@ -6,67 +6,54 @@
 
     {% block body %}
         <div class="container container_custom admin">
-        <nav>
-            <div class="nav-wrapper background">
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEW'S LETTER</a></li>
-                </ul>
-            </div>
-        </nav>
+            <nav>
+                <div class="nav-wrapper background">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEW'S LETTER</a></li>
+                    </ul>
+                </div>
+            </nav>
             <div class="row row_custom menu_admin_title">
                 <h1 class="col s12 center-align">Menu de la semaine</h1>
             </div>
             <div class="row row_custom">
                 <div class="input-field col s4 offset-s4 ">
-                    <select>
-                        <option class="menu_choix_semaine" value="1" selected>Semaine du **/** au **/**</option>
-                        <option class="menu_choix_semaine" value="2">Semaine du **/** au **/**</option>
-                        <option class="menu_choix_semaine" value="3">Semaine du **/** au **/**</option>
-                        <option class="menu_choix_semaine" value="4">Semaine du **/** au **/**</option>
+                    <select id="choiceWeek">
+                        {% for week in weeks %}
+                            {% if loop.first %}
+                                <option class="menu_choix_semaine" value="{{ week.startWeek|date('Y/m/d') }}" selected>Semaine du {{ week.startWeek|date('d/m/Y') }} au {{ week.endWeek|date('d/m/Y') }}</option>
+                            {% else %}
+                                <option class="menu_choix_semaine" value="{{ week.startWeek|date('Y/m/d') }}">Semaine du {{ week.startWeek|date('d/m/Y') }} au {{ week.endWeek|date('d/m/Y') }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
             </div>
-            <div class="row row_custom">
-                <div class="col s12 menu_admin">
-                    <div class="row row_custom days">
-                        <div class="col s2 offset-s1 center-align">Lundi</div>
-                        <div class="col s2 center-align">Mardi</div>
-                        <div class="col s2 center-align">Mercredi</div>
-                        <div class="col s2 center-align">Jeudi</div>
-                        <div class="col s2 center-align">Vendredi</div>
-
-                    </div>
-                    <div class="row row_custom">
-                        <div class="col s1"></div>
-                        {{ form_start(form) }}
-                        {% for day in form.days %}
-                            <div class="col s2 col_menu_admin">
-                                <ul>
-                                    <li>{{ form_row(day.entrees) }}</li>
-                                    <li>{{ form_row(day.plats) }}</li>
-                                    <li>{{ form_row(day.desserts) }}</li>
-                                    <li>{{ form_row(day.garnitures) }}</li>
-                                </ul>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="row row_custom center-align">
-                        <div>
-                            <input type="hidden" value="2017/12/09" name="currentDate">
-                            <button class="btn waves-effect waves-orange btn_custom" type="submit">ENVOYER
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="row row_custom">
-                        <div class="col s10 offset-s1">
-                            {{ form_row(form.title) }}
-                            {{ form_row(form.message) }}
-                        </div>
-                    </div>
-                    {{ form_end(form) }}
-                </div>
+            <div id="result" class="row row_custom">
+                {% include('@AppResto/Admin/week_menu.html.twig') %}
             </div>
         </div>
 {% endblock %}
 
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $("#choiceWeek").change(function() {
+            var selectedWeek = $("select#choiceWeek option:selected").val();
+            console.log(selectedWeek);
+            $.ajax({
+                type: "POST",
+                data : { selectedWeek: selectedWeek },
+                dataType: 'json',
+                url: '{{ path('app_resto_load_week_ajax') }}',
+                success: function(data)
+                {
+                    $("#result").html(data);
+                }
+            });
+        });
+
+    </script>
+
+{% endblock %}
