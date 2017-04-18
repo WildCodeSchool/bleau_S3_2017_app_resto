@@ -22,19 +22,19 @@ class AdminController extends Controller
             $week->getDays()->add($lundi);
 
             $mardi = new Day();
-            $mardi->setDate($weekStart)->modify('+1 day');
+            $mardi->setDate($weekStart);
             $week->getDays()->add($mardi);
 
             $mercredi = new Day();
-            $mercredi->setDate($weekStart)->getDate()->modify('+2 day');
+            $mercredi->setDate($weekStart)->getDate();
             $week->getDays()->add($mercredi);
 
             $jeudi = new Day();
-            $jeudi->setDate($weekStart)->getDate()->modify('+3 day');
+            $jeudi->setDate($weekStart)->getDate();
             $week->getDays()->add($jeudi);
 
             $vendredi = new Day();
-            $vendredi->setDate($weekStart)->getDate()->modify('+4 day');
+            $vendredi->setDate($weekStart)->getDate();
             $week->getDays()->add($vendredi);
         }
 
