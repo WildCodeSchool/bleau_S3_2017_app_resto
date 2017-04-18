@@ -7,6 +7,22 @@ namespace AppRestoBundle\Entity;
  */
 class Day
 {
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->entrees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plats = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->desserts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->garnitures = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->resas = new Resa();
+    }
+
+    // GENERATED CODE
+
     /**
      * @var int
      */
@@ -56,17 +72,6 @@ class Day
      * @var \Doctrine\Common\Collections\Collection
      */
     private $type;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->entrees = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->plats = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->desserts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->garnitures = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * @var \Doctrine\Common\Collections\Collection

@@ -28,3 +28,4 @@ AppRestoBundle\Entity\Day:
     oneToOne:
         resas:
             targetEntity: AppRestoBundle\Entity\Resa
+            cascade: ['persist']

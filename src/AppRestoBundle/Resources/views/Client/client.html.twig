@@ -33,36 +33,48 @@
 
             <div class="row row_custom menu_semaine">
                 <div class="col s12">
-                    <h2>Semaine du **/** au  **/**</h2>
+                    <h2>Semaine du {{ week.startWeek|date('d/m/Y') }} au  {{ week.endWeek|date('d/m/Y') }}</h2>
                 </div>
             </div>
 
             <div class="row row_custom">
 
                 <div class="col s10 offset-s1">
-                    <div class="row row_custom" id="menu">
-                        {% for key, day in days %}
-                        <div class="col m2 s12 {% if key == 0 %}offset-m1{% endif %} dayli">
-                            <div class="row row_custom">
-                                <div class="col s12 dayli_col">
-                                    <a href="#{{ key }}">
-                                        <h3>{{ daysWeeks[key] }}</h3>
-                                        <ul>
-                                            <li>Entrées</li>
-                                            <li class="plat">
-                                            {% for plat in day.plats %}
-                                                {{ plat }}<br>
-                                            {% endfor %}
-                                            </li>
-                                            <li>Desserts</li>
+                    <form action="{{ path('app_resto_add_resa') }}" method="POST">
+                        <div class="row row_custom" id="menu">
+                            {% for key, day in days %}
+                            <div class="col m2 s12 {% if key == 0 %}offset-m1{% endif %} dayli">
+                                <div class="row row_custom">
+                                    <div class="col s12 dayli_col">
+                                        <a href="#{{ key }}">
+                                            <h3>{{ daysWeeks[key] }}</h3>
+                                            <ul>
+                                                <li>Entrées</li>
+                                                <li class="plat">
+                                                {% for plat in day.plats %}
+                                                    {{ plat }}<br>
+                                                {% endfor %}
+                                                </li>
+                                                <li>Desserts</li>
 
-                                        </ul>
-                                    </a>
+                                            </ul>
+                                        </a>
+                                    </div>
                                 </div>
+                                <p>
+                                    <input name="{{ daysWeeks[key] }}" type="radio" id="snack{{ key }}" value="{{ constant('AppRestoBundle\\Entity\\Resa::SNACK') }}" />
+                                    <label for="snack{{ key }}">Snack</label>
+                                    <input name="{{ daysWeeks[key] }}" type="radio" id="menu{{ key }}" value="{{ constant('AppRestoBundle\\Entity\\Resa::NORMAL') }}" />
+                                    <label for="menu{{ key }}">Menu</label>
+                                </p>
+
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
+                        <div class="row row_custom center">
+                            <button class="waves-effect waves-light btn btn_custom" type="submit">Reserver</button>
+                        </div>
+                    </form>
                 </div>
 
                 {% for key, day in days %}
@@ -104,6 +116,7 @@
                     </div>
                 </div>
                 {% endfor %}
+
             </div>
         <div class="row row_custom">
             <div class="col s8 offset-s2 snack">

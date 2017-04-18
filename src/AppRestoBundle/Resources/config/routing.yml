@@ -37,4 +37,9 @@ app_resto_add_mail:
     path:     /add_mail
     defaults: { _controller: AppRestoBundle:Follower:add}
 
+app_resto_add_resa:
+    path:     /add_resa
+    defaults: { _controller: AppRestoBundle:Client:resa}
+    methods: ['GET', 'POST']
+
 

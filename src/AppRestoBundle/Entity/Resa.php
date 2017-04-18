@@ -7,29 +7,34 @@ namespace AppRestoBundle\Entity;
  */
 class Resa
 {
+
+    const SNACK = 'snack';
+    const NORMAL = 'normal';
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->normal = 0;
+        $this->snack = 0;
+    }
+
     /**
      * Increment Snack
      *
      * @return Resa
      */
-    public function incrementSnack()
+    public function increment($type)
     {
-        $this->snack += 1;
-
-        return $this;
+        if ($type == self::SNACK){
+            $this->snack += 1;
+        }
+        elseif ($type == self::NORMAL){
+            $this->normal += 1;
+        }
     }
 
-    /**
-     * Increment Normal
-     *
-     * @return Resa
-     */
-    public function incrementNormal()
-    {
-        $this->normal += 1;
-
-        return $this;
-    }
 
     //GENERATED CODE
 

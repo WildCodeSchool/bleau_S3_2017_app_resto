@@ -10,32 +10,21 @@ class AdminController extends Controller
 {
     public function adminAction(Request $request)
     {
+        $weekStart = $request->get('currentDate');
+
         $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Week');
-        $weekStart = new \DateTime("last Monday");
         $week = $repository->findOneBy(array(
-            'start_week' => $weekStart
+            'start_week' => new \DateTime($weekStart)
         ));
 
         if($week->getDays()->isEmpty()) {
-            $lundi = new Day();
-            $lundi->setDate($weekStart);
-            $week->getDays()->add($lundi);
-
-            $mardi = new Day();
-            $mardi->setDate($weekStart)->modify('+1 day');
-            $week->getDays()->add($mardi);
-
-            $mercredi = new Day();
-            $mercredi->setDate($weekStart)->getDate()->modify('+2 day');
-            $week->getDays()->add($mercredi);
-
-            $jeudi = new Day();
-            $jeudi->setDate($weekStart)->getDate()->modify('+3 day');
-            $week->getDays()->add($jeudi);
-
-            $vendredi = new Day();
-            $vendredi->setDate($weekStart)->getDate()->modify('+4 day');
-            $week->getDays()->add($vendredi);
+            for ($i=0; $i < 5; $i++){
+                $day = new Day();
+                $date = new \DateTime($weekStart);
+                $date = $date->modify('+' . $i . 'day');
+                $day->setDate($date);
+                $week->getDays()->add($day);
+            }
         }
 
         $form = $this->createForm('AppRestoBundle\Form\WeekType', $week);
