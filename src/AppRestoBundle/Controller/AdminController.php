@@ -22,7 +22,7 @@ class AdminController extends Controller
             $week->getDays()->add($lundi);
 
             $mardi = new Day();
-            $mardi->setDate($weekStart)->modify('+1 day');
+            $mardi->setDate($weekStart)->getDate()->modify('+1 day');
             $week->getDays()->add($mardi);
 
             $mercredi = new Day();
@@ -137,6 +137,17 @@ class AdminController extends Controller
 
         return $followers;
     }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $follower = $em->getRepository('AppRestoBundle:Follower')->findOneById($id);
+        $em->remove($follower);
+        $em->flush($follower);
+
+        return $this->redirectToRoute('app_resto_homepage');
+    }
+
 }
 
 
