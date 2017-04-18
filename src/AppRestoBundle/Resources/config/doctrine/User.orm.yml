@@ -1,6 +1,6 @@
 AppRestoBundle\Entity\User:
     type: entity
-    table: null
+    table: fos_user
     repositoryClass: AppRestoBundle\Repository\UserRepository
     id:
         id:

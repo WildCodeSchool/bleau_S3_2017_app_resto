@@ -3,7 +3,7 @@
 {% block header_btn %}
 
     <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn" href="#modal1">News - letter</a>
+    <a class="waves-effect waves-light btn btn_custom" href="#modal1">News - letter</a>
 
 
 
@@ -11,21 +11,17 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="row">
-                <div class="input-field col s12">
+                <div class="col s12">
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" value="Soumettre"></input>
+                        <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" value="Soumettre">
                         {{ form_end(form) }}
 
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-
-        </div>
     </div>
 
-<a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Voir les profils des employés" href="{{ path('app_resto_admin') }}">A Propos</a>
 {% endblock %}
 
 {% block body %}
@@ -34,7 +30,6 @@
         <div class="parallax-container parallax-main">
             <div class="parallax"><img src="http://www.newrest.eu/wp-content/uploads/2015/11/Newrest-Catering-Chef.jpg"></div>
         </div>
-        <form class="form_resa" action="index.php" method="post">
 
             <div class="row row_custom menu_semaine">
                 <div class="col s12">
@@ -46,61 +41,70 @@
 
                 <div class="col s10 offset-s1">
                     <div class="row row_custom" id="menu">
-                        {% for menu in menus %}
-                        <div class="col m2 s12 {% if menu.day == 'Lundi' %}offset-m1{% endif %} dayli">
+                        {% for key, day in days %}
+                        <div class="col m2 s12 {% if key == 0 %}offset-m1{% endif %} dayli">
                             <div class="row row_custom">
                                 <div class="col s12 dayli_col">
-                                    <a href="#{{ menu.day }}">
-                                        <h3>{{ menu.day }}</h3>
+                                    <a href="#{{ key }}">
+                                        <h3>{{ daysWeeks[key] }}</h3>
                                         <ul>
                                             <li>Entrées</li>
-                                            <li>{{ menu.p1 }}</li>
-                                            <li>{{ menu.p2 }}</li>
+                                            <li class="plat">
+                                            {% for plat in day.plats %}
+                                                {{ plat }}<br>
+                                            {% endfor %}
+                                            </li>
                                             <li>Desserts</li>
+
                                         </ul>
                                     </a>
                                 </div>
                             </div>
-                            <div class="row row_custom">
-                                <p class="col m12 s6 center-align">
-                                    <input name="resa_{{ menu.day }}" type="radio" id="normal_{{ menu.day }}" />
-                                    <label for="normal_{{ menu.day }}">Menu normal</label>
-                                </p>
-                                <p class="col m12 s6 center-align">
-                                    <input name="resa_{{ menu.day }}" type="radio" id="snack_{{ menu.day }}" />
-                                    <label for="snack_{{ menu.day }}">Menu snack</label>
-                                </p>
-                            </div>
                         </div>
-                       {% endfor %}
-                        <div class="row row_custom">
-                            <button class="btn waves-effect waves-orange btn_custom col m2 s4 offset-m5 offset-s4 align-center" type="submit" name="action">Envoyez
-                                <i class="material-icons right"></i>
-                            </button>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
 
-            </div>
+                {% for key, day in days %}
+                <div id="{{ key }}" class="modal">
+                    <div class="modal-content menu_modal dayli">
+                        <h4>Au menu le {{ daysWeeks[key] }}</h4>
+                        <ul>
+                            <li class="type_meal_modal">Entrées</li>
+                            <li>
+                                {% for k, entree in day.entrees %}
+                                    {% if k == 0 %}
+                                        {{ entree }}
+                                    {% else %}
+                                        {{ ', ' ~ entree }}
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                            <li class="type_meal_modal">Plats</li>
+                            <li>
+                                {% for plat in day.plats %}
+                                    {{ plat }}<br>
+                                {% endfor %}
+                            </li>
 
-        </form>
-        {% for menu in menus %}
-        <div id="{{ menu.day }}" class="modal">
-            <div class="modal-content">
-                <div class="row row_custom col s10 offset-s1 menu_modal">
-                    <h4 class="center-align">Au menu le {{ menu.day }}</h4>
-                    <ul class="center-align">
-                        <li><span class="type_meal_modal">Entrées</span><br>{{ menu.e1 }}, {{ menu.e2 }}, {{ menu.e3 }}</li>
-                        <li><span class="type_meal_modal">Plats</span><br>{{ menu.p1 }}<br>{{ menu.p2 }}</li>
-                        <li><span class="type_meal_modal">Desserts</span><br>{{ menu.d1 }}, {{ menu.d2 }}, {{ menu.d3 }}</li>
-                    </ul>
+                            <li class="type_meal_modal">Desserts</li>
+                            <li>
+                                {% for k, dessert in day.desserts %}
+                                    {% if k == 0 %}
+                                    {{ dessert }}
+                                    {% else %}
+                                    {{ ', ' ~ dessert }}
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close btn-flat btn_custom">Fermer</a>
-            </div>
-        </div>
-        {% endfor %}
         <div class="row row_custom">
             <div class="col s8 offset-s2 snack">
                 <h2>Menu snack</h2>
@@ -128,8 +132,9 @@
                 {% block addCom %}
                     {{ form_start(formCom) }}
                     {{ form_widget(formCom) }}
-                <div class="btn waves-effect waves-orange btn_custom col m4 s8 offset-m4 offset-s2 align-center">
-                    <input type="submit" value="Create"/>
+                <div class="col m4 s8 offset-m4 offset-s2 align-center">
+                    <button class="btn waves-effect waves-orange btn_custom " type="submit">ENVOYER
+                    </button>
                 </div>
                     {{ form_end(formCom) }}
                 {% endblock %}
