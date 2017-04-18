@@ -1,0 +1,18 @@
+AppRestoBundle\Entity\Resa:
+    type: entity
+    table: null
+    repositoryClass: AppRestoBundle\Repository\ResaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        snack:
+            type: integer
+            nullable: true
+        normal:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

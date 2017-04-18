@@ -1,0 +1,109 @@
+<?php
+
+namespace AppRestoBundle\Entity;
+
+/**
+ * Resa
+ */
+class Resa
+{
+    /**
+     * Increment Snack
+     *
+     * @return Resa
+     */
+    public function incrementSnack()
+    {
+        $this->snack += 1;
+
+        return $this;
+    }
+
+    /**
+     * Increment Normal
+     *
+     * @return Resa
+     */
+    public function incrementNormal()
+    {
+        $this->normal += 1;
+
+        return $this;
+    }
+
+    //GENERATED CODE
+
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var int
+     */
+    private $snack;
+
+    /**
+     * @var int
+     */
+    private $normal;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set snack
+     *
+     * @param integer $snack
+     *
+     * @return Resa
+     */
+    public function setSnack($snack)
+    {
+        $this->snack = $snack;
+
+        return $this;
+    }
+
+    /**
+     * Get snack
+     *
+     * @return int
+     */
+    public function getSnack()
+    {
+        return $this->snack;
+    }
+
+    /**
+     * Set normal
+     *
+     * @param integer $normal
+     *
+     * @return Resa
+     */
+    public function setNormal($normal)
+    {
+        $this->normal = $normal;
+
+        return $this;
+    }
+
+    /**
+     * Get normal
+     *
+     * @return int
+     */
+    public function getNormal()
+    {
+        return $this->normal;
+    }
+}

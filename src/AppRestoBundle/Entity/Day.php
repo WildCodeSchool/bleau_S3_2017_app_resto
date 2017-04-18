@@ -62,46 +62,12 @@ class Day
      */
     public function __construct()
     {
-        $this->type = new \Doctrine\Common\Collections\ArrayCollection();
         $this->entrees = new \Doctrine\Common\Collections\ArrayCollection();
         $this->plats = new \Doctrine\Common\Collections\ArrayCollection();
         $this->desserts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->garnitures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add type
-     *
-     * @param \AppRestoBundle\Entity\Type $type
-     *
-     * @return Day
-     */
-    public function addType(\AppRestoBundle\Entity\Type $type)
-    {
-        $this->type[] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Remove type
-     *
-     * @param \AppRestoBundle\Entity\Type $type
-     */
-    public function removeType(\AppRestoBundle\Entity\Type $type)
-    {
-        $this->type->removeElement($type);
-    }
-
-    /**
-     * Get type
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -257,5 +223,34 @@ class Day
     public function getGarnitures()
     {
         return $this->garnitures;
+    }
+    /**
+     * @var \AppRestoBundle\Entity\Resa
+     */
+    private $resas;
+
+
+    /**
+     * Set resas
+     *
+     * @param \AppRestoBundle\Entity\Resa $resas
+     *
+     * @return Day
+     */
+    public function setResas(\AppRestoBundle\Entity\Resa $resas = null)
+    {
+        $this->resas = $resas;
+
+        return $this;
+    }
+
+    /**
+     * Get resas
+     *
+     * @return \AppRestoBundle\Entity\Resa
+     */
+    public function getResas()
+    {
+        return $this->resas;
     }
 }

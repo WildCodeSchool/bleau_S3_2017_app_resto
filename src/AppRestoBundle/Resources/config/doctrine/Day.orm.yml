@@ -25,5 +25,6 @@ AppRestoBundle\Entity\Day:
         garnitures:
             targetEntity: AppRestoBundle\Entity\Garniture
 
-        type:
-            targetEntity: AppRestoBundle\Entity\Type
+    oneToOne:
+        resas:
+            targetEntity: AppRestoBundle\Entity\Resa
