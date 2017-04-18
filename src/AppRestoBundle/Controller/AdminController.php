@@ -3,7 +3,6 @@
 namespace AppRestoBundle\Controller;
 
 use AppRestoBundle\Entity\Day;
-use AppRestoBundle\Entity\Week;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -23,7 +22,7 @@ class AdminController extends Controller
             $week->getDays()->add($lundi);
 
             $mardi = new Day();
-            $mardi->setDate($weekStart)->getDate()->modify('+1 day');
+            $mardi->setDate($weekStart)->modify('+1 day');
             $week->getDays()->add($mardi);
 
             $mercredi = new Day();

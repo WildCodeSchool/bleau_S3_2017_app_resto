@@ -114,7 +114,7 @@ class FollowerController extends Controller
             $em->flush($forms);
 
 
-        return $this->redirectToRoute('follower_index');
+        return $this->redirectToRoute('app_resto_homepage');
     }
 
     /**
