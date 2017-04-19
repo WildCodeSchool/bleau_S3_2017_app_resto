@@ -239,6 +239,17 @@ class AdminController extends Controller
 
         return $followers;
     }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $follower = $em->getRepository('AppRestoBundle:Follower')->findOneById($id);
+        $em->remove($follower);
+        $em->flush($follower);
+
+        return $this->redirectToRoute('app_resto_homepage');
+    }
+
 }
 
 

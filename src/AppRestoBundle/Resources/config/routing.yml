@@ -6,12 +6,14 @@ app_resto_admin:
     resource: "@AppRestoBundle/Resources/config/routing/admin/admin_routing.yml"
     prefix:   /admin
 
-
+app_resto_follower:
+    resource: "@AppRestoBundle/Resources/config/routing/follower.yml"
+    prefix:   /follower
 
 app_resto_homepage:
     path:     /
     defaults: { _controller: AppRestoBundle:Client:client}
-    methods: [GET, POST]
+    methods:  [GET, POST]
 
 app_resto_admin_counter:
     path:     /admin/counter
@@ -44,4 +46,6 @@ app_resto_add_resa:
     defaults: { _controller: AppRestoBundle:Client:resa}
     methods: ['GET', 'POST']
 
-
+app_resto_delete:
+    path:  /{id}/delete
+    defaults: { _controller: AppRestoBundle:Admin:delete}

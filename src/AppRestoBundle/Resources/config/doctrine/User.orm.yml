@@ -8,13 +8,5 @@ AppRestoBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
-    fields:
-        password:
-            type: string
-            length: 255
-            unique: true
-        mail:
-            type: string
-            length: 255
-            unique: true
+
     lifecycleCallbacks: {  }
