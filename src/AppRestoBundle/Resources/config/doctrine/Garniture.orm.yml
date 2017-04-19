@@ -10,5 +10,6 @@ AppRestoBundle\Entity\Garniture:
                 strategy: AUTO
     fields:
         name:
-            type: text
+            type: string
+            length: 255
     lifecycleCallbacks: {  }

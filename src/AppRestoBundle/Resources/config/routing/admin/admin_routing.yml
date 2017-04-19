@@ -1,0 +1,19 @@
+app_resto_load_week_ajax:
+    path:     /
+    defaults: { _controller: AppRestoBundle:Admin:loadWeekAjax}
+
+app_resto_entree_ajax:
+    path:     /entree
+    defaults: { _controller: AppRestoBundle:Admin:addEntree}
+
+app_resto_plat_ajax:
+    path:     /plat
+    defaults: { _controller: AppRestoBundle:Admin:addPlat}
+
+app_resto_garniture_ajax:
+    path:     /garniture
+    defaults: { _controller: AppRestoBundle:Admin:addGarniture}
+
+app_resto_dessert_ajax:
+    path:     /dessert
+    defaults: { _controller: AppRestoBundle:Admin:addDessert}

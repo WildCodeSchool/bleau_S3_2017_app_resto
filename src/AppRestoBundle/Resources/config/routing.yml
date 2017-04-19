@@ -2,18 +2,16 @@ app_resto_comment:
     resource: "@AppRestoBundle/Resources/config/routing/comment.yml"
     prefix:   /comment
 
+app_resto_admin:
+    resource: "@AppRestoBundle/Resources/config/routing/admin/admin_routing.yml"
+    prefix:   /admin
+
+
+
 app_resto_homepage:
     path:     /
     defaults: { _controller: AppRestoBundle:Client:client}
     methods: [GET, POST]
-
-#app_resto_admin:
-#    path:     /admin
-#    defaults: { _controller: AppRestoBundle:Admin:admin}
-
-app_resto_load_week_ajax:
-    path:     /admin
-    defaults: { _controller: AppRestoBundle:Admin:loadWeekAjax}
 
 app_resto_admin_counter:
     path:     /admin/counter

@@ -3,15 +3,43 @@
 namespace AppRestoBundle\Controller;
 
 use AppRestoBundle\Entity\Day;
+use AppRestoBundle\Entity\Dessert;
+use AppRestoBundle\Entity\Entree;
+use AppRestoBundle\Entity\Garniture;
+use AppRestoBundle\Entity\Plat;
+use AppRestoBundle\Form\DessertType;
+use AppRestoBundle\Form\EntreeType;
+use AppRestoBundle\Form\GarnitureType;
+use AppRestoBundle\Form\PlatType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
+    /*
+     * Load week by dateStartWeek
+     * persist Week by dateStartWeek
+     */
     public function loadWeekAjaxAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $weeks = $em->getRepository('AppRestoBundle:Week')->getWeekAdmin();
+
+        ///// Create entree
+        $entree = new Entree();
+        $formEntree = $this->createForm(EntreeType::class, $entree);
+
+        ///// Create entree
+        $plat = new Plat();
+        $formPlat = $this->createForm(PlatType::class, $plat);
+
+        ///// Create entree
+        $garniture = new Garniture();
+        $formGarniture = $this->createForm(GarnitureType::class, $garniture);
+
+        ///// Create entree
+        $dessert = new Dessert();
+        $formDessert = $this->createForm(DessertType::class, $dessert);
 
         if($request->isXmlHttpRequest()) // pour vérifier la présence d'une requete Ajax
         {
@@ -71,8 +99,62 @@ class AdminController extends Controller
             return $response;
         }
         return $this->render('@AppResto/Admin/admin.html.twig', array(
-            'weeks' => $weeks
+            'weeks' => $weeks,
+            'formEntree' => $formEntree->createView(),
+            'formPlat' => $formPlat->createView(),
+            'formGarniture' => $formGarniture->createView(),
+            'formDessert' => $formDessert->createView(),
         ));
+    }
+
+    /*
+     * persist new meal
+     */
+    private function persistMealAction($request, $object, $formtype, $type){
+
+        if($request->isXmlHttpRequest()) // pour vérifier la présence d'une requete Ajax
+        {
+            $value = $object;
+            $formEntree = $this->createForm($formtype, $value);
+            $formEntree->handleRequest($request);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($value);
+            $em->flush();
+
+            $response = new JsonResponse(array(
+                'msg' => $type . ' ajouté'
+            ), 200);
+            return $response;
+        }
+    }
+
+    /*
+     * Add entree
+     */
+    public function addEntreeAction(Request $request){
+        return $this->persistMealAction($request, new Entree(), EntreeType::class, 'Entrée');
+    }
+
+    /*
+     * Add plat
+     */
+    public function addPlatAction(Request $request){
+        return $this->persistMealAction($request, new Plat(), PlatType::class, 'Plat');
+    }
+
+    /*
+     * Add garniture
+     */
+    public function addGarnitureAction(Request $request){
+        return $this->persistMealAction($request, new Garniture(), GarnitureType::class, 'Garniture');
+    }
+
+    /*
+     * Add dessert
+     */
+    public function addDessertAction(Request $request){
+        return $this->persistMealAction($request, new Dessert(), DessertType::class, 'Dessert');
     }
 
     public function counterAction()
