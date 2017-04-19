@@ -3,10 +3,11 @@
 namespace AppRestoBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DayType extends AbstractType
+class EntreeType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,10 +15,12 @@ class DayType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('entrees')
-            ->add('plats')
-            ->add('desserts')
-            ->add('garnitures')
+            ->add('name', TextType::class, array(
+                'label' => "Ajout d'une entrée",
+                    'attr' => array(
+                    'class' => 'validate'
+                )
+            ))
         ;
     }
     
@@ -27,7 +30,7 @@ class DayType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppRestoBundle\Entity\Day'
+            'data_class' => 'AppRestoBundle\Entity\Entree'
         ));
     }
 
@@ -36,7 +39,7 @@ class DayType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'apprestobundle_day';
+        return 'apprestobundle_entree';
     }
 
 
