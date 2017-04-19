@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            {#///////#}
+            {# Formulaire d'ajout entrée, plat, garniture, dessert#}
             <div class="row row_custom">
                 <div class="col s3">
                     {{ form_start(formEntree, {'attr': {'id': 'formEntree'}}) }}
@@ -126,7 +126,6 @@
                     statusCode: {
                         //traitement en cas de succès
                         200: function (response) {
-                            console.log(response);
                             var successMessage = response.msg;
                             alert(successMessage);
                             if (typeof reset !== 'undefined'){

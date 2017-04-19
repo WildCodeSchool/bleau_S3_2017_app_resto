@@ -29,15 +29,15 @@ class AdminController extends Controller
         $entree = new Entree();
         $formEntree = $this->createForm(EntreeType::class, $entree);
 
-        ///// Create entree
+        ///// Create Plat
         $plat = new Plat();
         $formPlat = $this->createForm(PlatType::class, $plat);
 
-        ///// Create entree
+        ///// Create Garniture
         $garniture = new Garniture();
         $formGarniture = $this->createForm(GarnitureType::class, $garniture);
 
-        ///// Create entree
+        ///// Create Dessert
         $dessert = new Dessert();
         $formDessert = $this->createForm(DessertType::class, $dessert);
 
@@ -115,8 +115,8 @@ class AdminController extends Controller
         if($request->isXmlHttpRequest()) // pour vérifier la présence d'une requete Ajax
         {
             $value = $object;
-            $formEntree = $this->createForm($formtype, $value);
-            $formEntree->handleRequest($request);
+            $form = $this->createForm($formtype, $value);
+            $form->handleRequest($request);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($value);
