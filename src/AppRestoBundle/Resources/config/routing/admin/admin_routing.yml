@@ -19,6 +19,7 @@ app_resto_dessert_ajax:
     defaults: { _controller: AppRestoBundle:Admin:addDessert}
 
 app_resto_admin_counter:
+
     path:     /counter
     defaults: { _controller: AppRestoBundle:Admin:counter}
 
@@ -39,3 +40,4 @@ app_resto_send:
 app_resto_mail:
     path:     /mail
     defaults: { _controller: AppRestoBundle:Admin:mail}
+

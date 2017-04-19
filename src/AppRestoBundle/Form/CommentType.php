@@ -2,7 +2,6 @@
 
 namespace AppRestoBundle\Form;
 
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -23,8 +22,10 @@ class CommentType extends AbstractType
                 'label' => false
             ))
             ->add('content', TextareaType::class, array(
-                'attr' => array('class' => 'input-field col s12 materialize-textarea',
-                    'placeholder' => 'Donnez-nous votre avis!'),
+                'attr' => array(
+                    'class' => 'input-field col s12 materialize-textarea',
+                    'placeholder' => 'Donnez-nous votre avis!'
+                ),
                 'label' => false
             ));
     }
