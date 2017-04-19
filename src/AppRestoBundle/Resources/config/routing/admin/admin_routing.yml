@@ -17,3 +17,7 @@ app_resto_garniture_ajax:
 app_resto_dessert_ajax:
     path:     /dessert
     defaults: { _controller: AppRestoBundle:Admin:addDessert}
+
+app_resto_admin_counter:
+    path:     /admin/counter
+    defaults: { _controller: AppRestoBundle:Admin:counter}
