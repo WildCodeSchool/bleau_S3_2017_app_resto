@@ -7,7 +7,6 @@ namespace AppRestoBundle\Entity;
  */
 class Week
 {
-
     /**
      * @var integer
      */
@@ -43,7 +42,7 @@ class Week
      */
     public function __construct()
     {
-         $this->days = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->days = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -135,7 +134,6 @@ class Week
      *
      * @return Week
      */
-
     public function setTitle($title)
     {
         $this->title = $title;
@@ -156,21 +154,29 @@ class Week
     /**
      * Add day
      *
-     * @param \AppRestoBundle\Entity\Day $days
+     * @param \AppRestoBundle\Entity\Day $day
      *
      * @return Week
      */
-    public function addDays(\AppRestoBundle\Entity\Day $days)
+    public function addDay(\AppRestoBundle\Entity\Day $day)
     {
-        $this->days[] = $days;
+        $this->days[] = $day;
 
         return $this;
     }
 
-
+    /**
+     * Remove day
+     *
+     * @param \AppRestoBundle\Entity\Day $day
+     */
+    public function removeDay(\AppRestoBundle\Entity\Day $day)
+    {
+        $this->days->removeElement($day);
+    }
 
     /**
-     * Get day
+     * Get days
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -178,62 +184,5 @@ class Week
     {
         return $this->days;
     }
-    /**
-     * @var \DateTime
-     */
-    private $start_week;
-
-    /**
-     * @var \DateTime
-     */
-    private $end_week;
-
-
-    /**
-     * Set startWeek
-     *
-     * @param \DateTime $startWeek
-     *
-     * @return Week
-     */
-    public function setStartWeek($startWeek)
-    {
-        $this->start_week = $startWeek;
-
-        return $this;
-    }
-
-    /**
-     * Get startWeek
-     *
-     * @return \DateTime
-     */
-    public function getStartWeek()
-    {
-        return $this->start_week;
-    }
-
-    /**
-     * Set endWeek
-     *
-     * @param \DateTime $endWeek
-     *
-     * @return Week
-     */
-    public function setEndWeek($endWeek)
-    {
-        $this->end_week = $endWeek;
-
-        return $this;
-    }
-
-    /**
-     * Get endWeek
-     *
-     * @return \DateTime
-     */
-    public function getEndWeek()
-    {
-        return $this->end_week;
-    }
 }
+

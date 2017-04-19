@@ -88,6 +88,17 @@ a {
     margin-bottom: 0;
 }
 
+.test
+{
+    margin-left: 800px;
+    margin-right: 800px;
+}
+
+.test2
+{
+    background-color: red;
+}
+
 .nav_custom{
     font-size: 30px;
 }
