@@ -15,28 +15,6 @@ app_resto_homepage:
     defaults: { _controller: AppRestoBundle:Client:client}
     methods:  [GET, POST]
 
-app_resto_admin_counter:
-    path:     /admin/counter
-    defaults: { _controller: AppRestoBundle:Admin:counter}
-
-app_resto_com_valid:
-    path:     /admin/counter/{id}/valid
-    defaults: { _controller: AppRestoBundle:Admin:valid}
-    methods: GET
-
-app_resto_com_archiv:
-    path:     /admin/counter/{id}/archiv
-    defaults: { _controller: AppRestoBundle:Admin:archiv}
-    methods: GET
-
-app_resto_send:
-    path:     /send
-    defaults: { _controller: AppRestoBundle:Admin:send}
-
-app_resto_mail:
-    path:     /mail
-    defaults: { _controller: AppRestoBundle:Admin:mail}
-
 app_resto_add_mail:
     path:     /add_mail
     defaults: { _controller: AppRestoBundle:Follower:add}
