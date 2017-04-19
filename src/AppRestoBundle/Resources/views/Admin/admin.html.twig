@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div id="result" class="row row_custom">
-                {% include('@AppResto/Admin/week_menu.html.twig') %}
+
             </div>
         </div>
 {% endblock %}
@@ -39,9 +39,18 @@
 
     {{ parent() }}
     <script>
+        $(document).ready(function(){
+            console.log('plop');
+            $.ajax({
+                url: '{{ path('app_resto_load_week_ajax') }}',
+                type: "GET",
+                success: function(data){
+                    $("#result").html(data.form);
+                }});
+        });
+
         $("#choiceWeek").change(function() {
             var selectedWeek = $("select#choiceWeek option:selected").val();
-            console.log(selectedWeek);
             $.ajax({
                 type: "POST",
                 data : { selectedWeek: selectedWeek },
@@ -49,11 +58,38 @@
                 url: '{{ path('app_resto_load_week_ajax') }}',
                 success: function(data)
                 {
-                    $("#result").html(data);
+                    $("#result").html(data.form);
                 }
             });
         });
 
+        $(document).on("submit", "#weekMenu", function (event) {
+            // Eviter le comportement par défaut (soumettre le formulaire)
+            event.preventDefault();
+            var $this = $(this);
+            //Ici on peut ajouter un loader...
+            $.ajax({
+                url: '{{ path('app_resto_load_week_ajax') }}',
+                type: 'post',
+                data: new FormData($this[0]),
+                processData: false,
+                contentType: false,
+                statusCode: {
+                    //traitement en cas de succès
+                    200: function (response) {
+                        console.log(response);
+                        var successMessage = response.msg;
+                        alert(successMessage);
+
+                    },
+                    //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                    412: function (response) {
+                        var errorsForm = response.msg;
+                        alert(errorsForm)
+                    }
+                }
+            })
+        });
     </script>
 
 {% endblock %}

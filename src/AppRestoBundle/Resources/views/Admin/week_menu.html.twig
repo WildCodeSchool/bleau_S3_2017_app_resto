@@ -19,21 +19,21 @@
                 </ul>
             </div>
         {% endfor %}
-    </div>
-
-    <div class="row row_custom">
-        <div class="col s10 offset-s1">
-            {{ form_row(form.title) }}
-            {{ form_row(form.message) }}
+        <div class="row row_custom">
+            <div class="col s10 offset-s1">
+                {{ form_row(form.title) }}
+                {{ form_row(form.message) }}
+            </div>
         </div>
-    </div>
-    <div class="row row_custom center-align">
-        <div>
-            <button class="btn waves-effect waves-orange btn_custom" type="submit">ENVOYER</button>
-        </div>
+        <div class="row row_custom center-align">
+            <div>
+                <input type="hidden" name="selectedWeek" value="{{ week.startWeek|date('Y/m/d') }}">
+                <button class="btn waves-effect waves-orange btn_custom" type="submit">ENVOYER</button>
+            </div>
 
+        </div>
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
 </div>
 
 <script>

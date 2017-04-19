@@ -7,12 +7,12 @@ app_resto_homepage:
     defaults: { _controller: AppRestoBundle:Client:client}
     methods: [GET, POST]
 
-app_resto_admin:
-    path:     /admin
-    defaults: { _controller: AppRestoBundle:Admin:admin}
+#app_resto_admin:
+#    path:     /admin
+#    defaults: { _controller: AppRestoBundle:Admin:admin}
 
 app_resto_load_week_ajax:
-    path:     /selectedweek
+    path:     /admin
     defaults: { _controller: AppRestoBundle:Admin:loadWeekAjax}
 
 app_resto_admin_counter:
