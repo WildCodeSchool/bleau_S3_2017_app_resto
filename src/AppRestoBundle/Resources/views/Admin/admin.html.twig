@@ -6,66 +6,164 @@
 
     {% block body %}
         <div class="container container_custom admin">
-        <nav>
-            <div class="nav-wrapper background">
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEW'S LETTER</a></li>
-                </ul>
-            </div>
-        </nav>
+            <nav>
+                <div class="nav-wrapper background">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEWSLETTER</a></li>
+                    </ul>
+                </div>
+            </nav>
+
             <div class="row row_custom menu_admin_title">
                 <h1 class="col s12 center-align">Menu de la semaine</h1>
             </div>
+
             <div class="row row_custom">
                 <div class="input-field col s4 offset-s4 ">
-                    <select>
-                        <option class="menu_choix_semaine" value="1" selected>Semaine du **/** au **/**</option>
-                        <option class="menu_choix_semaine" value="2">Semaine du **/** au **/**</option>
-                        <option class="menu_choix_semaine" value="3">Semaine du **/** au **/**</option>
-                        <option class="menu_choix_semaine" value="4">Semaine du **/** au **/**</option>
+                    <select id="choiceWeek">
+                        {% for week in weeks %}
+                            {% if loop.first %}
+                                <option class="menu_choix_semaine" value="{{ week.startWeek|date('Y/m/d') }}" selected>Semaine du {{ week.startWeek|date('d/m/Y') }} au {{ week.endWeek|date('d/m/Y') }}</option>
+                            {% else %}
+                                <option class="menu_choix_semaine" value="{{ week.startWeek|date('Y/m/d') }}">Semaine du {{ week.startWeek|date('d/m/Y') }} au {{ week.endWeek|date('d/m/Y') }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
             </div>
-            <div class="row row_custom">
-                <div class="col s12 menu_admin">
-                    <div class="row row_custom days">
-                        <div class="col s2 offset-s1 center-align">Lundi</div>
-                        <div class="col s2 center-align">Mardi</div>
-                        <div class="col s2 center-align">Mercredi</div>
-                        <div class="col s2 center-align">Jeudi</div>
-                        <div class="col s2 center-align">Vendredi</div>
 
-                    </div>
-                    <div class="row row_custom">
-                        <div class="col s1"></div>
-                        {{ form_start(form) }}
-                        {% for day in form.days %}
-                            <div class="col s2 col_menu_admin">
-                                <ul>
-                                    <li>{{ form_row(day.entrees) }}</li>
-                                    <li>{{ form_row(day.plats) }}</li>
-                                    <li>{{ form_row(day.desserts) }}</li>
-                                    <li>{{ form_row(day.garnitures) }}</li>
-                                </ul>
-                            </div>
-                        {% endfor %}
+            {# Formulaire d'ajout entrée, plat, garniture, dessert#}
+            <div class="row row_custom">
+                <div class="col s3">
+                    {{ form_start(formEntree, {'attr': {'id': 'formEntree'}}) }}
+                    <div class="input-field col s12">
+                        {{ form_row(formEntree.name) }}
                     </div>
                     <div class="row row_custom center-align">
-                        <div >
-                            <button class="btn waves-effect waves-orange btn_custom" type="submit">ENVOYER
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="row row_custom">
-                        <div class="col s10 offset-s1">
-                            {{ form_row(form.title) }}
-                            {{ form_row(form.message) }}
+                        <div>
+                            <button class="btn waves-effect waves-orange btn_custom" type="submit">AJOUTER</button>
                         </div>
                     </div>
-                    {{ form_end(form) }}
+                    {{ form_end(formEntree) }}
                 </div>
+                <div class="col s3">
+                    {{ form_start(formPlat, {'attr': {'id': 'formPlat'}}) }}
+                    <div class="input-field col s12">
+                        {{ form_row(formPlat.name) }}
+                    </div>
+                    <div class="row row_custom center-align">
+                        <div>
+                            <button class="btn waves-effect waves-orange btn_custom" type="submit">AJOUTER</button>
+                        </div>
+                    </div>
+                    {{ form_end(formPlat) }}
+                </div>
+                <div class="col s3">
+                    {{ form_start(formGarniture, {'attr': {'id': 'formGarniture'}}) }}
+                    <div class="input-field col s12">
+                        {{ form_row(formGarniture.name) }}
+                    </div>
+                    <div class="row row_custom center-align">
+                        <div>
+                            <button class="btn waves-effect waves-orange btn_custom" type="submit">AJOUTER</button>
+                        </div>
+                    </div>
+                    {{ form_end(formGarniture) }}
+                </div>
+                <div class="col s3">
+                    {{ form_start(formDessert, {'attr': {'id': 'formDessert'}}) }}
+                    <div class="input-field col s12">
+                        {{ form_row(formDessert.name) }}
+                    </div>
+                    <div class="row row_custom center-align">
+                        <div>
+                            <button class="btn waves-effect waves-orange btn_custom" type="submit">AJOUTER</button>
+                        </div>
+                    </div>
+                    {{ form_end(formDessert) }}
+                </div>
+
+            </div>
+            {#//////////#}
+
+            <div id="result" class="row row_custom">
+
             </div>
         </div>
 {% endblock %}
 
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+
+        function getWeek(){
+            var selectedWeek = $("select#choiceWeek option:selected").val();
+            $.ajax({
+                type: "POST",
+                data : { selectedWeek: selectedWeek },
+                dataType: 'json',
+                url: '{{ path('app_resto_load_week_ajax') }}',
+                success: function(data)
+                {
+                    $("#result").html(data.form);
+                }
+            });
+        }
+
+        function submitAjax(idElement, url, reset){
+            $(document).on("submit", idElement, function (event) {
+                // Eviter le comportement par défaut (soumettre le formulaire)
+                event.preventDefault();
+                var $this = $(this);
+                //Ici on peut ajouter un loader...
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: new FormData($this[0]),
+                    processData: false,
+                    contentType: false,
+                    statusCode: {
+                        //traitement en cas de succès
+                        200: function (response) {
+                            var successMessage = response.msg;
+                            alert(successMessage);
+                            if (typeof reset !== 'undefined'){
+                                $(idElement).trigger("reset");
+                                getWeek()
+                            }
+
+                        },
+                        //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                        412: function (response) {
+                            var errorsForm = response.msg;
+                            alert(errorsForm)
+                        }
+                    }
+                })
+            });
+        }
+
+        $(document).ready(function(){
+            console.log('plop');
+            $.ajax({
+                url: '{{ path('app_resto_load_week_ajax') }}',
+                type: "GET",
+                success: function(data){
+                    $("#result").html(data.form);
+                }});
+        });
+
+        $("#choiceWeek").change(function() {
+            getWeek();
+        });
+
+        submitAjax("#weekMenu", '{{ path('app_resto_load_week_ajax') }}');
+        submitAjax("#formEntree", '{{ path('app_resto_entree_ajax') }}', true);
+        submitAjax("#formPlat", '{{ path('app_resto_plat_ajax') }}', true);
+        submitAjax("#formGarniture", '{{ path('app_resto_garniture_ajax') }}', true);
+        submitAjax("#formDessert", '{{ path('app_resto_dessert_ajax') }}', true);
+
+    </script>
+
+{% endblock %}

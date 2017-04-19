@@ -4,8 +4,12 @@ namespace AppRestoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppRestoBundle\Entity\Comment;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use AppRestoBundle\Entity\Follower;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class ClientController extends Controller
@@ -22,7 +26,7 @@ class ClientController extends Controller
         //Set a Tab for increment week's days
 
         $days = $weeks->getDays();
-        $daysWeeks = ['lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+        $daysWeeks = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
 
         //Get Comments, Add Comments
         $comment = new Comment();
@@ -58,9 +62,45 @@ class ClientController extends Controller
             'days' => $days,
             'daysWeeks' => $daysWeeks,
             'formCom' => $formCom->createView(),
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'week' => $weeks
         ));
+    }
 
+    public function resaAction(){
+        $data = $_REQUEST;
+        $em = $this->getDoctrine()->getManager();
+        $weekStart = new \DateTime("last Monday");
+        $days = $em->getRepository('AppRestoBundle:Week')->findOneBy(
+            array(
+            'start_week' => $weekStart
+            ),
+            array(
+                'id' => 'DESC'
+            )
+        )->getDays();
+
+        foreach ($data as $key => $type){
+             if ($key == 'Lundi'){
+                 $days[0]->getResas()->increment($type);
+             }
+             if ($key == 'Mardi'){
+                 $days[1]->getResas()->increment($type);
+             }
+             if ($key == 'Mercredi'){
+                 $days[2]->getResas()->increment($type);
+             }
+             if ($key == 'Jeudi'){
+                 $days[3]->getResas()->increment($type);
+             }
+             if ($key == 'Vendredi'){
+                 $days[4]->getResas()->increment($type);
+             }
+        }
+        $em->flush();
+
+        return $this->redirectToRoute('app_resto_homepage');
+        // TODO: implement flash message
     }
 
 }

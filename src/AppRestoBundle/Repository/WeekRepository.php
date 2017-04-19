@@ -10,7 +10,21 @@ namespace AppRestoBundle\Repository;
  */
 class WeekRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getByDate(\Datetime $now)
+    public function getWeekAdmin()
     {
+        $lastSunday = new \DateTime('last sunday');
+        $lastSundayPlusForWeek = new \DateTime('last sunday');
+        $lastSundayPlusForWeek->modify('+4 week');
+        $qb = $this->createQueryBuilder('w');
+        $qb->select('w')
+            ->where('w.start_week > :start')
+            ->andWhere('w.end_week <= :end')
+            ->setParameters(
+                array(
+                    'start' => $lastSunday,
+                    'end' => $lastSundayPlusForWeek
+                )
+            );
+        return $qb->getQuery()->getResult();
     }
 }
