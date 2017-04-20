@@ -14,8 +14,8 @@
                 <ul>
                     <li>{{ form_row(day.entrees) }}</li>
                     <li>{{ form_row(day.plats) }}</li>
-                    <li>{{ form_row(day.desserts) }}</li>
                     <li>{{ form_row(day.garnitures) }}</li>
+                    <li>{{ form_row(day.desserts) }}</li>
                 </ul>
             </div>
         {% endfor %}
@@ -38,6 +38,5 @@
 <script>
     $(document).ready(function() {
         $('select').material_select();
-
     });
 </script>

@@ -9,7 +9,7 @@
             <nav>
                 <div class="nav-wrapper background">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEWSLETTER</a></li>
+                        <li><a class="nav_custom" href="{{ path('app_resto_admin_send') }}">ENVOYER LA NEWSLETTER</a></li>
                     </ul>
                 </div>
             </nav>
@@ -113,39 +113,54 @@
 
         function submitAjax(idElement, url, reset){
             $(document).on("submit", idElement, function (event) {
-                // Eviter le comportement par défaut (soumettre le formulaire)
-                event.preventDefault();
-                var $this = $(this);
-                //Ici on peut ajouter un loader...
-                $.ajax({
-                    url: url,
-                    type: 'post',
-                    data: new FormData($this[0]),
-                    processData: false,
-                    contentType: false,
-                    statusCode: {
-                        //traitement en cas de succès
-                        200: function (response) {
-                            var successMessage = response.msg;
-                            alert(successMessage);
-                            if (typeof reset !== 'undefined'){
-                                $(idElement).trigger("reset");
-                                getWeek()
-                            }
 
-                        },
-                        //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
-                        412: function (response) {
-                            var errorsForm = response.msg;
-                            alert(errorsForm)
-                        }
+                //Condition to set if a new meal or a menu is submitted.
+                if(reset !== null) { var j = 2; }
+                else { var j = 1;}
+
+                //Loop who execute 1 or 2 requests depending of conditions
+                for(var i = 0; i < j; i++) {
+                    if(i == 0) {
+                        var $this = $(this);
+                    }else{
+                        var $this = $('#weekMenu');
+                        url = '{{ path('app_resto_load_week_ajax') }}';
                     }
-                })
+
+                    // Eviter le comportement par défaut (soumettre le formulaire)
+                    event.preventDefault();
+
+                    //Ici on peut ajouter un loader...
+
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: new FormData($this[0]),
+                        processData: false,
+                        contentType: false,
+                        statusCode: {
+                            //traitement en cas de succès
+                            200: function (response) {
+                                var successMessage = response.msg;
+                                if(i == 0) {alert(successMessage);}
+                                if (typeof reset !== 'undefined'){
+                                    $(idElement).trigger("reset");
+                                    getWeek()
+                                }
+
+                            },
+                            //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                            412: function (response) {
+                                var errorsForm = response.msg;
+                                alert(errorsForm)
+                            }
+                        }
+                    })
+                }
             });
         }
 
         $(document).ready(function(){
-            console.log('plop');
             $.ajax({
                 url: '{{ path('app_resto_load_week_ajax') }}',
                 type: "GET",
@@ -158,7 +173,7 @@
             getWeek();
         });
 
-        submitAjax("#weekMenu", '{{ path('app_resto_load_week_ajax') }}');
+        submitAjax("#weekMenu",null , '{{ path('app_resto_load_week_ajax') }}');
         submitAjax("#formEntree", '{{ path('app_resto_entree_ajax') }}', true);
         submitAjax("#formPlat", '{{ path('app_resto_plat_ajax') }}', true);
         submitAjax("#formGarniture", '{{ path('app_resto_garniture_ajax') }}', true);

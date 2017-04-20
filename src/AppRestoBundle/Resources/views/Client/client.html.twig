@@ -43,7 +43,7 @@
                     <form action="{{ path('app_resto_add_resa') }}" method="POST">
                         <div class="row row_custom" id="menu">
                             {% for key, day in days %}
-                            <div class="col m2 s12 {% if key == 0 %}offset-m1{% endif %} dayli">
+                            <div class="col m2 s12 {% if key == 0 %}offset-m1{% endif %} col_custom dayli">
                                 <div class="row row_custom">
                                     <div class="col s12 dayli_col">
                                         <a href="#{{ key }}">
@@ -61,12 +61,20 @@
                                         </a>
                                     </div>
                                 </div>
-                                <p>
-                                    <input name="{{ daysWeeks[key] }}" type="radio" id="snack{{ key }}" value="{{ constant('AppRestoBundle\\Entity\\Resa::SNACK') }}" />
-                                    <label for="snack{{ key }}">Snack</label>
-                                    <input name="{{ daysWeeks[key] }}" type="radio" id="menu{{ key }}" value="{{ constant('AppRestoBundle\\Entity\\Resa::NORMAL') }}" />
-                                    <label for="menu{{ key }}">Menu</label>
-                                </p>
+                                <div class="row row_custom">
+
+                                    <div class="col s6 col_custom radio_custom">
+                                        <input name="{{ daysWeeks[key] }}" type="radio" id="snack{{ key }}" value="{{ constant('AppRestoBundle\\Entity\\Resa::SNACK') }}" />
+                                        <label for="snack{{ key }}">Snack</label>
+                                    </div>
+
+                                    <div class="col s6 col_custom radio_custom">
+                                        <input name="{{ daysWeeks[key] }}" type="radio" id="menu{{ key }}" value="{{ constant('AppRestoBundle\\Entity\\Resa::NORMAL') }}" />
+                                        <label for="menu{{ key }}">Menu</label>
+                                    </div>
+                                </div>
+
+
 
                             </div>
                             {% endfor %}
@@ -165,26 +173,15 @@
         </div>
     </div>
     <footer class="page-footer" id="footer_custom">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5>Footer Content</h5>
-                    <p class="text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5>Contacts</h5>
-                    <ul>
-                        <li><a class="text-lighten-3" href="#!">Facebook</a></li>
-                        <li><a class="text-lighten-3" href="#!">Twitter</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright ">
             <div class="container">
-                © 2017 Copyright Text
-                <a class="text-lighten-4 right" href="#!">Contactez-nous</a>
+                <div class="row center-align">
+                    <a class="text-lighten-3 col l5 right-align" href="https://twitter.com/newrestgroup">
+                            <i class="fa fa-twitter" style="font-size:24px"></i></a>
+                    <a class="text-lighten-3 col l2" href="https://www.youtube.com/channel/UC3KtELTOVH1cInH2fDGzLig">
+                        <i class="fa fa-youtube" style="font-size:24px"></i></a>
+                    <a class="text-lighten-3 col l2 left-align" href="https://www.linkedin.com/company/newrest-">
+                        <i class="fa fa-linkedin" style="font-size:24px"></i></a>
+                </div>
             </div>
-        </div>
     </footer>
 {% endblock %}
