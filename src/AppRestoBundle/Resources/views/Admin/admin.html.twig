@@ -9,7 +9,7 @@
             <nav>
                 <div class="nav-wrapper background">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a class="nav_custom" href="{{ path('app_resto_send') }}">ENVOYER LA NEWSLETTER</a></li>
+                        <li><a class="nav_custom" href="{{ path('app_resto_admin_send') }}">ENVOYER LA NEWSLETTER</a></li>
                     </ul>
                 </div>
             </nav>
@@ -118,7 +118,7 @@
                 if(reset !== null) { var j = 2; }
                 else { var j = 1;}
 
-                //Loop who execute 1 or 2 request depending of conditions
+                //Loop who execute 1 or 2 requests depending of conditions
                 for(var i = 0; i < j; i++) {
                     if(i == 0) {
                         var $this = $(this);
@@ -129,7 +129,6 @@
 
                     // Eviter le comportement par défaut (soumettre le formulaire)
                     event.preventDefault();
-                    console.log($this);
 
                     //Ici on peut ajouter un loader...
 
