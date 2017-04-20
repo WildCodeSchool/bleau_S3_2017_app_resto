@@ -228,7 +228,7 @@ class AdminController extends Controller
             $this->get('mailer')->send($message);
         }
 
-        return $this->redirectToRoute('app_resto_admin');
+        return $this->redirectToRoute('app_resto_load_week_ajax');
     }
 
     public function mailAction()
