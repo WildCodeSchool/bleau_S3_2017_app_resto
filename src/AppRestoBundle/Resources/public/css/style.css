@@ -27,6 +27,9 @@ body {
     background-color: rgb(242, 242, 242);
     color: rgb(117, 117, 120);
     font-family: 'Source Sans Pro';
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 h1 {
@@ -94,6 +97,7 @@ a {
     background-color: rgb(175, 97, 20);
 }
 
+/*------- 3.MENUS-ADMIN--------*/
 /*------- 3.MENUS-ADMIN--------*/
 .menu_admin{
     font-size: 1.2em;
