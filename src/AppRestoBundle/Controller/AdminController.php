@@ -167,13 +167,32 @@ class AdminController extends Controller
                 array('id' => 'desc')
             );
 
-        //Valid button action
+        $weekStart = new \DateTime("last Monday");
+        $todayTime = new \DateTime("Today");
+
+        $weeks = $em->getRepository('AppRestoBundle:Week')->findOneBy(array(
+            'start_week' => $weekStart
+        ));
+        $today = $em->getRepository('AppRestoBundle:Day')->findOneBy(array(
+            'date' => $todayTime
+        ));
+        $resaToday = $today->getResas();
+        $days = $weeks->getDays();
+
+        foreach ($days as $day) {
+            $resas [] = $day->getResas();
+        }
 
         return $this->render('AppRestoBundle:Admin:counter.html.twig', array(
             'comments' => $comments,
+            'resas' => $resas,
+            'resaToday' => $resaToday,
         ));
     }
 
+    /*
+     * Valid Commentary
+     */
     public function validAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -187,6 +206,9 @@ class AdminController extends Controller
         return $this->redirectToRoute('app_resto_admin_counter');
     }
 
+    /*
+     * Archiv Commentary
+     */
     public function archivAction($id)
     {
         $em = $this->getDoctrine()->getManager();
