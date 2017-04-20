@@ -166,6 +166,45 @@ class AdminController extends Controller
                 array('valid' => null),
                 array('id' => 'desc')
             );
+        $weekStart = new \DateTime("last Monday");
+
+        $days = $em->getRepository('AppRestoBundle:Week')->findOneBy(
+            array(
+                'start_week' => $weekStart
+            ),
+            array(
+                'id' => 'DESC'
+            )
+        )->getDays();
+
+        // Take data's counter
+
+        $data = $_REQUEST;
+        $today = new \DateTime (date("Y-m-d H:i:s", mktime(0, 0, 0, date("m"), date("d"), date("Y"))));
+        $day = $em->getRepository('AppRestoBundle:Day')->findOneByDate ($today);
+       $resa = $day->getResas();
+
+        foreach ($data as $key=> $type) {
+            if ($key == 'Lundi') {
+                $days[0]->getResas();
+            }
+            if ($key == 'Mardi') {
+                $days[1]->getResas();
+            }
+            if ($key == 'Mercredi') {
+                $days[2]->getResas();
+            }
+            if ($key == 'Jeudi') {
+                $days[3]->getResas();
+            }
+            if ($key == 'Vendredi') {
+                $days[4]->getResas();
+            }
+        }
+        //dump($resa);
+        //die();
+
+
 
         //Valid button action
 

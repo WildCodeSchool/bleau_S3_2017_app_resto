@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 {% block header_btn %}
-    <a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Aller vers la page Admin" href="{{ path('app_resto_admin') }}">Page Admin</a>
+    <a class="btn tooltipped boutton btn_custom" data-position="bottom" data-delay="50" data-tooltip="Aller vers la page Admin" href="{{ path('app_resto_add_mail') }}">Page Admin</a>
 {% endblock %}
 
 {% block body %}
@@ -46,43 +46,25 @@
             <div class="row row_custom">
                 <div class="col s12">
                     <div class="week_reservation"><h3 class="h3">Réservations de la semaine</h3></div>
-
                     <!-- Table of week's reservation (snack and meal) bye day of week -->
                     <table class="striped centered table_food flow-text col offset-l1 l10 col s12">
                         <thead>
                         <tr>
-                            <th data-field="day">Jour</th>
-                            <th data-field="meal">Repas</th>
-                            <th data-field="snack">Snack</th>
+                            <th>Jour</th>
+                            <th>Repas</th>
+                            <th>Snack</th>
                         </tr>
                         </thead>
-
                         <tbody>
+                        {% block resa_week %}
+                            {% for key in days %}
                         <tr>
-                            <td>Lundi</td>
-                            <td>60</td>
-                            <td>40</td>
+                            <td>{{ day }}</td>
+                            <td>{{ day.normal }}</td>
+                            <td>{{ day.snack }}</td>
                         </tr>
-                        <tr>
-                            <td>Mardi</td>
-                            <td>60</td>
-                            <td>40</td>
-                        </tr>
-                        <tr>
-                            <td>Mercredi</td>
-                            <td>60</td>
-                            <td>40</td>
-                        </tr>
-                        <tr>
-                            <td>Jeudi</td>
-                            <td>60</td>
-                            <td>40</td>
-                        </tr>
-                        <tr>
-                            <td>Vendredi</td>
-                            <td>60</td>
-                            <td>40</td>
-                        </tr>
+                                {% endfor %}
+                            {% endblock %}
                         </tbody>
                     </table>
                 </div>
