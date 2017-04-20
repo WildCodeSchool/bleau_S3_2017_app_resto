@@ -1,14 +1,6 @@
-app_resto_comment:
-    resource: "@AppRestoBundle/Resources/config/routing/comment.yml"
-    prefix:   /comment
-
 app_resto_admin:
     resource: "@AppRestoBundle/Resources/config/routing/admin/admin_routing.yml"
     prefix:   /admin
-
-app_resto_follower:
-    resource: "@AppRestoBundle/Resources/config/routing/follower.yml"
-    prefix:   /follower
 
 app_resto_homepage:
     path:     /
@@ -23,7 +15,3 @@ app_resto_add_resa:
     path:     /add_resa
     defaults: { _controller: AppRestoBundle:Client:resa}
     methods: ['GET', 'POST']
-
-app_resto_delete:
-    path:  /{id}/delete
-    defaults: { _controller: AppRestoBundle:Admin:delete}
