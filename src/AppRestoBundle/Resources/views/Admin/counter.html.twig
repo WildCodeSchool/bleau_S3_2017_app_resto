@@ -26,7 +26,7 @@
                                 <h3 class="h3"><b>REPAS</b></h3>
                             </div>
                             <div class="container_number_meal">
-                                <p class="number_meal z-depth-3">666</p>
+                                <p class="number_meal z-depth-3">{{ resaToday.normal }}</p>
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                                 <h3 class="h3"><b>SNACK</b></h3>
                             </div>
                             <div class="container_number_snack">
-                                <p class="number_snack z-depth-3">666</p>
+                                <p class="number_snack z-depth-3">{{ resaToday.snack }}</p>
                             </div>
                         </div>
                     </div>
@@ -59,9 +59,29 @@
                         {% block resa_week %}
                             {% for key in days %}
                         <tr>
-                            <td>{{ day }}</td>
-                            <td>{{ day.normal }}</td>
-                            <td>{{ day.snack }}</td>
+                            <td>Lundi</td>
+                            <td>{{ resas[0].normal }}</td>
+                            <td>{{ resas[0].snack }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mardi</td>
+                            <td>{{ resas[1].normal }}</td>
+                            <td>{{ resas[1].snack }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mercredi</td>
+                            <td>{{ resas[2].normal }}</td>
+                            <td>{{ resas[2].snack }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jeudi</td>
+                            <td>{{ resas[3].normal }}</td>
+                            <td>{{ resas[3].snack }}</td>
+                        </tr>
+                        <tr>
+                            <td>Vendredi</td>
+                            <td>{{ resas[4].normal }}</td>
+                            <td>{{ resas[4].snack }}</td>
                         </tr>
                                 {% endfor %}
                             {% endblock %}

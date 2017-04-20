@@ -18,6 +18,11 @@ $(document).ready(function() {
     })
 });
 
+//-----Initialize datatable
+$(document).ready(function(){
+    $('#tab').DataTable();
+});
+
 $(document).ready(function() {
     $('select').material_select();
 });

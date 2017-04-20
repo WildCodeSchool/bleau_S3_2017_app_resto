@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
+{% endblock %}
+
+{% block body %}
+    <div class="row row_custom">
+        <div class="col s8 offset-s2">
+            <table id="tab">
+                <thead>
+                <tr>
+                    <th class="col s4 offset-s1">TYPE</th>
+                    <th class="col s4">NOM</th>
+                    <th class="col s2">ACTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entree in entrees %}
+                    <tr>
+                        <td class="col s4 offset-s1">Entrée</td>
+                        <td class="col s4">{{ entree.name }}</td>
+                        <td class="col s2">
+                            <a href="{{ path('app_resto_entree_delete', { 'id': entree.id }) }}">effacer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                {% for plat in plats %}
+                    <tr>
+                        <td class="col s4 offset-s1">Plat</td>
+                        <td class="col s4">{{ plat.name }}</td>
+                        <td class="col s2">
+                            <a href="{{ path('app_resto_plat_delete', { 'id': plat.id }) }}">effacer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                {% for garniture in garnitures %}
+                    <tr>
+                        <td class="col s4 offset-s1">Garniture</td>
+                        <td class="col s4">{{ garniture.name }}</td>
+                        <td class="col s2">
+                            <a href="{{ path('app_resto_garniture_delete', { 'id': garniture.id }) }}">effacer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                {% for dessert in desserts %}
+                    <tr>
+                        <td class="col s4 offset-s1">Dessert</td>
+                        <td class="col s4">{{ dessert.name }}</td>
+                        <td class="col s2">
+                            <a href="{{ path('app_resto_dessert_delete', { 'id': dessert.id }) }}">effacer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+
+{% endblock %}
