@@ -56,6 +56,8 @@
                         </tr>
                         </thead>
                         <tbody>
+
+                        {% block resa_week %}
                         <tr>
                             <td>Lundi</td>
                             <td>{{ resas[0].normal }}</td>
@@ -81,7 +83,9 @@
                             <td>{{ resas[4].normal }}</td>
                             <td>{{ resas[4].snack }}</td>
                         </tr>
-                 
+
+                        {% endblock %}
+
                         </tbody>
                     </table>
                 </div>
