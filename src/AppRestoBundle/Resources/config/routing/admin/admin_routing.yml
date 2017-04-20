@@ -39,3 +39,27 @@ app_resto_admin_send:
 app_resto_mail:
     path:     /mail
     defaults: { _controller: AppRestoBundle:Admin:mail}
+
+app_resto_meal:
+    path: /meal
+    defaults: {_controller: AppRestoBundle:Meal:meal}
+
+app_resto_entree_delete:
+    path:     /meal/entree/{id}/delete
+    defaults: { _controller: AppRestoBundle:Meal:deleteEntree}
+    methods: GET
+
+app_resto_plat_delete:
+    path:     /meal/plat/{id}/delete
+    defaults: { _controller: AppRestoBundle:Meal:deletePlat}
+    methods: GET
+
+app_resto_garniture_delete:
+    path:     /meal/garniture/{id}/delete
+    defaults: { _controller: AppRestoBundle:Meal:deleteGarniture}
+    methods: GET
+
+app_resto_dessert_delete:
+    path:     /meal/dessert/{id}/delete
+    defaults: { _controller: AppRestoBundle:Meal:deleteDessert}
+    methods: GET
