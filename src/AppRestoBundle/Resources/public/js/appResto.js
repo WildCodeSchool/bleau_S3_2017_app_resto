@@ -20,7 +20,9 @@ $(document).ready(function() {
 
 //-----Initialize datatable
 $(document).ready(function(){
-    $('#tab').DataTable();
+    $('#tab').DataTable({
+        "lengthMenu": [[50, 100, -1], [50, 100, "All"]]
+    });
 });
 
 $(document).ready(function() {
