@@ -232,6 +232,8 @@ class AdminController extends Controller
         $week = $repository->getRepository('AppRestoBundle:Week')->findOneBy(array(
             'start_week' => $weekStart
         ));
+        $days = $week->getDays();
+        $daysWeeks = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
 
         //$em = $this->getDoctrine()->getManager();
         //$menu = $em->getRepository("AppRestoBundle:Week")->findAll();
@@ -240,12 +242,14 @@ class AdminController extends Controller
             ->setSubject('Hello Email')
             ->setFrom('solomon.grundy.51@gmail.com');
 
-        $followers = $this->mailAction();
+        $followers = $repository->getRepository('AppRestoBundle:Follower')->findAll();
         foreach($followers as $follower){
             $message->setBody(
                 $this->renderView('Emails/registration.html.twig', array(
                     'week' => $week,
-                    'user' => $follower->getId()
+                    'user' => $follower->getId(),
+                    'days' => $days,
+                    'daysWeeks' => $daysWeeks,
                 )
             ),
             'text/html'
@@ -255,15 +259,6 @@ class AdminController extends Controller
         }
 
         return $this->redirectToRoute('app_resto_load_week_ajax');
-    }
-
-    public function mailAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $followers = $em->getRepository('AppRestoBundle:Follower')->findAll();
-
-        return $followers;
     }
 
     public function deleteAction($id)
