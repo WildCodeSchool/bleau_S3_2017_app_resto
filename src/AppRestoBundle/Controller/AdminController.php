@@ -242,43 +242,6 @@ class AdminController extends Controller
         return $this->redirectToRoute('app_resto_admin_counter');
     }
 
-    public function sendAction()
-    {
-
-        $repository = $this->getDoctrine()->getManager();
-        $weekStart = new \DateTime("next Monday");
-        $week = $repository->getRepository('AppRestoBundle:Week')->findOneBy(array(
-            'start_week' => $weekStart
-        ));
-        $days = $week->getDays();
-        $daysWeeks = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
-
-        //$em = $this->getDoctrine()->getManager();
-        //$menu = $em->getRepository("AppRestoBundle:Week")->findAll();
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('solomon.grundy.51@gmail.com');
-
-        $followers = $repository->getRepository('AppRestoBundle:Follower')->findAll();
-        foreach($followers as $follower){
-            $message->setBody(
-                $this->renderView('Emails/registration.html.twig', array(
-                    'week' => $week,
-                    'user' => $follower->getId(),
-                    'days' => $days,
-                    'daysWeeks' => $daysWeeks,
-                )
-            ),
-            'text/html'
-            );
-            $message->setTo($follower->getMail());
-            $this->get('mailer')->send($message);
-        }
-
-        return $this->redirectToRoute('app_resto_load_week_ajax');
-    }
-
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();

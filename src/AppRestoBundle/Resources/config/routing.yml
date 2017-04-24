@@ -20,3 +20,4 @@ app_resto_delete:
     path:  /{id}/delete
     defaults: { _controller: AppRestoBundle:Admin:delete}
     methods: ['GET', 'POST']
+
