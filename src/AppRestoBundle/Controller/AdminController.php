@@ -168,7 +168,25 @@ class AdminController extends Controller
             );
 
 
-        $weekStart = new \DateTime("last Monday");
+        $today = new \DateTime("today");
+        $deadLine = new \DateTime("thursday");
+        $deadLine->modify("+12 hours");
+
+        $monday = new \DateTime("monday");
+        $mondaySt = $monday->format('D');
+        $todaySt = $today->format('D');
+
+        if ($todaySt == $mondaySt)
+        {
+            $weekStart = $monday;
+        }
+        elseif ($today > $deadLine) {
+            $weekStart = new \DateTime("next Monday");
+        }
+        elseif ($today < $deadLine) {
+            $weekStart = new \DateTime("last Monday");
+        }
+
         $todayTime = new \DateTime("Today");
 
         $weeks = $em->getRepository('AppRestoBundle:Week')->findOneBy(array(

@@ -18,7 +18,27 @@ class ClientController extends Controller
     {
         //Get Days of the week
         $repository = $this->getDoctrine()->getManager()->getRepository('AppRestoBundle:Week');
-        $weekStart = new \DateTime("last Monday");
+
+        //Conditions to select week's start
+        $today = new \DateTime("today");
+        $deadLine = new \DateTime("thursday");
+        $deadLine->modify("+12 hours");
+
+        $monday = new \DateTime("monday");
+        $mondaySt = $monday->format('D');
+        $todaySt = $today->format('D');
+
+        if ($todaySt == $mondaySt)
+        {
+            $weekStart = $monday;
+        }
+        elseif ($today > $deadLine) {
+            $weekStart = new \DateTime("next Monday");
+        }
+        elseif ($today < $deadLine) {
+            $weekStart = new \DateTime("last Monday");
+        }
+
         $weeks = $repository->findOneBy(array(
             'start_week' => $weekStart
         ));
@@ -70,7 +90,27 @@ class ClientController extends Controller
     public function resaAction(){
         $data = $_REQUEST;
         $em = $this->getDoctrine()->getManager();
-        $weekStart = new \DateTime("last Monday");
+
+        //Conditions to select week's start
+        $today = new \DateTime("today");
+        $deadLine = new \DateTime("thursday");
+        $deadLine->modify("+12 hours");
+
+        $monday = new \DateTime("monday");
+        $mondaySt = $monday->format('D');
+        $todaySt = $today->format('D');
+
+        if ($todaySt == $mondaySt)
+        {
+            $weekStart = $monday;
+        }
+        elseif ($today > $deadLine) {
+            $weekStart = new \DateTime("next Monday");
+        }
+        elseif ($today < $deadLine) {
+            $weekStart = new \DateTime("last Monday");
+        }
+
         $days = $em->getRepository('AppRestoBundle:Week')->findOneBy(
             array(
             'start_week' => $weekStart
