@@ -18,14 +18,14 @@
                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
             </a>
         {% endif %}
-        <div class="row head valign-wrapper">
-            <div class="col s4 valign">
+        <div class="row head valign-wrapper" id="header">
+            <div class="col s4 valign logo">
                 <img src="{{ asset('bundles/appresto/img/logo_newrest.png') }}">
             </div>
 
             <h1 class="col s4 center-align valign">APP RESTO</h1>
 
-            <div class="col s4 right-align valign">
+            <div class="col s4 right-align valign btn_header">
                 {% block header_btn %}{% endblock %}
             </div>
         </div>

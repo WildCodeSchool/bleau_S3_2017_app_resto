@@ -88,6 +88,28 @@ a {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+
+
+@media screen and (max-width: 550px)  {
+    #header .logo img{
+        width:100%;
+        height: auto;
+    }
+
+    #header h1 {
+        font-size: 1.5em;
+    }
+
+    #header .btn_header {
+        font-size: 0.7em;
+    }
+        #header .btn_header .btn_custom {
+            padding-right: 1rem;
+            padding-left: 1rem;
+            height: 45%;
+        }
+}
 /*------- 2.HEADER--------*/
 .head
 {
@@ -103,7 +125,6 @@ a {
     background-color: rgb(175, 97, 20);
 }
 
-/*------- 3.MENUS-ADMIN--------*/
 /*------- 3.MENUS-ADMIN--------*/
 .menu_admin{
     font-size: 1.2em;
@@ -161,6 +182,8 @@ a {
 
 #menu h3 {
     font-size: 1.7em;
+    color: rgb(175, 97, 20);
+    font-weight: bold;
 }
 
 
@@ -190,7 +213,7 @@ a {
 
 
     .dayli a:hover{
-        box-shadow: 0 0 5px 5px rgba(180, 180, 180, 0.4) ;
+        box-shadow: 0 0 2px 2px rgba(180, 180, 180, 0.4) ;
     }
         .dayli a ul {
             display:flex;
@@ -218,6 +241,11 @@ input[type="radio"] ~ label {
     width: 100% !important;
     background-color: white;
     color: rgb(175, 97, 20);
+}
+
+input[type="radio"]:hover ~ label {
+    background: rgba(175, 97, 20,0.6);
+    color: white;
 }
 
 input[type="radio"]:checked ~ label {
@@ -276,7 +304,26 @@ input[type="radio"]:checked ~ label {
         color: rgb(175, 97, 20);
     }
 
-/*-------5.SELF-------*/
+@media screen and (max-width: 600px) {
+
+    .dayli_col a li:nth-child(1), .dayli_col a li:nth-child(3) {
+        display: none;
+    }
+
+    .dayli_col a ul {
+        height: 100px;
+        margin-top: 0;
+
+    }
+
+    .dayli_col a li{
+    }
+
+    .dayli_col  {
+        margin-top: 10px;
+    }
+}
+    /*-------5.SELF-------*/
 
 
 
