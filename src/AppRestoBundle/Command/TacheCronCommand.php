@@ -5,6 +5,7 @@ namespace AppRestoBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class TacheCronCommand extends ContainerAwareCommand {
 
@@ -30,13 +31,15 @@ class TacheCronCommand extends ContainerAwareCommand {
         $message = \Swift_Message::newInstance()
             ->setSubject('Menu de la semaine')
             ->setFrom($this->getContainer()->getParameter('mailer_user'));
-
         $followers = $em->getRepository('AppRestoBundle:Follower')->findAll();
         foreach($followers as $follower){
+            $url_unscribe = $this->getContainer()->get('router')->generate('app_resto_delete', array(
+                'id' => $follower->getId()
+            ), UrlGeneratorInterface::ABSOLUTE_URL);
             $message->setBody(
                 $this->getContainer()->get('templating')->render('Emails/registration.html.twig', array(
                         'week' => $week,
-                        'user' => $follower->getId(),
+                        'url_unscribe' => $url_unscribe,
                         'days' => $days,
                         'daysWeeks' => $daysWeeks,
                     )
