@@ -99,6 +99,7 @@
 
         function getWeek(){
             var selectedWeek = $("select#choiceWeek option:selected").val();
+
             $.ajax({
                 type: "POST",
                 data : { selectedWeek: selectedWeek },
@@ -126,7 +127,7 @@
                         var $this = $('#weekMenu');
                         url = '{{ path('app_resto_load_week_ajax') }}';
                     }
-
+console.log($(this)[0][0].value);
                     // Eviter le comportement par défaut (soumettre le formulaire)
                     event.preventDefault();
 
@@ -161,9 +162,13 @@
         }
 
         $(document).ready(function(){
+            var selectedWeek = $("select#choiceWeek option:selected").val();
+
             $.ajax({
                 url: '{{ path('app_resto_load_week_ajax') }}',
-                type: "GET",
+                data : { selectedWeek: selectedWeek },
+                dataType: 'json',
+                type: "POST",
                 success: function(data){
                     $("#result").html(data.form);
                 }});
