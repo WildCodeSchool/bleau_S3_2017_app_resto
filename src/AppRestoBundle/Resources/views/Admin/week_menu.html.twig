@@ -12,10 +12,24 @@
         {% for day in form.days %}
             <div class="col s2 {% if loop.first %}col offset-s1{% endif %} col_menu_admin">
                 <ul>
-                    <li>{{ form_row(day.entrees) }}</li>
-                    <li>{{ form_row(day.plats) }}</li>
-                    <li>{{ form_row(day.garnitures) }}</li>
-                    <li>{{ form_row(day.desserts) }}</li>
+                    <li>
+                        {{ form_widget(day.entrees, {'attr': {'class': 'formEntree'}}) }}
+                        {{ form_errors(day.entrees) }}
+                    </li>
+                    <li>
+                        {{ form_widget(day.plats, {'attr': {'class': 'formPlat'}}) }}
+                        {{ form_errors(day.plats) }}
+
+                    </li>
+                    <li>
+                        {{ form_widget(day.garnitures, {'attr': {'class': 'formGarniture'}}) }}
+                        {{ form_errors(day.garnitures) }}
+
+                    </li>
+                    <li>
+                        {{ form_widget(day.desserts, {'attr': {'class': 'formDessert'}}) }}
+                        {{ form_errors(day.desserts) }}
+                    </li>
                 </ul>
             </div>
         {% endfor %}
