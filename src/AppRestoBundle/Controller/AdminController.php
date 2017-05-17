@@ -99,11 +99,9 @@ class AdminController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($week);
                     $em->flush();
-                    $response->setStatusCode(200);
                     $content["msg"] =  "Menu enregistré";
                 }
                 else{
-                    $response->setStatusCode(412);
                     $content["msg"] = "Erreur dans la saisi";
                 }
             }
@@ -137,13 +135,23 @@ class AdminController extends Controller
             $form = $this->createForm($formtype, $value);
             $form->handleRequest($request);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($value);
-            $em->flush();
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($value);
+                $em->flush();
 
-            $response = new JsonResponse(array(
-                'msg' => $type . ' ajouté'
-            ), 200);
+                $response = new JsonResponse(array(
+                    'msg' => $type . ' ajouté',
+                    'id' => $value->getId(),
+                    'name' => $value->getName()
+                ));
+            }
+            else{
+                $response = new JsonResponse(array(
+                    'msg' => 'Erreur de saisi',
+                ));
+            }
+
             return $response;
         }
     }

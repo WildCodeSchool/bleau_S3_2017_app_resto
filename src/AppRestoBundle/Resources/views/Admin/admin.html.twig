@@ -99,7 +99,6 @@
 
         function getWeek(){
             var selectedWeek = $("select#choiceWeek option:selected").val();
-
             $.ajax({
                 type: "POST",
                 data : { selectedWeek: selectedWeek },
@@ -108,81 +107,71 @@
                 success: function(data)
                 {
                     $("#result").html(data.form);
+
+                    $("form[id='weekMenu']").submit(function (e) {
+                        e.preventDefault();
+                        submitAjax($(this)[0], '{{ path('app_resto_load_week_ajax') }}', null);
+                    });
+
                 }
             });
         }
 
-        function submitAjax(idElement, url, reset){
-            $(document).on("submit", idElement, function (event) {
-
-                //Condition to set if a new meal or a menu is submitted.
-                if(reset !== null) { var j = 2; }
-                else { var j = 1;}
-
-                //Loop who execute 1 or 2 requests depending of conditions
-                for(var i = 0; i < j; i++) {
-                    if(i == 0) {
-                        var $this = $(this);
-                    }else{
-                        var $this = $('#weekMenu');
-                        url = '{{ path('app_resto_load_week_ajax') }}';
-                    }
-console.log($(this)[0][0].value);
-                    // Eviter le comportement par défaut (soumettre le formulaire)
-                    event.preventDefault();
-
-                    //Ici on peut ajouter un loader...
-
-                    $.ajax({
-                        url: url,
-                        type: 'post',
-                        data: new FormData($this[0]),
-                        processData: false,
-                        contentType: false,
-                        statusCode: {
-                            //traitement en cas de succès
-                            200: function (response) {
-                                var successMessage = response.msg;
-                                if(i == 0) {alert(successMessage);}
-                                if (typeof reset !== 'undefined'){
-                                    $(idElement).trigger("reset");
-                                    getWeek()
-                                }
-
-                            },
-                            //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
-                            412: function (response) {
-                                var errorsForm = response.msg;
-                                alert(errorsForm)
-                            }
+        function submitAjax(form, url, reset){
+            var idForm = $(form).attr('id');
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: new FormData(form),
+                processData: false,
+                contentType: false,
+                success:
+                    function (response) {
+                        if (reset == true){
+                            $("." + idForm + " ul").append('<li class=""><span><input type="checkbox"><label></label>' + response.name + '</span></li>');
+                            $("." + idForm + " select").append('<option value=' + response.id + '>' + response.name + '</option>');
+                            $('select').material_select();
+                            $("form[id=" + idForm + "]").trigger('reset');
                         }
-                    })
-                }
+                        alert(response.msg);
+                    },
+                    //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                 error:
+                     function (response) {
+                        alert(response.msg);
+                    }
             });
         }
 
         $(document).ready(function(){
-            var selectedWeek = $("select#choiceWeek option:selected").val();
-
-            $.ajax({
-                url: '{{ path('app_resto_load_week_ajax') }}',
-                data : { selectedWeek: selectedWeek },
-                dataType: 'json',
-                type: "POST",
-                success: function(data){
-                    $("#result").html(data.form);
-                }});
-        });
-
-        $("#choiceWeek").change(function() {
             getWeek();
+
+            $("#choiceWeek").change(function() {
+                getWeek();
+            });
+
+            $("#formEntree").on("submit", function (event) {
+                event.preventDefault();
+                submitAjax($(this)[0], '{{ path('app_resto_entree_ajax') }}', true);
+            });
+            $("#formPlat").on("submit", function (event) {
+                event.preventDefault();
+                submitAjax($(this)[0], '{{ path('app_resto_plat_ajax') }}', true);
+            });
+            $("#formGarniture").on("submit", function (event) {
+                event.preventDefault();
+                submitAjax($(this)[0], '{{ path('app_resto_garniture_ajax') }}', true);
+            });
+            $("#formDessert").on("submit", function (event) {
+                event.preventDefault();
+                submitAjax($(this)[0], '{{ path('app_resto_dessert_ajax') }}', true);
+            });
+
         });
 
-        submitAjax("#weekMenu",null , '{{ path('app_resto_load_week_ajax') }}');
-        submitAjax("#formEntree", '{{ path('app_resto_entree_ajax') }}', true);
-        submitAjax("#formPlat", '{{ path('app_resto_plat_ajax') }}', true);
-        submitAjax("#formGarniture", '{{ path('app_resto_garniture_ajax') }}', true);
-        submitAjax("#formDessert", '{{ path('app_resto_dessert_ajax') }}', true);
+
+
+
 
     </script>
 
